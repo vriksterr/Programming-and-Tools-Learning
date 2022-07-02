@@ -1,0 +1,12 @@
+    *******************
+    * Data Structures *
+    *******************
+
+    - Array, 2D Array
+    - Vectors
+    - Stacks, Queues
+    - Linked List
+    - Trees, BSTs, Tries
+    - Heaps/Priority Queues
+    - Hashtables
+    - Graphs

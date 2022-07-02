@@ -1,0 +1,9 @@
+    ***************
+    * Algorightms *
+    ***************
+
+    - Complexity Analysis
+    - Sorting & Searching ( Greedy Algorightms )
+    - Recursion & Backtracking
+    - Divide and Conquer
+    - Dynamic Programming
