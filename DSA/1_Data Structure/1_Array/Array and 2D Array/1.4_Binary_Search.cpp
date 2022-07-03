@@ -70,12 +70,14 @@ int main(){
     int arr[]{10,20,30,40,50,60,70,80,90,100,110,120};
     int size_of_array{sizeof(arr)/sizeof(int)};
     int key{};
+    
+    //Displaying the array
     cout<<"The array that we have is: ";
-
     for(int i{0}; i<size_of_array; i++){
         cout<<arr[i]<<", ";
     }
     cout<<" with no. of elements being: "<<size_of_array<<endl;
+
     cout<<"Please Enter the key you want to search for: ";
     cin>>key;
 
