@@ -73,9 +73,10 @@ int main()
         //__________________________________________
 
 
-        const char character[]{"hi"};     // you can put [] = {} but putting = is not required anymore, the [] hold the size of char 
+        const char character[]{"hi"};     // you can put [] = {} but putting = is not required anymore, the [] hold the size of char, " " puts a null character at the end of it if we write it this way
         char character2[]{'a','b','c'};
         char character3{'j'};
+        char a[100]{'a','b','\0'};   //there should be a null character at the end to avoid garbage value to be printed
         std::cout<<"Character: "<<character<<" & "<<character2<<" & "<<character3<<std::endl;
 
         //__________________________________________
