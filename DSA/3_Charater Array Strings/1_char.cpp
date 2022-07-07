@@ -19,7 +19,7 @@ int main(){
 
     cout<<b<<endl;
     cout<< strlen(a) <<endl;    //number of visible characters
-    cout<< sizeof(a)<<endl; // +1 because of null character
+    cout<< sizeof(a)<<endl;     // +1 because of null character
 
 
     //cin.get() // accept 1 char at a time but it reads all characters
