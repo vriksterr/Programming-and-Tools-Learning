@@ -39,3 +39,23 @@ int main()
   
     return 0;
 }
+
+/* Simple example
+#include<iostream>
+using namespace std;
+
+int func2(int c, int d){
+    return c+d;
+}
+
+void func1(int a, int b, int (*func0)(int,int)){
+
+    int output{func0(5,5)};
+    cout<< output;
+}
+
+int main(){
+
+    func1(5,4,func2);
+}
+*/
