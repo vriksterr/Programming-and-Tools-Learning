@@ -1,5 +1,6 @@
 // https://www.geeksforgeeks.org/function-pointer-in-c/
 // https://www.geeksforgeeks.org/address-function-c-cpp/    // find the address of a function and why cout dosenot output address like c dose is coz of https://stackoverflow.com/questions/10321083/why-does-the-value-of-the-functions-address-is-1-in-c 
+// https://stackoverflow.com/questions/9552663/function-pointers-and-address-of-a-function
 
 #include <iostream>
 #include<stdio.h>
