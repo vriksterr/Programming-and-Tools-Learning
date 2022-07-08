@@ -30,9 +30,8 @@ int main()
     // Pass pointers to add & multiply
     // function as required
     cout << "Addition of 20 and 10 is ";
-    cout << invoke(20, 10, &add)    //we can also remove & from add and multiply and it will still work coz pointer is pointing to a function
-         << '\n';
-  
+    cout << invoke(20, 10, &add)<<endl;    //we can also remove & from add and multiply and it will still work coz pointer is pointing to a function
+
     cout << "Multiplication of 20"
          << " and 10 is ";
     cout << invoke(20, 10, &multiply)
