@@ -19,7 +19,7 @@ int multiply(int x, int y)
   
 // Function that takes a pointer
 // to a function
-int invoke(int x, int y, int (*func)(int, int))
+int invoke(int x, int y, int (*func)(int, int))     //we can also type int with a variable name like int a as well if we want but not required to do so, also how do we speak this function: func is pointer that is pointing to a funtion that take to variables of int type and return an int.
 {
     return func(x, y);
 }
