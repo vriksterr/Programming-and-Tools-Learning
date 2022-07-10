@@ -6,8 +6,8 @@
     Basically we made a que whose first element will be the greatest. In other words it is a type of data
     structure when you put in all the elements and at the time of getting those data back there are only
     two ways either via 
-                        1.Max Heap(which means the element you take out will be the maximum element)
-                        2.Min Heap(where the element we take out will be the minimum)
+                        1.Max Heap(which means the element you take out from the top will be the maximum element)
+                        2.Min Heap(where the element we take out from top will be the minimum)
 */
 #include<queue>
 #include<iostream>
@@ -15,7 +15,7 @@ using namespace std;
 
 int main(){
     
-    priority_queue<int>max;                         //when we initialize like this it is Max Heap
+    priority_queue<int>max;                            //when we initialize like this it is Max Heap
     priority_queue<int,vector<int>,greater<int>>min;   //this will give Min Heap
 
 
