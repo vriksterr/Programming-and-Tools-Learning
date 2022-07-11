@@ -2,6 +2,11 @@
     *********
     * Array *
     *********
+
+    Functions:  empty() //will  tell if array is empty of not
+                front()
+                back()
+                size()
 */
 #include<array> // C++ STL library
 

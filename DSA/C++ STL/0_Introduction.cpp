@@ -13,4 +13,7 @@
         Unordered Associative: Unordered-Set. Unordered Map, Unordered MultiSet, Unordered MultiMap
 
     Algorithms: Binary-search, find, reverser/rotate, Lower/Upped bount, min/max, sort/swap etc
+
+    Videos: 1) https://www.youtube.com/watch?v=mOzPZ3hWFVQ
+            2) https://www.youtube.com/playlist?list=PLN4aKSfpk8TQ6CqzMRDVUr-jEpObLiYdq
 */

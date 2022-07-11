@@ -8,8 +8,11 @@
 
     Remember that all key are unique and that 1 key will point to just 1 value but multiple key can point
     to same value.
+
+    Video: https://www.youtube.com/watch?v=7mwgA9XFIEQ
 */
 #include<map>
+#include<unordered_map>
 #include<iostream>
 using namespace std;
 
