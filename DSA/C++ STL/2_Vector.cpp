@@ -90,7 +90,7 @@ int main(){
 	vec.push_back(raj1); 
 	vec.push_back(raj2); 
 	vec.push_back(raj3); 
-
+    
     // it is vector itself 
 	for(auto vctr: vec) {
 		for(auto it: vctr) {
@@ -121,5 +121,6 @@ int main(){
  
  
 	// 10 x 20 x 30 // int arr[10][20][30] 
-	vector<vector<vector<int>>> vec(10, vector<vector<int>> vec(20, vector<int> (30, 0));)
+    //syntax error
+	// vector<vector<vector<int>>> vec(10, vector<vector<int>> vec(20, vector<int> (30, 0));)
 }

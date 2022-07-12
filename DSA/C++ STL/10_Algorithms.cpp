@@ -2,6 +2,12 @@
     **************
     * Algorithms *
     **************
+
+    Lowerbound
+    uppedbound
+    binary search
+    max element
+    sort
  */
 #include <iostream>
 #include <algorithm>
