@@ -3,11 +3,19 @@
     * Priority Queue *
     ******************
 
+    Stores all in Sorted order and dose it in log N
+
     Basically we made a que whose first element will be the greatest. In other words it is a type of data
     structure when you put in all the elements and at the time of getting those data back there are only
     two ways either via 
                         1.Max Heap(which means the element you take out from the top will be the maximum element)
                         2.Min Heap(where the element we take out from top will be the minimum)
+
+    Functions:  .push()
+                .pop()
+                .top()
+                .size()
+                .empty()
 */
 #include<queue>
 #include<iostream>

@@ -19,7 +19,7 @@
 
     Functions:  .fill(0)                            //fills the entire array with 0
                 .at( )                              //accessing a specific position and getting its value
-                .empty()                            //will  tell if array is empty of not
+                .empty()                            //will tell if array is empty of not
                 .front() or arr.at(0)               //will give the first element in the array
                 .back()  or arr.at(arr.size()-1)    //will give the end element in the array
                 .size()                             //tells the number of elements in an array

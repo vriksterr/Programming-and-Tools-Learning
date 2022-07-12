@@ -3,10 +3,12 @@
     * Map *
     *******
 
-    Map is a data structure where data is stored in key format for example
-    lets say key is vineet and value is scorpio so vineet is pointing to scorpio.
+   -Map is same property as set it stores everything in sorted order(sorting is done based on key which
+    can be numeric or alphabatical).
+   
+   -Time Complexity Log N for map. And O(1) in unordered,o(n) in worst case, where n is the container size
 
-    Remember that all key are unique and that 1 key will point to just 1 value but multiple key can point
+   -Remember that all keys are unique(no duplicates) and that 1 key will point to just 1 value but multiple key can point
     to same value.
 
     Video: https://www.youtube.com/watch?v=7mwgA9XFIEQ
@@ -18,28 +20,47 @@ using namespace std;
 
 int main(){
 
-    map<int,string>m;
+    map<int,string>m;   //its implementation is like a pair where m.first = something; and m.second = something;
     map<int,int>n;
     map<string,int>o;
-    
+    unordered_map<int,string>p;
+    multimap<int,string>q;  //same as multiset here there are no unique keys and can store multiple keys of same name
+
+//Insertion
     m[1]="vineet";  //Here m[1] is key and vineet is value
     m[2]="Sanjeev";
     m[13]="ramesh";
     m[20]="yogesh";
     m[99]="rashmi";
-
+    m[1]="maan";    //Here key one will be overwritten with maan or m.emplace(1,"maan");
     m.insert({5,"yogita"}); // this will insert a new key 5 with value being yogita
-    m.erase(99);            // will remove key 99
-    //print
+   
+//Deletion
+    m.erase(99);            // give the keyname and it will remove it and value associated to that key
+    //Rest all same as array/vector
+    
+//Print
+    //easy
     for(auto i:m){
-        cout<<i.first<<endl;    //will print 1 and 2. The output will be in sorted in sorted map and will be unsorted in unsorted map
+        cout<<i.first<<" "<<i.second<<endl;    //will print 1 maan and 2 Sanjeev. The output will be in sorted in sorted map and will be unsorted in unsorted map
     }
 
-    cout<<"Finding 5->"<<m.count(5)<<endl;  //tells weather the specific element is present or not in bool output
-
-    cout<<endl<<"Iterator:"<<endl;
-    auto it{m.find(2)};         //here we fount the iterator and then we ran a loop with that iterator
-    for(auto i{it}; i != m.end(); i++){
-        cout<<(*i).first<<endl;
+    //tipical 
+    for(auto it{m.begin()}; it != m.end(); it++ ){
+        cout<<(*it).first<<" "<<(*it).second<<endl;     //or cout<<it->first<<" "<<it->second;
     }
+
+    // cout<<".find() iterator for 1 will be->"<<  *iterator<<endl;    //wont work
+
+//Pair class
+    pair<int,int>pr{1,2};                     //where 1 is the pr.first element(key) and 2 is pr.second element
+    pair<pair<int,int>,int>pr2{{1,2},3};      //nested pairs where pr2.first = {1,2} and pr2.second = {3}
+    cout<<"Printing the second element 2 of the pair{1,2}-> "<<pr2.first.second<<endl;
+
+    pair<pair<int,int>,pair<int,int>>pr3{{1,2},{3,4}};
+    cout<<pr3.first.first;  //will print 1
+    // cout<<pr3.first;     //need operator overloading for this to work
+
+    //we can keep on creating pair on pair like this endlessly.
+    //Unordered map cannot have a pair as it can only store single keys.
 }

@@ -14,7 +14,7 @@
     Q-When should we use a SET?
     A-Generally in questions where we are asked to find/store unique elements
 
-    Functions:  st[0];              //Dosent work in SET
+    Functions:   st[0];             //Dosent work in SET
                 .erase(begin,end)
                 .count()            //Tells how many times an element is present in the set mostly used in multiset
                 .insert()           //Adds element in the set
