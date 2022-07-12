@@ -19,7 +19,9 @@ using namespace std;
 int main(){
 
     map<int,string>m;
-
+    map<int,int>n;
+    map<string,int>o;
+    
     m[1]="vineet";  //Here m[1] is key and vineet is value
     m[2]="Sanjeev";
     m[13]="ramesh";

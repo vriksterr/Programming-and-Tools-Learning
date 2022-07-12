@@ -13,6 +13,7 @@
     Functions:      .fill(0)                            //fills the entire array with 0
                     .at( )                              //accessing a specific position and getting its value
                     .empty()                            //will  tell if array is empty of not
+                    .clear()                            //empties the entire vector
                     .front() or arr.at(0)               //will give the first element in the array
                     .back()  or arr.at(arr.size()-1)    //will give the end element in the array
                     .size()                             //tells the number of elements in an array
@@ -34,7 +35,7 @@ int main(){
     vector<int>x(5,0);                              //meaning that the size of the vector is 5 and all the elements will be initialized to 0
     vector<int>w{2,3,5,3,8,7,0,9};               
     vector<int>copy_vector(w.begin(),w.end());      //makies a copy of vector w to a new vector names copy_vector we can choose a range like below
-    vector<int>copy_vector2(w.begin(),w.begin()+2);  //{2,3,5}
+    vector<int>copy_vector2(w.begin(),w.begin()+2); //{2,3,5}
     vector<int>copy_vector3(w);                     //copying entire w vector to new vector
     
     
@@ -52,7 +53,7 @@ int main(){
     cout<<"Vector Empty or not-> "<<v.empty()<<endl;   //.empty will give a bool output telling weather the given Vector is empty or not.
     cout<<"Vector First Element-> "<<v.front()<<endl;  //will give first element of an Vector
     cout<<"Vector Last Element-> "<<v.back()<<endl;    //will give last element of an Vector
-
+    
     cout<<endl<<"____________Iterators___________"<<endl<<endl;
 
     //begin() end() rbegin() and rend() wont print directly look into it some operator overloading might be required
