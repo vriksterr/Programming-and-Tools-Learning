@@ -8,8 +8,8 @@
 
     Functions:      .push_back()
                     .push_front()
-                    .pop_front()
                     .pop_back()
+                    .pop_front()
                     .fill(0)                            //fills the entire array with 0
                     .at( )                              //accessing a specific position and getting its value
                     .front() or arr.at(0)               //will give the first element in the array

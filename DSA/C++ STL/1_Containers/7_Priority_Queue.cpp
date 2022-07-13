@@ -4,6 +4,8 @@
     ******************
 
     Stores all in Sorted order and dose it in log N
+
+    -A priority queue only gives you access to one element in sorted order -- i.e., you can get the highest priority item, and when you remove that, you can get the next highest priority, and so on.
     
     Two Types:
     1.Max Priority Queue-> where the maximum element will be on the top and minimum at the bottom

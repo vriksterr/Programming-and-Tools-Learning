@@ -13,7 +13,7 @@
 
     Functions:  .insert() or m[]{}  //Adds element in the set
                 .first .second      //for the pair access or modificaton
-                .at(key) or m[key]
+                .at(key) or a[key]
                 .find()             //will return an iterator that points to the element inside ()
                 .count()            //Tells how many times an element is present in the set mostly used in multiset
                 .empty()            //is it empty or not

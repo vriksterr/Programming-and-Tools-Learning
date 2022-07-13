@@ -5,6 +5,7 @@
     
     -Set only stores Unique elements no repetition
     -Once an element has been added you cannot modify that element just ADD or Delete
+    -A set allows you full access in sorted order, so you can, for example, find two elements somewhere in the middle of the set, then traverse in order from one to the other.
     -All set functions are of O(log n)
     
     There are 2 types of set 1.Ordered Set- the set will be in ascending order with starting index being smallest and ending being the largest and the elements you fetch are in ordered also it is slower than unordered.
@@ -14,10 +15,10 @@
     A-Generally in questions where we are asked to find/store unique elements
 
     Functions:  .insert()           //Adds element in the set
-                .erase(begin,end)
                 .find()             //will return an iterator that points to the element inside ()
                 .count()            //Tells how many times an element is present in the set mostly used in multiset
                 .empty()
+                .erase(begin,end)
                 .clear()            //deletes everything
                 .size()
                 

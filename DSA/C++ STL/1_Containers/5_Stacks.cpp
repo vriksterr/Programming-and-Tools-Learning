@@ -10,7 +10,6 @@
                 .top()
                 .empty()
                 .size()
-                rest all same as vector/array
 
     Iterator:   XX_NO ITERATORS_XX
 
