@@ -4,18 +4,20 @@
     ******************
 
     Stores all in Sorted order and dose it in log N
-
-    Basically we made a que whose first element will be the greatest. In other words it is a type of data
-    structure when you put in all the elements and at the time of getting those data back there are only
-    two ways either via 
-                        1.Max Heap(which means the element you take out from the top will be the maximum element)
-                        2.Min Heap(where the element we take out from top will be the minimum)
+    
+    Two Types:
+    1.Max Priority Queue-> where the maximum element will be on the top and minimum at the bottom
+    2.Min Priority Queue-> where the minimul element will be on the top and maximul at the bottom
 
     Functions:  .push()
                 .pop()
                 .top()
-                .size()
                 .empty()
+                .size()
+
+    Iterator:   NO ITERATORS
+
+    Implementation will not be asked in interview if it is going to be asked it will be a single question
 */
 #include<queue>
 #include<iostream>
@@ -23,24 +25,23 @@ using namespace std;
 
 int main(){
     
-    priority_queue<int>max;                            //when we initialize like this it is Max Heap
-    priority_queue<int,vector<int>,greater<int>>min;   //this will give Min Heap
+    priority_queue<int>max;                            //Max Priority Queue
+    priority_queue<int,vector<int>,greater<int>>min;   //Min Priority Queue
 
-
-    //FOR MAX HEAP
+//Max Priority Queue
     max.push(1);
     max.push(3);
     max.push(2);
     max.push(0);
 
-    //Printing so we are getting the biggest element and then removing it so we get the next biggest this way we can print the max
+//Printing, so we are getting the biggest element and then removing it so we get the next biggest this way we can print the max
     int n{max.size()};  // the reason why we did this is coz the size is changing as we are popping at each loop
     for(int i{}; i<n; i++){
         cout<<max.top()<<endl;
         max.pop();
     }
     cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++"<<endl;
-    //FOR MIN HEAP
+//Min Priority Queue
 
     min.push(5);
     min.push(1);

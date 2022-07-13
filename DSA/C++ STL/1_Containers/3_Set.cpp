@@ -5,7 +5,6 @@
     
     -Set only stores Unique elements no repetition
     -Once an element has been added you cannot modify that element just ADD or Delete
-    -Behind the sceans it is implements with the help of BST
     -All set functions are of O(log n)
     
     There are 2 types of set 1.Ordered Set- the set will be in ascending order with starting index being smallest and ending being the largest and the elements you fetch are in ordered also it is slower than unordered.
@@ -14,13 +13,17 @@
     Q-When should we use a SET?
     A-Generally in questions where we are asked to find/store unique elements
 
-    Functions:   st[0];             //Dosent work in SET
+    Functions:  .insert()           //Adds element in the set
                 .erase(begin,end)
-                .count()            //Tells how many times an element is present in the set mostly used in multiset
-                .insert()           //Adds element in the set
                 .find()             //will return an iterator that points to the element inside ()
-                rest same as array/vectors
+                .count()            //Tells how many times an element is present in the set mostly used in multiset
+                .empty()
+                .clear()            //deletes everything
+                .size()
+                
+    Iterators:  same as array/vectors
     
+     Implementation will not be asked in interview just the name will be asked, SET implements Red Black Tree 
 
 */
 #include<set>
@@ -33,7 +36,7 @@ int main(){
     set<int> st;            //O(log n), use this if you want ascending order and all unique
     unordered_set<int> p;   //O(1), use this if we dont require to store elements in ascending order
     multiset<int>q{1,1,1,2,2,3,4,4,5,5,5,5};         //can store multiple repeating values in ascending order like {1,1,1,2,2,3,4,4,5,5,5,5}
-    //INSERT
+//INSERT
     st.insert(5);           //insert takes Log N time where N is the size of the set
     st.insert(6);           // alternatively st.emplace(6) which is faster for Competative programming
     st.insert(2);
@@ -45,7 +48,7 @@ int main(){
     st.insert(1);
     //cout<<st[0];            //we cannot access set elements like this 
 
-    //ERASE Functionality
+//ERASE Functionality
     st.erase(st.begin());                  //log n
     st.erase(5);                           //st.eraser(key) will delete the key. For multiset will erase all 5
     st.erase(st.begin(),st.end());         //Deleting the entire set.
@@ -57,7 +60,7 @@ int main(){
     auto iterator = st.find(2);     //st.find() will return an iterator that points to 1, works in log n. For multiset will return the first element address
     auto iterator2 = st.find(69);    //if the key is not found it will be iterator = s.end();
 
-    //Printing a SET
+//Printing a SET
     //1st method
     for(auto it = st.begin(); it!=st.end(); it++){
         cout<< *it<<", ";
@@ -66,11 +69,6 @@ int main(){
     for(auto it:st){
         cout<<it<<", ";
     }
-
-
-
-    //Other Functionality
-    //Same as Vector/Array
 
     // adding numbers in the set from a user
     // int n;

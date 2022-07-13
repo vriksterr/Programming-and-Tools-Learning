@@ -3,7 +3,7 @@
     * Map *
     *******
 
-   -Map is same property as set it stores everything in sorted order(sorting is done based on key which
+   -Same property as set it stores everything in sorted order(sorting is done based on key which
     can be numeric or alphabatical).
    
    -Time Complexity Log N for map. And O(1) in unordered,o(n) in worst case, where n is the container size
@@ -11,7 +11,20 @@
    -Remember that all keys are unique(no duplicates) and that 1 key will point to just 1 value but multiple key can point
     to same value.
 
-    Video: https://www.youtube.com/watch?v=7mwgA9XFIEQ
+    Functions:  .insert() or m[]{}  //Adds element in the set
+                .first .second      //for the pair access or modificaton
+                .at(key) or m[key]
+                .find()             //will return an iterator that points to the element inside ()
+                .count()            //Tells how many times an element is present in the set mostly used in multiset
+                .empty()            //is it empty or not
+                .erase(begin,end)
+                .clear()            //deletes everything
+                .size()
+                
+    Iterators:  same as array/vectors
+
+    Implementation will not be asked in interview, but its implements by AVL Tree
+
 */
 #include<map>
 #include<unordered_map>
@@ -56,7 +69,7 @@ int main(){
     pair<int,int>pr{1,2};                     //where 1 is the pr.first element(key) and 2 is pr.second element
     pair<pair<int,int>,int>pr2{{1,2},3};      //nested pairs where pr2.first = {1,2} and pr2.second = {3}
     cout<<"Printing the second element 2 of the pair{1,2}-> "<<pr2.first.second<<endl;
-
+    cin>>pr2.first.second;                    //can also modify with this
     pair<pair<int,int>,pair<int,int>>pr3{{1,2},{3,4}};
     cout<<pr3.first.first;  //will print 1
     // cout<<pr3.first;     //need operator overloading for this to work

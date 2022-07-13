@@ -3,15 +3,20 @@
     * Queue *
     *********
     
-    FIFO Operation
-    Queue is simple to understand it is like a line outside a movie theater the first one in the queue will
-    get the ticket first and the last guy at the last!
+    -FIFO Operation ()
 
-    Functions: .front()     // first element
-             X .end()       //not going to work
-             X .push_back()
-             X .erase()
-                rest all same as stack and vector
+    -All Operation take O(1) just pop takes O(n) linear time
+
+    Functions: .push()
+               .pop()
+               .front()     // first element
+               .back()      //last element
+               .empty()
+               .size()
+
+    Iterator:   NO ITERATORS
+
+    Can be asked in interview to be implemented as it is easy.
 */
 #include<queue>
 #include<iostream>
@@ -22,6 +27,7 @@ int main(){
     queue<string> q;
     queue<int>r;
 
+//Insertion
     q.push("vineet");
     q.push("harsh");
     q.push("sanjeev");

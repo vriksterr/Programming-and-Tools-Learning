@@ -10,12 +10,13 @@
 
     Also it has the same memory limitations as the array in main and global
 
-    Functions:      .fill(0)                            //fills the entire array with 0
+    Functions:      .push_back()
+                    .fill(0)                            //fills the entire array with 0
                     .at( )                              //accessing a specific position and getting its value
-                    .empty()                            //will  tell if array is empty of not
-                    .clear()                            //empties the entire vector
                     .front() or arr.at(0)               //will give the first element in the array
                     .back()  or arr.at(arr.size()-1)    //will give the end element in the array
+                    .empty()                            //will  tell if array is empty of not
+                    .clear()                            //empties the entire vector
                     .size()                             //tells the number of elements in an array
 
     Iterators(addresses):   .begin()    //starting point of the array the 0th element
