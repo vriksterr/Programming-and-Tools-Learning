@@ -18,10 +18,10 @@
                     
 
     Functions:  .fill(0)                            //fills the entire array with 0
-                .at( )                              //accessing a specific position and getting its value
-                .empty()                            //will tell if array is empty of not
+                .at( )  or a[]                      //accessing a specific position and getting its value
                 .front() or arr.at(0)               //will give the first element in the array
                 .back()  or arr.at(arr.size()-1)    //will give the end element in the array
+                .empty()                            //will tell if array is empty of not
                 .size()                             //tells the number of elements in an array
                 
     Iterators(addresses):   .begin()    //Starting point of the array the 0th element
@@ -42,7 +42,7 @@ int main(){
     //STL style array which is based on the basic array but it gives us aditional functionality
     array<int,5> stl_style_array{1,2,3,4,0};                                              //if an array is defined globally with no values it will be initialized to zero if its defined inside main it will have garbage values. And if you have an array of size 5 but you initialize just first element to be of some value all the other values will be initialized to zero
     
-                                                      
+                                   
     cout<<"Element at 2nd position in the array is-> "<<stl_style_array.at(2)<<endl;
     cout<<"Array Empty or not-> "<<stl_style_array.empty()<<endl;                       //.empty will give a bool output telling weather the given array is empty or not and also we cannot use basic_array here either only stl_style_array coz that is part of the array header class.
     cout<<"Array First Element-> "<<stl_style_array.front()<<endl;                      //will give first element of an array

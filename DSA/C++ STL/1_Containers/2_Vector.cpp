@@ -16,6 +16,7 @@
                     .front() or arr.at(0)               //will give the first element in the array
                     .back()  or arr.at(arr.size()-1)    //will give the end element in the array
                     .empty()                            //will  tell if array is empty of not
+                    .erase()
                     .clear()                            //empties the entire vector
                     .size()                             //tells the number of elements in an array
 
@@ -39,21 +40,24 @@ int main(){
     vector<int>copy_vector2(w.begin(),w.begin()+2); //{2,3,5}
     vector<int>copy_vector3(w);                     //copying entire w vector to new vector
     
+ //Insertion
     
-    cout<<"Capacity-> "<<v.capacity()<<endl;         //tells the capacity of the vector. it will double each time we add a new element when it fills up (basically tells how much space/memory available for elements to be added)
-    cout<<"Size-> "<<v.size()<<endl;                 //will tell the size of the array (basically how many elements are there)
-
     v.push_back(1);     //adds an element at the end of the vector
     v.push_back(2);     //v.emplace_back(2); works the same way as push_back but emplace_back is way faster for Competative Programming
     v.push_back(3);
 
+//Deletion
     v.pop_back();   //removes the last element in the vector
+    w.erase(w.begin());
     // v.clear();      //empties the vector ie all the elements are removed from the vector but the capacity remains unchanged
 
     cout<<"Element at 2nd Index-> "<<v.at(2)<<endl;
     cout<<"Vector Empty or not-> "<<v.empty()<<endl;   //.empty will give a bool output telling weather the given Vector is empty or not.
     cout<<"Vector First Element-> "<<v.front()<<endl;  //will give first element of an Vector
     cout<<"Vector Last Element-> "<<v.back()<<endl;    //will give last element of an Vector
+    cout<<"Capacity-> "<<v.capacity()<<endl;         //tells the capacity of the vector. it will double each time we add a new element when it fills up (basically tells how much space/memory available for elements to be added)
+    cout<<"Size-> "<<v.size()<<endl;                 //will tell the size of the array (basically how many elements are there)
+
     
     cout<<endl<<"____________Iterators___________"<<endl<<endl;
 

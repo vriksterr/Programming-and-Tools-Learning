@@ -21,7 +21,10 @@
                 .clear()            //deletes everything
                 .size()
                 
-    Iterators:  same as array/vectors
+     Iterators: .begin()    //starting point of the array the 0th element
+                .end()      //empty address after the last element in the array which will be a null character
+                .rbegin()   //ending point of the array 
+                .rend()     //empty address before the beginning of the array which will be a null charcter
 
     Implementation will not be asked in interview, but its implements by AVL Tree
 

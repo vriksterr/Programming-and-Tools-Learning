@@ -15,7 +15,7 @@
                 .empty()
                 .size()
 
-    Iterator:   NO ITERATORS
+    Iterator:   XX_NO ITERATORS_XX
 
     Implementation will not be asked in interview if it is going to be asked it will be a single question
 */
