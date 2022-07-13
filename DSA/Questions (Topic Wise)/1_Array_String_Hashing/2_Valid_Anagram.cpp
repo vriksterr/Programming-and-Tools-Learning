@@ -47,13 +47,14 @@ public:
 //same as above but cleaner approach
 class Solution2 {
 public:
-    bool isAnagram(string s1, string s2) {
-         if(s1.length() != s2.length()) return false;
-        int count[256] = {0};
+    bool isAnagram(string s, string t) {
+        if(s.length() != t.length()) return false;
+        
+        int count[26]{0};
 
-        for(int i = 0 ; i < s1.size(); i++){
-            count[s1[i] - 'a']++;
-            count[s2[i] - 'a']--;
+        for(int i = 0 ; i < s.size(); i++){
+            count[s[i] - 'a']++;
+            count[t[i] - 'a']--;
         }
 
         for(int i : count) if(i != 0 ) return false;
@@ -61,8 +62,39 @@ public:
     }
 };
 
-//another same as above but slightly different style
+//Using Unordered Map O(log n)
 class Solution3 {
+public:
+    bool isAnagram(string s, string t) {
+
+        int length=s.size();
+
+	unordered_map<char, int> m;
+	if (s.size() != t.size()) {
+		return false;
+	}
+	for (int i = 0; i < length; i++) {
+		m[s[i]]++;          // can also be writter as m.at(s[i])++;
+
+	}
+
+	for (int i = 0; i < length; i++) {
+		if (m.find(t[i]) == m.end()) {
+			return false;
+		}
+		else {
+			m[t[i]]--;
+			if (m[t[i]] < 0) {
+				return false;
+			}
+		}
+	}
+	return true;
+    }
+};
+
+//another same as above but slightly different style
+class Solution4 {
 public:
     bool isAnagram(string s, string t) {
         int n=s.length();

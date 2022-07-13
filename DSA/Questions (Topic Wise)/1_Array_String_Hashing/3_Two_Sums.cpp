@@ -1,4 +1,5 @@
 // Questions- https://leetcode.com/problems/two-sum/
+// Explanation https://www.youtube.com/watch?v=7jDS9KQEDbI
 
 /*
     Given int array & target, return indices of 2 nums that add to target
@@ -16,19 +17,22 @@ using namespace std;
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
+
         unordered_map<int, int> hashmap;
         vector<int> result;
         
         for (int i = 0; i < nums.size(); i++) {
             int complement = target - nums[i];
 
-            //seeing if it exist in hashmap
+            //seeing if compliment exist in hashmap
             if (hashmap.find(complement) != hashmap.end()) {
+                //if it dose we have our indexes as answer
                 result.push_back(hashmap[complement]);
                 result.push_back(i);
                 break;
             } 
             else {
+                //if it dosent we add it to the hashmap
                 hashmap.insert({nums[i], i});
             }
         }
@@ -71,8 +75,8 @@ public:
 
 int main(){
 
-    vector<int> array{2,7,11,15};
-    int target1{9};
+    vector<int> array{2,1,5,3};
+    int target1{4};
     cout<<"Please enter the target you want to search: ";
     // cin>>target1;
 

@@ -6,7 +6,7 @@
    -Same property as set it stores everything in sorted order(sorting is done based on key which
     can be numeric or alphabatical).
    
-   -Time Complexity Log N for map. And O(1) in unordered,o(n) in worst case, where n is the container size
+   -Time Complexity O(log n) for map. And O(1) in unordered,o(n) in worst case, where n is the container size
 
    -Remember that all keys are unique(no duplicates) and that 1 key will point to just 1 value but multiple key can point
     to same value.
@@ -50,7 +50,10 @@ int main(){
     m[99]="rashmi";
     m[1]="maan";    //Here key one will be overwritten with maan or m.emplace(1,"maan");
     m.insert({5,"yogita"}); // this will insert a new key 5 with value being yogita
-   
+    
+    n[2]=1;
+    n[2]++;     // this increments the int pair (increment only works for pair)
+
 //Deletion
     m.erase(99);            // give the keyname and it will remove it and value associated to that key
     //Rest all same as array/vector
