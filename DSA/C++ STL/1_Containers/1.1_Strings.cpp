@@ -1,3 +1,4 @@
 tolower()
 toupper()
 isalnum()
+length()

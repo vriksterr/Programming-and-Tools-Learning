@@ -14,7 +14,7 @@ int main(){
     vector<int>vector{1,2,3,4,5};
     // binary_search(first_iterator, last_iterator, x)
 
-    bool ans = binary_search(vector.begin(),vector.end(),1);
+    int ans = binary_search(vector.begin(),vector.end(),1);
     bool ans2 = binary_search(vector.begin(),vector.end(),6);
 
 

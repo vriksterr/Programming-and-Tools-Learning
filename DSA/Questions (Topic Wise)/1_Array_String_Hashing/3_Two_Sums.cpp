@@ -41,8 +41,6 @@ public:
     }
 };
 
-
-
 //O(n^2)
 class Solution2 {
 public:
@@ -70,6 +68,36 @@ public:
      return output;
     }
     
+};
+
+// if we had to return the values that add up to target instead of the index values
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+
+        unordered_map<int, int> hashmap;
+        vector<int> result;
+        
+        for (int i = 0; i < nums.size(); i++) {
+            int complement = target - nums[i];
+            int current_nums =nums[i];
+            //seeing if compliment exist in hashmap
+            if (hashmap.find(complement) != hashmap.end()) {
+
+                for(auto it= hashmap.begin(); it != hashmap.end(); i++){
+                        result.push_back((*it).first);
+                        result.push_back(current_nums);
+                        break;
+                }
+            }
+            else{
+                //if it dosent we add it to the hashmap
+                hashmap.insert({nums[i], i});
+            }
+        }
+        
+        return result;
+    }
 };
 
 

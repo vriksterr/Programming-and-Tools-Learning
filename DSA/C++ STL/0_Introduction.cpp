@@ -14,7 +14,7 @@
 
     Algorithms: Binary-search, find, reverser/rotate, Lower/Upped bount, min/max, sort/swap etc
 
-    Videos: 1) https://www.youtube.com/playlist?list=PLN4aKSfpk8TQ6CqzMRDVUr-jEpObLiYdq
+    Videos: 1) https://www.youtube.com/playlist?list=PLN4aKSfpk8TQ6CqzMRDVUr-jEpObLiYdq && https://www.youtube.com/watch?v=r9af_mSpBLo
 
 
 */
