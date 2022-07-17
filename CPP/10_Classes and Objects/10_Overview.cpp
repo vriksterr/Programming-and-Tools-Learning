@@ -156,6 +156,55 @@ int main() {
     Output: Size of Empty Class is = 1
 
     More to read here: https://www.geeksforgeeks.org/why-is-the-size-of-an-empty-class-not-zero-in-c/
+
+     _______________________________________________________
+    | How a Class Variables are accessed ? behind the sceans|
+    |_______________________________________________________|
+
+    When we create a class you know we are also declaring variables in the class so do you wonder what
+    is actually happening when we write something like head->Value = 2; like example below
+                
+                class Node{
+                    public:
+                        int Value;
+                        Node *Next;
+                };
+                int main(){
+                    
+                    Node *head = new class Node;       
+                    Node *second = new Node();         
+                    Node *third = new Node();
+                    
+                    auto value_size = sizeof(head->Value);
+                    auto next_size = sizeof(head->Next);
+                    auto value_address = &head->Value;
+                    auto next_address = &head->Next;
+                    
+                    cout<<"Size of value on heap-> "<< value_size<<endl;
+                    cout<<"Size of next on heap-> "<< next_size<<endl;
+
+                    (*head).Value = 1;      //can be written like this or like below
+                    head->Next = second;
+
+                    second->Value = 2;
+                    second->Next = third;
+
+                    third->Value = 3;
+                    third->Next = NULL;  // or NULL both works
+
+                    printList(head);
+
+                    cout<<endl;
+                }
+
+    What is basically happening is that when we make a class the address of class itself starts from 
+    first valiable itself(you can check in degugger that the address of the head and the first value 
+    variable are both same) so when we type something like head->Next or head.Next we are actually
+    offsetting from the starting address like [ 0x804a08 + 0x4] is the starting point of Next
+    where the starting address is 0x804a08 and 0x4 is the offset and that is how we access all the 
+    variables inside stack or heap.
+
+    reference video = https://youtu.be/HPDBOhiKaD8?t=341
 ======================================================================================================================
      ______________________________________
     | What is Object Oriented Programming? |
