@@ -20,7 +20,7 @@ using namespace std;
       ListNode *next;
       ListNode() : val(0), next(nullptr) {}
       ListNode(int x) : val(x), next(nullptr) {}            // can look in class and objects or read this article -> https://leetcode.com/problems/add-two-numbers/discuss/122357/c-what-does-listnodeint-x-valx-nextnull-mean
-     ListNode(int x, ListNode *next) : val(x), next(next) {}
+      ListNode(int x, ListNode *next) : val(x), next(next) {}
  };
 //Solution
 class Solution {
@@ -39,7 +39,7 @@ public:
         while (head != NULL) {
             //we are switching addresses
             next = head->next;      //here next is pointing to the next head 
-            head->next = prev;      //here we replaces the current pointer pointing to previous node
+            head->next = prev;      //replacing the head next to previous element
 
             prev = head;
             head = next;

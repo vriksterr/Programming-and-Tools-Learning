@@ -158,7 +158,7 @@ int main() {
     More to read here: https://www.geeksforgeeks.org/why-is-the-size-of-an-empty-class-not-zero-in-c/
 
      _______________________________________________________
-    | How a Class Variables are accessed ? behind the sceans|
+    | How a Class Variables are accessed ? behind the scens |
     |_______________________________________________________|
 
     When we create a class you know we are also declaring variables in the class so do you wonder what
@@ -198,7 +198,7 @@ int main() {
                 }
 
     What is basically happening is that when we make a class the address of class itself starts from 
-    first valiable itself(you can check in degugger that the address of the head and the first value 
+    first variable itself(you can check in degugger that the address of the head and the first value 
     variable are both same) so when we type something like head->Next or head.Next we are actually
     offsetting from the starting address like [ 0x804a08 + 0x4] is the starting point of Next
     where the starting address is 0x804a08 and 0x4 is the offset and that is how we access all the 
