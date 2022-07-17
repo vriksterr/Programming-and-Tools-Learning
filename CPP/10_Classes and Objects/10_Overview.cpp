@@ -111,6 +111,51 @@ int main() {
         • difficult to reuse code 
         • fragile and easier to break
 
+     __________________________
+    | Size of a Class in C++ ? |
+    |__________________________|
+
+    When the structure was introduced in C, there was no concept of Objects at that time. So, 
+    according to the C standard, it was decided to keep the size of the empty structure to zero. 
+
+    In C++, the Size of an empty structure/class is one byte as to call a function at least empty 
+    structure/class should have some size (minimum 1 byte is required ) i.e. one byte to make them 
+    distinguishable.
+
+    Now to understand the size of an empty class, let’s learn what is empty class is first!
+        Empty class: It is a class that does not contain any data members (e.g. int a, float b, char c, 
+                     and string d, etc.) However, an empty class may contain member functions. 
+
+
+    Why actually an empty class in C++ takes one byte?
+        Simply a class without an object requires no space allocated to it. The space is allocated 
+        when the class is instantiated, so 1 byte is allocated by the compiler to an object of an 
+        empty class for its unique address identification. 
+
+        If a class has multiple objects they can have different unique memory locations. Suppose, if a 
+        class does not have any size, what would be stored on the memory location? That’s the 
+        reason when we create an object of an empty class in a C++ program, it needs some memory 
+        to get stored, and the minimum amount of memory that can be reserved is 1 byte. Hence, if we 
+        create multiple objects of an empty class, every object will have a unique address.
+
+    for eg: #include <iostream>
+            using namespace std;
+            
+            // Creating an Empty Class
+            class Empty_class {
+            };
+            
+            // Driver Code
+            int main()
+            {
+                cout << "Size of Empty Class is = "
+                    << sizeof(Empty_class);
+                return 0;
+            }
+
+    Output: Size of Empty Class is = 1
+
+    More to read here: https://www.geeksforgeeks.org/why-is-the-size-of-an-empty-class-not-zero-in-c/
 ======================================================================================================================
      ______________________________________
     | What is Object Oriented Programming? |

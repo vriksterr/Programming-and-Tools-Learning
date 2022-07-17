@@ -63,7 +63,7 @@ class Account {
 
 
 int main() {
-    Account frank_account;
+    class Account frank_account;    //we dont have to type class but writing is also not wrong
     Account jim_account;
     
     
