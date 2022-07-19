@@ -25,7 +25,7 @@ using namespace std;
 //Solution
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
+    ListNode *reverseList(ListNode *head) {
         
         if (head == NULL || head->next == NULL) {
             return head;
@@ -44,7 +44,7 @@ public:
             prev = head;
             head = next;
         }
-        
-        return prev;    // here previous become the new head
+        // ListNode *new_head{prev};    //we can make this as the new last head so we can use it.
+        return prev;                    // here previous become the new head
     }
 };
