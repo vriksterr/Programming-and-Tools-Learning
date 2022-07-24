@@ -48,7 +48,7 @@ print("=============List Methods==============")
 
 -Simillar to vector where we push_back() or list where we can push_back(), pop_back(), etc
 
--appent
+-append
 -insert
 -sort
 -pop
