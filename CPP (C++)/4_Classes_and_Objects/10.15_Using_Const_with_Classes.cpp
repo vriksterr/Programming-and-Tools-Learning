@@ -60,9 +60,9 @@ class Player
 private:
     std::string name;
     int health;
-     int xp;  
+    int xp;  
 public:
-    std::string get_name() const  {         // consty method we have to add this coz the compiler thingks that the function could change the variables
+    std::string get_name() const {         // const method we have to add this coz the compiler thinks that the function could change the variables
         return name;
     }
     void set_name(std::string name_val)   {
