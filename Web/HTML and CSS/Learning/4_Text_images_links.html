@@ -2,12 +2,17 @@
 <html>
     <head>
         <title>Texts!</title>
+
+        <!--Fonts from google-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     </head>
 
     <style>
 
         p{
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: roboto;    <!--font pulled from link in head-->
         }
 
         .demo{
@@ -64,9 +69,23 @@
         .image_link:hover{
             cursor: progress;
         }
+
+        .checkbox{
+            display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+        }
     </style>
 
     <body>
+        <input type="checkbox" class="checkbox">
         <p class="demo">Hello</p>
         <p class="video_title">Talking Tech and AI with Google CEO Sundar Pichai!</p>
         <p class="video_info">3.4M views &#8226; 1 months ago</p>
