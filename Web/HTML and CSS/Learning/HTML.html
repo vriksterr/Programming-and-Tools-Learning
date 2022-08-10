@@ -1,23 +1,183 @@
-<!DOCTYPE html>
+<!DOCTYPE html>     <!--The HTML document type declaration, also known as DOCTYPE , is the first line of code required in every HTML or XHTML document. The DOCTYPE declaration is an instruction to the web browser about what version of HTML the page is written in. This ensures that the web page is parsed the same way by different web browsers.-->
 <html>
-    <head>
+    
+
+    <head>  <!-- here we place the title window and all the other files that will be needed by this html document like css file and js file like we do in C++ with all the libraries/header files -->
         <!--Tags for the HTML page that defines out file to search engines like google-->
         <meta charset="UTF-8">  <!--Tells the browser what type of characters are being used in this html-->
         <meta name="description" content="This is a Tag for the html page">
+        <meta name="author" content="vrikster">
+        <meta name="keywords" content="portfolio,gamer,developer,C++">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--this is important to enable someone to watch a mobile version of the site and not the desktop version-->
 
         <title>HTML Complete Course</title>
+
+        <link rel="stylesheet" href="<!--link of the css file-->">  <!-- The rel attribute specifies the relationship between the current document and the linked document. Only used if the href attribute is present. Search engines can use this attribute to get more information about a link! https://www.dopinger.com/blog/html-link-rel-attribure -->
     </head>
 
+    
+    
+    <style></style> <!--Place where we can add CSS styles to ours webpage-->
+    
+    
+    
     <body>
+
+        <!--In HTML we can have different sections of a html which is Header, Main, Futter we dont have to do this
+            but its a good way to write code as you will be working in an organizations so having this format of 
+            header main and footer will be a good practice to have so other can read your code well, this can also
+            be helped in good search engine optimizations so USE IT-->
+        <header><!--We should put all the navigation elements in the header--></header>
+        <main><!--This should be used to add the contents of a page we can use <article><section><aside> </aside></section></article> tage to have multiple article tags inside main--></main>
+        <footer></footer>
+
         <!--Headding Tag-->
         <h1>H1</h1>
         <h2>H2</h2> <!--goes all the way to h6-->
 
-        <!--Paragraph-->
-        <p> Paragraph here we can add as many <b><i> itallic and </i> bold tags and </b>lines as we would like and even go multiple lines</p>
-    
+        <!--Break Tags to give space in a page-->
+        <br/><br/><br/>
+
+        <!--Horizontan line-->
+        <hr/><hr/><hr/>
+
         
-    
-    
+        <!--Paragraph and tags which can be also used in others in the same way-->
+        <p> <big>Hi </big>Paragraph here we can add as many <b><i> itallic and </i> bold tags and </b>
+            lines as we would like and even go multiple lines
+            we can also have mathematical like:
+            H<sub>2</sub>O and 10<sup>2</sup>
+        </p>
+        <hr/>
+
+        
+        <!--Styles in HTML better do it via CSS <style> -->
+        <p style="color:blue; background-color: pink;">Welcome to HTML styling withing html without using style seprately doing it withing</p>
+        <hr/>
+
+        <!--Images in HTML-->
+        <img src="https://media3.giphy.com/media/82nxC1u2BC8VU1wiZq/giphy.webp?cid=ecf05e476cdb1fkevpfkb00jt4teij4o3zg80f3ybb7g1euc&rid=giphy.webp&ct=g"; width="200px"; alt="vrikster logo">
+        <br/>
+        <hr/>
+        
+        <!--Links in HTML-->
+        <a href="https://vrikster.com" target="_blank">HTML link to vrikster.com</a>
+        <a href="~/vineet/dir/1_html_structure.html" target="_blank">Dont click this link please</a>
+        <a href="logo.png" target="_blank">click to open an image</a>
+        <a href="https://vrikster.com" target="_blank"><img src="https://yt3.ggpht.com/ytc/AMLnZu_WSNe9_lwYliybzUHr-IEdBKkxUkU0RfQSZHTyvg=s900-c-k-c0x00ffffff-no-rj"; width="35px"; alt="vrikster logo"></a>
+        <hr/>
+       
+        <!--Video in HTML-->
+            <!--Mp4/MKV in H.264 is supported on chrome browser not in H.265-->
+            <!--Mp4-->
+            <video src="https://media.discordapp.net/attachments/881293025907712030/994823644645699664/redditsave.com_didnt_know_he_could_play-zf3scpke16a91.mp4" controls width="200px">if video fails for any reason this text is what the user of the site is going to see</video>
+            <!--MKV is based on browser support Chrome supports it-->
+            <video src="1.mkv" controls autoplay loop width="400px" poster="https://www.techsmith.com/blog/wp-content/uploads/2019/06/YouTube-Thumbnail-Sizes.png">mkv video</video>
+        <hr/>
+       
+        <!--List in HTML-->
+            <!--Unordered List-->
+            <ul>
+                <li><a href="https://vrikster.com">vrikster website</a></li>
+                <li>Oranges</li>
+                    <ul><li>get good fruits</li></ul>
+                <li>Banans</li>
+            </ul>
+            <!--Ordered List-->
+            <ol>
+                <li><a href="https://vrikster.com">vrikster website</a></li>
+                <li>Oranges</li>
+                    <ol><li>get good fruits</li>
+                        <li>Buy them cheap</li>
+                    </ol>
+                <li>Banans</li>
+            </ol>
+            <ol type="A">
+                <li><a href="https://vrikster.com">vrikster website</a></li>
+                <li>Oranges</li>
+                    <ul><li>get good fruits</li></ul>
+                <li>Banans</li>
+            </ol>
+            <ol type="I">
+                <li><a href="https://vrikster.com">vrikster website</a></li>
+                <li>Oranges</li>
+                    <ul><li>get good fruits</li></ul>
+                <li>Banans</li>
+            </ol>
+            <!--Description List-->
+            <dl>
+                <dt>Apples</dt>
+                <dd>->they are red in color</dd>
+
+                <dt>Oranges</dt>
+                <dd>they are orange in color</dd>
+            </dl>
+        <hr/>
+        
+        <!--Tables in HTML-->
+            <table>
+                <thead> <!--Table headder we dont need to write this-->
+                    <caption>List of numbers</caption>  <!--Title of the table-->
+                        <tr>    <!--Table Header Colums-->
+                            <th colspan="2">C1</th> <!--colspan tell how much comumn space C1 will take-->
+                            <th>C2</th>
+                            <th>C3</th>
+                            
+                        </tr>
+                </thead>
+                <tbody>
+                    <tr>    <!--Table Row-->
+                        <td>one</td>
+                        <td>two</td>
+                        <td>three</td>
+                    </tr><input type="email">
+                        <td>five</td>
+                        <td>six</td>
+                    </tr>
+                </tbody>
+            </table>
+        <hr/>
+
+
+        <!--DIV & SPAN in HTML-->
+            <!--HTML can display containers that wrapping html elements within itself to display content and those
+                are block and inline:
+
+                Block: They are the HTML element that take up the entire width of the page
+                Inline: They take as much space as they need so you could have inline elements like sitting right
+                        next to each other
+
+                For eg. links are inline and paragraph is a block element
+            -->
+            <span style="background-color: pink;">span 1</span>
+            <span style="background-color: lightskyblue;">span 2</span>
+
+            <div style="background-color: pink;">div 1</div>
+            <div style="background-color: lightskyblue;">div 2</div>
+        <hr>
+
+        <!--Input & Forms-->
+            <input type="text" value="Enter your name"><br/><br/><br/>
+            <input type="date"><br/><br/><br/>
+            <input type="email"><br/><br/><br/>
+            <input type="range"><br/><br/><br/>
+            <input type="file"><br/><br/><br/>
+            <input type="submit"><br/><br/><br/>
+            <input name="1" type="checkbox">
+            <input name="1" type="checkbox"><br/><br/><br/>
+            <!--as both have the same name we can choose only one radio that is not the case with checkbox-->
+            <input name="button1" type="radio">
+            <input name="button1" type="radio"><br/><br/><br/>
+
+            <textarea></textarea><br/><br/><br/>
+            <textarea rows="30" cols="40">Enter what you like to have</textarea><br/><br/><br/>
+
+
+            <form><!--It is used as a wrapper for input tag for our webserver--></form>
+
+
+        <!--iFrames-->
+            <!--https://stackoverflow.com/questions/8700636/how-to-show-google-com-in-an-iframe-->
+            <iframe src="https://vrikster.com" frameborder="0" width="400px" height="800px">This text will be displayes if they cannot load iframes</iframe>
     </body>
 </html>
