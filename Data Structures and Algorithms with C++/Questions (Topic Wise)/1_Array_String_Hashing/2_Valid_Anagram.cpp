@@ -16,21 +16,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
 class Solution {
 public:
     bool isAnagram(string s, string t) {
 
-        //checking to see of the 2 strings are same or not if not ans is false
+         //checking to see of the 2 strings size are same or not if not ans is false
+        if(s.length() != t.length()) return false;
+        
+        vector<int> counter(26,0);
+
+         //here we are incrementing and increasing the number at counter position 
+        for(int i = 0 ; i < s.size(); i++){
+            counter[s[i] - 'a']++;      // we can do it because of ASCII Table read here: https://medium.com/swlh/what-does-subtracting-a-char-from-a-char-mean-79da714c1b3b and null is 0 so 'a' - 0 = 97
+            counter[t[i] - 'a']--;
+        }
+
+        //and checking here if counter elements is anything but 0
+        for(int j{}; j < counter.size(); j++) if(counter[j] != 0) return false;
+        return true;
+    }
+};
+
+class Solution2 {
+public:
+    bool isAnagram(string s, string t) {
+
+       
         if (s.size() != t.size()) {
             return false;
         }
         
-        //we creater a vector names counter and make it of size 26 (coz aphabets have 26 characters) and initialize all with 0 that we will increment for our check to see if two are same or not!
+       
         vector<int> counter(26,0);      
         
-        //here we are incrementing and increasing the number at counter position 
+       
         for (int i = 0; i < s.size(); i++) {
-            counter[s[i] - 'a']++;              //we get the character from string via s[i] and minus by a to find the correct position to increment we can change it with other characters as well like x,c,g,f etc but change it on both increment and decrement side
+            counter[s[i] - 'a']++;              
         }
         
         //here we are decrementing the total counter
@@ -44,8 +66,8 @@ public:
     }
 };
 
-//same as above but cleaner approach
-class Solution2 {
+//same as above but cleaner approach (USE THIS)
+class Solution {
 public:
     bool isAnagram(string s, string t) {
         if(s.length() != t.length()) return false;

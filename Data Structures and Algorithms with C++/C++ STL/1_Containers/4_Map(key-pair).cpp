@@ -64,7 +64,7 @@ int main(){
         cout<<i.first<<" "<<i.second<<endl;    //will print 1 maan and 2 Sanjeev. The output will be in sorted in sorted map and will be unsorted in unsorted map
     }
 
-    //tipical 
+    //typical 
     for(auto it{m.begin()}; it != m.end(); it++ ){
         cout<<(*it).first<<" "<<(*it).second<<endl;     //or cout<<it->first<<" "<<it->second;
     }

@@ -71,7 +71,7 @@ public:
 };
 
 // if we had to return the values that add up to target instead of the index values
-class Solution {
+class Solution3 {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
 
