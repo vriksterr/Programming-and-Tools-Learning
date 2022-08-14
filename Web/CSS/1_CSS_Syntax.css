@@ -1,0 +1,73 @@
+/* 
+    *******
+    * CSS *
+    *******
+    
+    We use CSS to style the html document without it the website cant look beautiful so it is
+    very important.
+
+    We can use styles in html tags directly with style=" " and type the styles there but its
+    not going to look clean and will be a mess to deal with on a large website.
+
+     _______________________________________
+    | How to use different selectors in CSS |
+    |_______________________________________|
+        -In css we can have to target what we are trying to style either via typing its type like
+
+            p{
+            }
+
+        -or via typing its class name like
+
+            .login-button{
+            }
+
+        -or using id but remember id needs to be unique per css/html page so we cant share tham like we can with
+         class so we rather preferr class but a way to use id would be:
+
+            <div id="id1"></div>
+
+            #id1{
+            }
+            #id2{
+            }
+
+        -There is one more way to select everything on the page that need to be styled and that is called everything 
+         selector and that is denoted by * like:
+
+            *{
+            }
+
+     _____________________________________
+    | Combining Selectors together in CSS |
+    |_____________________________________|
+
+        We can use a selector withing a selector and that can be done like: 
+
+            p.classname , span{         //here , is a or that says if its a p.classname or span the style in {} will be used
+            }
+            
+            //or
+            
+            h1.classname , span{               //we cannot do h1.h2.classname
+            }
+            
+            //or
+            
+            h1.class2.classname#id3 , span{    //you can have only one element selector h1 and one id selector id3 we cannot do the abome comment and .id1.id2
+            }
+
+        This way we can use a selector with another selector to give a bit more confined controll
+        on what we wnat to select and how we want to style a specific part/parts of HTML
+
+        Another method of styling for nexted divs and p:
+
+        div.classname p.red{            //this states that parent div with class name classname and its child p or in this case p with class of red should get the css style
+        }                               //remember if it was just div p that means p1 p2 only would have receaved the styling and p3 is nested within h1 so for that we had to do a seprate like div p h1
+
+        <div class="classname">
+            <p> p1 </p>
+            <p class="red"> p2 </p>
+            <h1> <p> p3 </p> </h1>
+        </div>
+*/
