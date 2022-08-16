@@ -1,0 +1,71 @@
+<!-- 
+     ____________________
+    | Specificity in CSS |
+    |____________________|
+
+    lets say if we do this
+        p{
+            color: red;
+        }
+        p{
+            color: ping;
+        }
+    paragraph will have ping color as the color got over written by the second style
+
+    BUT, CSS has specificity that means in css there are 5 prorities 0 0 0 0 0 which refers to
+    inline css/styles, !important, id, class, element(p,h1,div) so based of what is being used
+    we will have prority of that specific css style to be implemented
+
+    important > inline css/styles > id > class > element(p,h1,div)
+    
+    so if there is a higher prority in like 0,0,1,0,0 vs 0,0,0,1000,0 stull the 0,0,1,0,0 will 
+    get selected coz it has id and it has higher priority even if there are 1000 class.
+    
+    Website to calculate Specificity: https://specificity.keegan.st/
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity in CSS</title>
+</head>
+
+<style>
+
+    /* 0, 1, 0, 0 */
+    #heading-id{
+        color: red;
+    }
+
+    /* 0, 0, 1, 0 */
+    .header{
+        color: green;
+    }
+
+    /* 0, 0, 1, 1 */
+    h2.header{
+        color: purple;
+    }
+
+    /* 0, 1, 2, 2 */
+    h2.header.green div#id{
+        color: brown;
+    }
+
+    /* 1, 0, 0, 1 */
+    h2{
+        color: pink !important; /* here we used important so it has the highest prority */
+    }
+
+    
+</style>
+<body>
+    <h2 id="heading-id" class="header" style="color: orange;">We are going to practice Specificity in CSS</h2>
+    <p id="paragrahi-id" class="paragraph">in css there are 4 number 0 0 0 0 which refers to
+        !important, id, class, element(p,h1,div) so based of what is being used we will have
+        prority of that specific css style to be implemented</p>
+</body>
+</html>

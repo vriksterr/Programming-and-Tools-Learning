@@ -70,7 +70,14 @@
             <p class="red"> p2 </p>
             <h1> <p> p3 </p> </h1>
         </div>
-___________________________ | Inheriting css properties | |___________________________| p {
-    color: initial; //it is now not inheriting the color from div superset
-    border: inherit; //it will inherit the border style form div or what ever the superset is of this p
+     ___________________________ 
+    | Inheriting css properties | 
+    |___________________________| 
+    p {
+        color: initial;     //it is now not inheriting the color from div superset
+        border: inherit;    //it will inherit the border style form div or what ever the superset is of this p
+    }
+
+
+
 */

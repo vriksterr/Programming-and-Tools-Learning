@@ -1,0 +1,91 @@
+ <!-- _______________________
+| Pseudo Classes in CSS |
+|_______________________|
+
+In CSS we can have Pseudo classes like :hover, :active, :focus and more which applies 
+the style based on our style and mouse condition
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+    .submit-button{
+        background-color: rgb(255, 238, 0);
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 2%;
+        border-radius: 20px;
+    }
+
+    .submit-button:hover{
+        opacity: 50%;
+    }
+
+    .submit-button:focus{
+        background-color: gray;
+    }
+
+
+    .email-box:disabled{    /* Here box will be grey if disable is present in html */
+        background-color: grey;
+        color: white;
+        border-width: 2px;
+        border-radius: 4px;
+        
+    }
+    .email-box:disabled:hover{
+        background-color: aqua;
+    }
+
+    /* We can also change the color of the placeholder */
+    .email-box::placeholder{
+        color: white;
+    }
+
+    /* Child based styling */
+    span:first-child{
+        color: red;
+    }
+
+    span:last-child{
+        color: red;
+    }
+
+    span:nth-child(2){      /* Instead of 2 we can type even/odd/2n+3 that will select every even/odd/2n+3 number or some other formula*/
+        color: orange;
+    }
+</style>
+
+<body>
+    <span >Email: <input class="email-box" type="text" placeholder="C++_team@vrikster.com" disabled> </span> <!--Here disabled means that the input box is disabled-->
+    <br>
+    <span> My Name: <input type="text" placeholder="Your Name" required></span> <!--Here required means the text box cant be empty-->
+    <br>
+    <button class="submit-button">Submit</button>
+    <hr>
+
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>
+            <span>one</span>
+            <span>two</span>
+            <span>three</span>
+        </span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+    </div>
+
+</body>
+</html>

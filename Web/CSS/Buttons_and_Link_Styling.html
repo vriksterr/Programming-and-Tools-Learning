@@ -1,9 +1,101 @@
 <!DOCTYPE html>
 <html>
     <head><title>Buttons Styling!</title></head>
-    <link rel="stylesheet" href="Buttons_and_Link_Styling.css">
+    <link rel="stylesheet" href="3_Buttons_and_Link_Styling.css">
     
+    <style>
 
+        button{
+            cursor: pointer;
+            font-size: 20px;
+            margin-right: 10px;
+            transition: opacity 0.15s,color 0.15s,box-shadow 0.15s;
+        }
+        button:hover{
+            opacity: 0.8;
+            box-shadow: 3px 3px 10px rgb(105, 104, 104);
+        }
+        button:active{
+            opacity: 0.5;
+        }
+        
+        .subscribe_button{ 
+            background-color: rgb(189, 12, 12);
+            color: white;
+            border: none;
+            padding: 0.8%;
+            border-radius: 3px;
+            border-radius: 2px;
+            border-width: 1px;
+            padding-top: 13px;
+            padding-bottom: 13px;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .join_button{ 
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 132, 255);
+            border: solid;
+            border-radius: 2px;
+            border-width: 0.5px;
+            padding: 0.8%;
+            padding-right: 15px;
+            padding-left: 15px;
+            
+        }
+        .join_button:hover{
+            background-color: rgb(0, 132, 255);
+            color: white;
+            border-color: rgb(0, 132, 255);
+        }
+
+        .tweet_button{
+            background-color: rgb(0, 162, 255);
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+            border: none;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 30px;
+        }
+        .amazon_add_to_cart{
+            background-color: rgb(236, 221, 8);
+            border-radius: 30px;
+            border: none;
+            color: black;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 50px;
+            padding-left: 50px;
+        }
+
+        .link{
+            color: rgba(131, 107, 1, 0.733);
+            transition: color 0.5s;
+        }
+        .link:hover{
+            color: rgb(0, 247, 255);
+        }
+
+        .streach_button{
+            background-color: rgb(163, 0, 163);
+            border: none;
+            color: white;
+            transition: 0.5s;
+        }
+        .streach_button:hover{
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 10px;
+
+        }
+
+    </style>
     <body>
         <button class="subscribe_button">SUBSCRIBE</button>
         <button class="join_button">Join</button>
