@@ -51,8 +51,8 @@ public:
 };
 
 int main() {
-    Player hero;                        //will use line 39
-    Player frank {"Frank", 100, 13};    //will use line 44
+    Player hero;                        //will use line 40
+    Player frank {"Frank", 100, 13};    //will use line 45
     frank.set_name("Frank", {5});
     cout << frank.get_name() << endl;
     return 0;
