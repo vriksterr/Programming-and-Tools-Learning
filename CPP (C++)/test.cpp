@@ -17,5 +17,5 @@ using namespace std;
 
 
 int main(){
-    cout<<"HI"<<endl;
+    cout<<"testing if git is even working on windows"<<endl;
 }
