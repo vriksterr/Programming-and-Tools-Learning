@@ -1,0 +1,54 @@
+<!--
+
+    ********************
+    * Box Model in CSS *
+    ********************
+
+    In Html and CSS we have box model that helps us making boxes on html page
+    we can use these boxes to have box-in vairous elements so we can controll
+    it nice and easy 
+    for eg.
+        Youtube Header tab is a box itself that contains the youtube logo 
+        the search-box, notifications, account profile etc.
+
+    We make these boxes using div and span 
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+</head>
+
+<style>
+    div{
+        font-weight: 800;
+        width: 100px;
+        height: 100px;
+        padding: 5%;
+    }
+    .div1{
+        background-color: blueviolet;
+        
+        border: 20px solid black;
+        border-width: 10px 5px 2px 20px;    // this allows us to have a difference size border
+        box-sizing: border;
+    }
+    .div2{
+        background-color: greenyellow;
+
+        border: 20px solid black;
+        box-sizing: border-box;     //this makes sure that the size of the entire div will be 100 by 100 as typed in height and width as it auto aligns the padding, margin, border accordingly we are not able to use this in the div 1 case as the box is self customized so we cant use this auto box size alignment.
+    }
+</style>
+
+<body>
+
+    <div class="div1">One</div>
+    <div class="div2">Two</div>
+    
+</body>
+</html>
