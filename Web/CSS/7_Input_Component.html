@@ -1,0 +1,81 @@
+<!--
+
+    ******************************
+    * Input Boxes Styling in CSS *
+    ******************************
+
+    with the help of pseudo classes we can style the input boxes to our liking
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Boxes Styling in CSS</title>
+</head>
+
+<style>
+    input{
+        margin: .25rem;
+    }
+    .default{
+        border: 1px solid #AAA;
+        outline: none;              //removes the outline when tabbing(tabbing is also same as focus/clicking) on the page
+        font-size: inherit;
+        padding: 0.5em;
+        border-radius: .6em;
+    }
+    .default:focus{
+        border-color: rgba(15, 219, 255, 0.667);
+        box-shadow: 0 0 5px 0 rgba(15, 219, 255, 0.667);
+    }
+
+    .success{
+        border: 1px solid #AAA;
+        outline: none;              //removes the outline when tabbing(tabbing is also same as focus/clicking) on the page
+        font-size: inherit;
+        padding: 0.5em;
+        border-radius: .2em;
+        border-color: green;
+    }
+    .success:focus{
+        box-shadow: 0 0 5px 0 green;
+    }
+
+    .error{
+        border: 1px solid #AAA;
+        outline: none;              //removes the outline when tabbing(tabbing is also same as focus/clicking) on the page
+        font-size: inherit;
+        padding: 0.5em;
+        border-radius: .2em;
+        border-color: red;
+    }
+    .error:focus{
+        box-shadow: 0 0 5px 0 red;
+    }
+
+    .large{
+        border: 1px solid #AAA;
+        outline: none;              //removes the outline when tabbing(tabbing is also same as focus/clicking) on the page
+        font-size: 1.75rem;
+        padding: 0.5em;
+        border-radius: .2em;
+        border-color: green;
+    }
+    .large:focus{
+        box-shadow: 0 0 5px 0 green;
+    }
+</style>
+
+<body>
+    <input type="text" value="Default" class="default">
+    <input type="text" value="Success" class="success">
+    <input type="text" value="Error" class="error">
+    <input type="text" value="Large" class="large">
+    <input type="text" value="Small" class="small">
+    <input type="text" value="Disabled" class="disabled">
+    
+</body>
+</html>
