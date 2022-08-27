@@ -1,0 +1,53 @@
+<!--
+    *********************************************
+    * Div and Span in HTML and Styling with CSS *
+    *********************************************
+
+    In html and css we can use div for a full line content and span which take only the required
+    ammount of spacing required to fit in the text.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div and Span</title>
+</head>
+
+<style>
+    .normal_div{
+        background-color: red;
+        color: white;
+    }
+    .custom_div{
+        background-color: aqua;
+        width: 600px;
+        height: 100px;
+        /* display: inline; */     //block is the default where it takes the entire tab space and inline is where the basically becomes span, also once your use inline you can change width as much as you want but it will not change
+    }
+    .span_normal{
+        background-color: blueviolet;
+        color: white;
+    }
+    .span_custom{
+        background-color: chartreuse;
+        width: 600px;
+        display: block;
+    }
+</style>
+
+<body>
+    
+    <div class="normal_div">I am a Div</div>
+    <div class="custom_div">I am a Div which has been cuntomized to take custom screen space
+        but still i take the full margin space regardless! that can only change if we
+        use display inline coz the default div is block
+    Hi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are youHi how are you</div>
+    <span class="span_normal">I am a normal Span !</span>
+    <button>i am a button</button>
+    <span class="span_custom">I am a custom Span~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hello</span>
+    
+
+</body>
+</html>
