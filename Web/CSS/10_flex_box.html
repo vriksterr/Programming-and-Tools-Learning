@@ -1,0 +1,92 @@
+<!--
+    ******************
+    * Flexbox in CSS *
+    ******************
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox</title>
+</head>
+
+<style>
+    .container{
+        background-color: aqua;
+        display: flex;
+        border: 2px solid black;
+
+        justify-content: space-around;     /*left right center and more alignment of the content works for horizontal cross axis */
+        align-content: space-around;        /* atm doing nothing but works for verticle cross axis */
+        align-items: center;
+        flex-wrap: center;
+       /* flex-direction: column; */             /* makes the divs into colums alignment */
+
+
+    }
+    .item{
+        background-color: gray;
+        border: 2px solid black;
+        margin: 10px;
+        color:yellow;
+        width: 50px;
+    }
+    .item1{
+        height: 150px;
+        width: 100px;
+
+        /* min-height: 0px;     // once set means the minimum height and width will be x px
+        min-width: 0px; */
+    }
+    .item2{
+        height: 70px;
+        width: 400px;
+
+        flex-shrink: 0;     //instead use flex: grow shrink bases; eg flex:  1 0 0; 
+    }
+    .item3{
+        height: 30px;
+
+        flex-grow: 1;
+    }
+    
+    /* order: */
+    .item4{
+        height: 150px;
+        width: 100px;
+
+        order:3;        // changers the order can also be -1 -2 100, but not recommended to use this
+    }
+
+    /* Align-self */
+    .item7{
+        height: 70px;
+        width: 400px;
+        align-self:flex-end;
+    }
+    .item8{
+        height: 600px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item item3">3</div>
+    </div>
+
+    <div class="container">
+        <div class="item item4">1</div>
+        <div class="item item5">2</div>
+        <div class="item item6">3</div>
+    </div>
+    <div class="container">
+        <div class="item item7">1</div>
+        <div class="item item8">2</div>
+        <div class="item item8">3</div>
+    </div>
+</body>
+</html>
