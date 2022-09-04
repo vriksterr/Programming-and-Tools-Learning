@@ -29,34 +29,73 @@
 // }
 
 #include <iostream>
-using namespace std;
-struct Node {
-   int data;
-   struct Node *next;
-};
-struct Node* head = NULL;
-void insert(int new_data) {
-   struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
-   new_node->data = new_data;
-   new_node->next = head;
-   head = new_node;
-}
-void display() {
-   struct Node* ptr;
-   ptr = head;
-   while (ptr != NULL) {
-      cout<< ptr->data <<" ";
-      ptr = ptr->next;
-   }
-}
-int main() {
-   insert(3);
-   insert(1);
-   insert(7);
-   insert(2);
-   insert(9);
-   cout<<"The linked list is: ";
-   display();
-   return 0;
-}
 
+using namespace std;
+
+//making are declaring a Node and the values it is going to hold
+class ListNode {
+public:
+    int val_;
+    ListNode *next = nullptr;
+
+    ListNode(int val) {
+        val_ = val;
+    }
+};
+
+// Implementation for Singly Linked List
+class LinkedList {
+public:
+    ListNode *head{nullptr};
+    ListNode *tail;
+
+    LinkedList() {
+
+        // Init the list with a 'dummy' node which makes removing a node from the beginning of list easier.
+        head = new ListNode(-1);
+        cout<<"Address of the head:"<<&head<<endl;
+        tail = head;
+    }
+
+    void insertEnd(int val) {
+        tail->next = new ListNode(val);
+        tail = tail->next;
+    }
+
+    void remove(int index) {
+        int i = 0;
+        ListNode *curr = head;
+        while (i < index && curr) {
+            i++;
+            curr = curr->next;
+        }
+        
+        // Remove the node ahead of curr
+        if (curr) {
+            curr->next = curr->next->next;
+        }
+    }
+
+    void print() {
+        ListNode *curr = head->next;
+        while (curr) {
+            cout << curr->val_ << " -> ";
+            curr = curr->next;
+        }
+        cout << endl;
+    }
+};   
+
+int main(){
+    LinkedList first;
+    cout<<"Address of the first: "<<&first<<endl;
+    /* when you come back look into how the this is working in a bit indepth between linkedlist
+       and listnode, and look for the answers what this is actually referring to */
+    first.insertEnd(1);
+    first.insertEnd(2);
+    first.insertEnd(3);
+    first.insertEnd(4);
+    first.insertEnd(5);
+
+    first.print();
+}

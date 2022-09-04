@@ -4,9 +4,9 @@
     * Pointers and References Section Recap *
     *****************************************
 
-     __________________________
-    | When to use Pointers vs References parameters
-    |__________________________
+     _______________________________________________
+    | When to use Pointers vs References parameters |
+    |_______________________________________________|
 
     - Pass-by-Value
         - when the function dose not modify the actual parameter, and the parameter is small and efficient to copy
