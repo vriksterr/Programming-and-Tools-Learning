@@ -5,7 +5,8 @@
     ****************
 
     • this is a reserved keyword in C++
-    • Contains the address of the object - so it's a pointer to the object that is currently being used by class member methods
+    • Contains the address of the object - so it's a pointer to the object that is currently 
+      being used by class member methods
     • Can only be used in class scope
     • All member access is done via the this pointer
     • Can be used by the programmer
@@ -44,3 +45,24 @@
         
     •We'll use the this pointer again when we overload the assignment operator
 */
+
+#include <iostream>
+using namespace std;
+
+class Building{
+    int b;
+};
+
+class Office{
+    public:
+        int a{5};
+
+        Building b1;    //here b1 is the subobject of p1 and when we are using b1.something() this will be b1, basically we have nested objects within objects.
+        Office(){
+
+        }
+};
+
+int main(){
+    Office p1;  //here this will refer to p1 object
+}

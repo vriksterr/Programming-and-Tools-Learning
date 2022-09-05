@@ -70,7 +70,15 @@ int main() {
     temp_ptr = new double[size]{};    // allocate the storage on the heap
     cout << *temp_ptr << endl;       // use it
     delete [] temp_ptr;             // release it
-    
     cout << endl;
+
+    new int {5};                     //we can create a help memory without even storeing its address for use either note its not usefull as we just lost access to it as now we dont know what the address is going to be of this int
+    
+    //allocating a heap storage and using it
+    int *pointer = new int {6};
+    *pointer = 77777777;
+    cout<<*pointer;
+    delete pointer;
+    
     return 0;
 }
