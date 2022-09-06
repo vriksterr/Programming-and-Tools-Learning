@@ -1,8 +1,52 @@
 /*
-Types of variable 1st Local 2nd Global 3rd Constant 4th Undefined by not using {} and value inside it
+    *********************
+    * Types of variable *
+    *********************
+    - 1st Local 2nd Global 3rd Constant 4th Undefined by not using {} and value inside it
 
-Also all different types of variables types such as INT,Float,Boolean,CHAR
+    Also all different types of variables types such as INT,Float,Boolean,CHAR,double,etc
 
+    *****************************
+    * Declaration of a Variable *
+    *****************************
+    - Variables is the name given to a location in the memory location to the variable that is 
+      in programming
+    
+    **************************
+    * Variables names in C++ *
+    **************************
+
+    - Variables names can contain $, letters, digits, _(underscore)
+    - Names are case sensitive (myVar and myvar are different variables)
+    - Names cannot contain whitespaces or special characters like !, #, %.
+    - Reserved words (like C++ keywords, such as int) cannot be used as names
+
+    acceptable variable names:
+        Grade 
+        GradeOnTest
+        Grade_On_Test
+        _my_var
+        myvar2
+        my2var
+        myVar
+        $
+        $myvar
+        $xxx$
+
+    unacceptable variable names:
+        Grade(Test)
+        GradeTest#1
+        3rd_Test_Grade
+        2myvar
+        my-var
+        my var
+        ,myvar
+        !myvar
+        my*var
+        my,var
+        and all the reserved c++ names
+
+    References: https://www.geeksforgeeks.org/naming-convention-in-c/
 */
 
 

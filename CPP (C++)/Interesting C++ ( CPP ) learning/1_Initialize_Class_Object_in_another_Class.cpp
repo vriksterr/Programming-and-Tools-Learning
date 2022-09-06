@@ -44,11 +44,40 @@ public:
     }
 };
 
+//__________________Thrid Example___________________________
+class Building{
+    public:
+        int b;
+
+        Building(int val){
+            b = val;
+        }
+};
+
+class Student{
+    public:
+
+        Building *head;
+        Student(){
+            head = new Building(10);
+        }
+
+        void print(){
+           cout<< head->b;
+        }
+        
+};
+
 int main(){
     //first example
     B object_1(100);
     //second learning
     D object_2("HIIIII");
+    
+    //thrid learning
+    Student aman;
+    cout<< aman.head->b;    //will return 10
+    aman.print();           // will return same as above
 
 
 }

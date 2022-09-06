@@ -44,7 +44,7 @@ public:
         
         // Remove the node ahead of curr
         if (curr) {
-            curr->next = curr->next->next;  // this means that currents next is head and head
+            curr->next = curr->next->next;
         }
     }
 
