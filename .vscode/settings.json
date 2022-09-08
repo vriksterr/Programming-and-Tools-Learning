@@ -1,4 +1,7 @@
-{
+{   
+    "editor.fontFamily": "'fira code','source code pro'",
+    "editor.fontLigatures":true,
+    "editor.bracketPairColorization.enabled": true,
     "files.associations": {
         "random": "cpp",
         "iostream": "cpp",
