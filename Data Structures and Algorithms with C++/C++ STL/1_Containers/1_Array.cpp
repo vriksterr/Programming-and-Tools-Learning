@@ -29,7 +29,7 @@
                             .rbegin()   //Ending point of the array 
                             .rend()     //Address before the beginning of the array which will be a null charcter
 */
-#include<array> // C++ STL library
+#include<array> // C++ STL library for array<> name []{};
 
 #include<iostream>
 #include <bits/stdc++.h>
@@ -40,7 +40,7 @@ int main(){
     int basic_array[3]{1,2,3};
     
     //STL style array which is based on the basic array but it gives us aditional functionality
-    array<int,5> stl_style_array{1,2,3,4,0};                                              //if an array is defined globally with no values it will be initialized to zero if its defined inside main it will have garbage values. And if you have an array of size 5 but you initialize just first element to be of some value all the other values will be initialized to zero
+    array<int,5> stl_style_array{1,2,3,4,0};          //if an array is defined globally with no values it will be initialized to zero if its defined inside main it will have garbage values. And if you have an array of size 5 but you initialize just first element to be of some value all the other values will be initialized to zero
     
                                    
     cout<<"Element at 2nd position in the array is-> "<<stl_style_array.at(2)<<endl;
