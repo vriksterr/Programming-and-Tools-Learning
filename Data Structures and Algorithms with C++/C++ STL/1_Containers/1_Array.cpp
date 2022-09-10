@@ -61,27 +61,38 @@ int main(){
     
     array<int, 5> arr = {1, 3, 4, 5, 6}; 
     //this will print the array
-	for(auto it= arr.begin(); it!=arr.end();it++) {
+	for(auto it= arr.begin(); it!=arr.end(); it++) {
 		cout << *it << " "; 
 	}
+    cout<<endl;
 
     //the below 2 will print the array in the reverse order
-    for(auto it= arr.rbegin(); it>arr.rend();it++) {    //can be > and >= both will work
-		cout << *it << " "; 
+    for(auto it= arr.rbegin(); it>arr.rend(); it++) {    //can be > and >= both will work
+		cout << *it << " ";
 	}
- 
-	for(auto it= arr.end() - 1; it>=arr.begin();it--) {
-		cout << *it << " "; 
-	}
+    cout<<endl;
 
+	for(auto *it= arr.end() - 1; it>=arr.begin(); it--) {
+		cout << *it << " "; 
+	}
+    cout<<endl;
+    
     // for each loop 
 	for(auto it: arr) {
 		cout << it << " "; 
 	}
- 
+    cout<<endl;
+
+    //OG way of iteratting through an array but 
+    for(int i=0; i<arr.size(); i++){
+        cout<<arr[i];
+    }
+    cout<<endl;
+    
 	string s = "xhegcwe"; 
 	// x h e g c w e 
 	for(auto c:s) {
 		cout << c << " "; 
 	}
+    
 }
