@@ -72,7 +72,7 @@ int main(){
 	}
     cout<<endl;
 
-	for(auto *it= arr.end() - 1; it>=arr.begin(); it--) {
+	for(auto it= arr.end() - 1; it>=arr.begin(); it--) {
 		cout << *it << " "; 
 	}
     cout<<endl;

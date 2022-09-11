@@ -73,6 +73,9 @@ int main(){
     
     swap(v,x);  //swaps the 2 vectors
 
+    
+    
+    
     cout<<endl<<"____________2D Vector___________"<<endl<<endl;
     // Watch from time: https://youtu.be/iOOzYwBeXIM?t=3972
 
@@ -114,7 +117,7 @@ int main(){
 	}
  
  
-	// define 10 x 20 
+	// define 10 x 20 meaning at all the 10 positions ther will be a vector of size 20 with all values initialized to 0
 	vector<vector<int>> vec(10, vector<int> (20, 0)); 
 	vec.push_back(vector<int>(20, 0)); 
 	cout << vec.size() << endl; // 11 prints
