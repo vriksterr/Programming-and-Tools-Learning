@@ -60,8 +60,8 @@ int main(){
     q.erase(q.find(2),q.find(5));          //will delete 2 and 5, will also work with other sets
     //st.erase(st.begin(),st.begin() +2);  //wont work instead you have to use for loop. Let us assume you have to delete a range( st. begin() , st.begin()+2) . Then take a for loop run it 2 times. Then you will a get a pointer (pt) pointing to st.begin()+2 . Then pass it as st.erase(st.begin(),pt) .
 
-    //Find Function
-    auto iterator = st.find(2);     //st.find() will return an iterator that points to 1, works in log n. For multiset will return the first element address
+//Find Function
+    auto iterator = st.find(4);     //st.find() will return an iterator that points to 1, works in log n. For multiset will return the first element address
     auto iterator2 = st.find(69);    //if the key is not found it will be iterator = s.end();
 
 //Printing a SET
@@ -87,6 +87,6 @@ int main(){
 
     cout<<"First element of the SET is-> "<< *st.begin()<<endl;     // gives the first element of the set
     cout<<"Second element if the SET is-> "<< *st.begin()+1<<endl;  // gives the second element of the set
-    cout<<".find(1) returns an iterator and that is-> "<< *iterator<<endl;// we had to dereference it to get the value stored at that address which will be the same value we did find for
+    cout<<".find(4) returns an iterator and that is-> "<< *iterator<<endl;// we had to dereference it to get the value stored at that address which will be the same value we did find for
     cout<<".count(5) for multiset, Tell how many times 5 is present-> "<<q.count(5)<<endl;
 }

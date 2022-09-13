@@ -19,15 +19,21 @@
     we return false.
 
 */
-#include <bits/stdc++.h>
-using namespace std;
+#include<iostream>
+#include<vector>
+#include<unordered_set>
+
+using std::vector;
+using std::unordered_set;
+using std::cout;
+using std::cin;
 
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-     unordered_set<int> set;
-        for(int i{}; i<nums.size(); i++){
-            if(set.find(nums[i]) != set.end()){
+        unordered_set<int> set;
+        for (int i{}; i < nums.size(); i++) {
+            if (set.find(nums[i]) != set.end()) {
                 return true;
             }
             set.insert(nums[i]);
@@ -35,3 +41,12 @@ public:
         return false;
     }
 };
+
+int main() {
+    vector<int> nums{ 1,2,3,4,5,6,6 };
+
+    Solution contains_duplicate;
+
+    cout << std::boolalpha <<std::endl;
+    cout<<contains_duplicate.containsDuplicate(nums);
+}
