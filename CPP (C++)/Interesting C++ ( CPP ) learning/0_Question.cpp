@@ -11,3 +11,5 @@
 
 //How array is reading values form {}
 int array[5]{1,2,3,4,0};
+
+//How Compiler deals with function prototyping

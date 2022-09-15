@@ -6,7 +6,10 @@
     Its a way for make a varialbe look to be something else which it isnt we can also say accessing data 
     through a pointer of unrelated type.
 
-    watch: https://www.youtube.com/watch?v=8egZ_5GA9Bc && https://www.youtube.com/watch?v=HClSfuT2bFA && https://www.youtube.com/watch?v=pWZS1MtxI-A
+    watch: https://www.youtube.com/watch?v=8egZ_5GA9Bc
+           https://www.youtube.com/watch?v=HClSfuT2bFA
+           https://www.youtube.com/watch?v=pWZS1MtxI-A
+           https://imgur.com/a/B6rklwu
 
 */
 #include <iostream>
