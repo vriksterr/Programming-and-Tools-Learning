@@ -15,7 +15,7 @@
 #include<vector>
 using namespace std;
 
-
+//O(n)
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -29,7 +29,7 @@ public:
             //seeing if compliment exist in hashmap
             if (hashmap.find(complement) != hashmap.end()) {
                 //if it dose we have our indexes as answer
-                result.push_back(hashmap[complement]);
+                result.push_back(hashmap.at(complement));
                 result.push_back(i);
                 break;
             } 
@@ -38,7 +38,6 @@ public:
                 hashmap.insert({nums[i], i});
             }
         }
-        
         return result;
     }
 };
@@ -48,26 +47,26 @@ class Solution2 {
 public:
     vector<int> twoSum(vector<int> &nums, int target) {
       
-        vector<int> output;
+        vector<int> result;
         for(int i{}; i<nums.size(); i++){
             for(int j{i+1}; j<nums.size();j++){
                 if((nums[i]+nums[j]) == target){
                     
-                    output.push_back(i);
-                    output.push_back(j);
+                    result.push_back(i);
+                    result.push_back(j);
 
                     //Printing dont add this to leetcode
-                    cout<<endl<<"The output is: [";
-                    for(int i{}; i<output.size(); i++){
-                        cout<<output.at(i)<<", ";
+                    cout<<endl<<"The result is: [";
+                    for(int i{}; i<result.size(); i++){
+                        cout<<result.at(i)<<", ";
                     }
                     cout<<"]"<<endl;
                     //Printing over
-                    return output;
+                    return result;
                 }
             }
         }
-     return output;
+        return result;
     }
     
 };

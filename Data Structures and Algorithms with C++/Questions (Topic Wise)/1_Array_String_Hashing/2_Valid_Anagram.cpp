@@ -13,16 +13,19 @@
 //Video Explanation= https://www.youtube.com/watch?v=IRN1VcA8CGc
 
 
-#include <bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<unordered_set>
+#include<unordered_map>
+#include<algorithm>
 using namespace std;
-
 
 class Solution {
 public:
     bool isAnagram(string s, string t) {
 
          //checking to see of the 2 strings size are same or not if not ans is false
-        if(s.length() != t.length()) return false;
+        if(s.size() != t.size()) return false;
         
         vector<int> counter(26,0);
 
@@ -38,6 +41,7 @@ public:
     }
 };
 
+//same as solution 1 but we are looping 2wice first we are ++ in one loop and then -- in second loop long code but still O(N)
 class Solution2 {
 public:
     bool isAnagram(string s, string t) {
@@ -67,7 +71,7 @@ public:
 };
 
 //same as above but cleaner approach (USE THIS)
-class Solution {
+class Solution3 {
 public:
     bool isAnagram(string s, string t) {
         if(s.length() != t.length()) return false;
@@ -85,7 +89,7 @@ public:
 };
 
 //Using Unordered Map O(log n)
-class Solution3 {
+class Solution4 {
 public:
     bool isAnagram(string s, string t) {
 
@@ -116,7 +120,7 @@ public:
 };
 
 //another same as above but slightly different style
-class Solution4 {
+class Solution5 {
 public:
     bool isAnagram(string s, string t) {
         int n=s.length();
@@ -136,7 +140,7 @@ public:
 };
 
 //we can also use sorting but that is not going to be O(n2) coz of sorting algo
-class Solution4 {
+class Solution6 {
 public:
     bool isAnagram(string s, string t) {
 
