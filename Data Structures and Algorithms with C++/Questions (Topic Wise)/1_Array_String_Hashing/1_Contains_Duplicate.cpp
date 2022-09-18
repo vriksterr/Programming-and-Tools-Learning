@@ -28,6 +28,7 @@ using std::unordered_set;
 using std::cout;
 using std::cin;
 
+//Optimized O(N)
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
@@ -37,6 +38,25 @@ public:
                 return true;
             }
             set.insert(nums[i]);
+        }
+        return false;
+    }
+};
+
+//O (N^2) Slower
+class Solution2 {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = i + 1; j < nums.size(); j++) {
+                if (nums.at(i) == nums.at(j)) {
+                    return true;
+                }
+                else {
+                    continue;
+                }
+            }
         }
         return false;
     }
