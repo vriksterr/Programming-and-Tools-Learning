@@ -105,11 +105,26 @@ public:
 int main(){
 
     vector<int> array{2,1,5,3};
-    int target1{4};
-    cout<<"Please enter the target you want to search: ";
+    int target{7};
+    // cout<<"Please enter the target you want to search: ";
     // cin>>target1;
 
     Solution a;
-    a.twoSum(array,target1);
+    a.twoSum(array,target);
 
+    vector<int> values = a.twoSum(array,target);
+    
+
+    //values at those indexes
+    for(auto x:a.twoSum(array,target)){     // this can be done via normal for(int i;i<__;i++)
+        // cout<<x<<",";
+
+        cout<<array.at(x);
+    }
+    cout<<endl;
+
+    //indexes
+    for(int i=0; i<values.size(); i++){
+        cout<<values.at(i);
+    }
 }
