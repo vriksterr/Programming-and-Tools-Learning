@@ -20,11 +20,11 @@ public:
         int high = nums.size() - 1;
         
         while (low <= high) {
-            int mid = low + (high - low) / 2;
+            int mid = low + (high - low) / 2;   // reason for adding low https://www.quora.com/Why-in-binary-search-mid-point-is-calculated-this-way
             if (nums[mid] < target) {
-                low = mid + 1;
+                low = mid + 1;      //new low will be 
             } else if (nums[mid] > target) {
-                high = mid - 1;
+                high = mid - 1;     //new high will be 
             } else {
                 return mid;
             }
@@ -35,7 +35,7 @@ public:
 };
 
 //My solution but self implement binary search
-class Solution {
+class Solution2 {
 public:
     int search(vector<int>& nums, int target) {
         
@@ -52,6 +52,20 @@ public:
         }
         else{return -1;}
         return r;
+    }
+};
+
+//My Solution without even using Binary Search Algorithm
+class Solution3 {
+public:
+    int search(vector<int>& nums, int target) {
+        
+        for(int i=0;i<nums.size();i++){
+            if(nums.at(i)==target){
+                return i;
+            }
+        }
+        return -1;
     }
 };
 

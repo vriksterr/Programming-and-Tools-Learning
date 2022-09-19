@@ -15,6 +15,7 @@
 */
 #include<iostream>
 #include<string>
+#include<stack>
 #include<vector>
 #include<unordered_map>
 
@@ -22,33 +23,33 @@ using namespace std;
 
 class Solution {
 public:
-    bool isValid(string s) {
+    int search(vector<int>& nums, int target) {
         
+        int Left = 0;
+        int Right = nums.size() - 1;
 
-        // make a for loop for the string and in that for loop we can
-            // 1) if i != i+1; return false
-            //i++
+        while (Left <= Right)
+        {
+            int mid = Left + (Right - Left)/2;
 
-        // if the starting bracket is ) ] } then its a flase 
-        if(s.at(0) == ')' || s.at(0) == ']' || s.at(0) == '}') return false;
-
-        for( int i = 0; i<s.size(); i++){ 
-            char current = s[i];
-            char next = s.at(i+1);
-            if( current != next) return false;
-            
+            if(target > nums.at(mid)){
+                Left = mid+1;
+            }
+            else if(target < nums.at(mid)){
+                Right = mid-1;
+            }
+            else return mid;
         }
-            
-        return true;
+        return -1;
     }
 };
 
 int main(){
 
    Solution A;
-   string brackets = "()";
-   
-    cout<<boolalpha;
-   cout<< A.isValid(brackets);
-   
+
+   vector<int> nums{1,2,3,4};
+   int target{4};
+
+   cout<<A.search(nums,target);
 }
