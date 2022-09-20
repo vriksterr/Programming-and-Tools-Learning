@@ -1,4 +1,5 @@
 // Here is how to use linked list
+// It has 1 Value and 1 Next pointer pointing to the next Node and that is pointing to the next Node
 // video- https://www.youtube.com/watch?v=HKfj0l7ndbc && https://www.youtube.com/watch?v=R9PTBwOzceo&list=PLBlnK6fEyqRj9lld8sWIUNwlKfdUoPd1Y&index=31
 // https://www.geeksforgeeks.org/why-linked-list-is-implemented-on-heap-memory-rather-than-stack-memory/
 
