@@ -17,7 +17,6 @@ public:
 // Implementation for Singly Linked List
 class LinkedList {
 public:
-    int a{0};   //ignore this just using it hear to understand the this operator and how the addressing works for a class
     ListNode *head{nullptr};
     ListNode *tail{nullptr};
     
@@ -69,9 +68,19 @@ int main(){
     first.insertEnd(5);
 
 
-    cout<<"Address of object(should be same as first element in class: "<<&first<<endl;
-    cout<<"Address of Head: "<<&first.head<<endl;
-    cout<<"address of Tail: "<<&first.tail<<endl;
+    //this part just to see what the addressing and memory allocation is like read more on Structural Padding in Interesting C++ learning from repo 
+    cout << "Address of object(should be same as first element in class: " << &first << endl;
+    cout << "Address of Head: " << &first.head << endl;
+    cout << "Value stored by Head: " << first.head << endl;
+    cout << "Address of val: " << &first.head->val_<<endl;
+    cout << "address of Tail: " << &first.tail << endl;
+
+    cout << endl << endl;
+    cout << "Now Lets see the sizes of each!" << endl;
+    cout << "Size of first: " << sizeof(first) << endl;
+    cout << "Size of *head: " << sizeof(first.head) << endl; //size of head is 8 coz its storing 2 values 1st is the address of what it is pointing to 2nd all the other values
+    cout << "Size of val: " << sizeof(first.head->val_) << endl;
+    cout << "Size of ListNode: " << sizeof(ListNode) << endl;
 
     first.print();
 }
