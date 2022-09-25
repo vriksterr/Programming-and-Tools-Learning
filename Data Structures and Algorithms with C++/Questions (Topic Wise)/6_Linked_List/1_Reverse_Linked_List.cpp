@@ -27,6 +27,7 @@ class Solution {
 public:
     ListNode *reverseList(ListNode *head) {
         
+        //this cundition checks if wither head is null value or there is just 1 node and no othe next node return head itself 
         if (head == NULL || head->next == NULL) {
             return head;
         }
