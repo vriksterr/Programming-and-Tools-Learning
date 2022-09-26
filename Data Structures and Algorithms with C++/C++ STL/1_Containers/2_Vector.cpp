@@ -132,4 +132,8 @@ int main(){
 	// 10 x 20 x 30 // int arr[10][20][30] 
     //syntax error
 	// vector<vector<vector<int>>> vec(10, vector<vector<int>> vec(20, vector<int> (30, 0));)
+
+      cout<<endl<<"____________3D Vector___________"<<endl<<endl;
+      cout<<"Read the referred link"<<endl;
+    //https://slaystudy.com/initialize-3d-vector-in-c/
 }
