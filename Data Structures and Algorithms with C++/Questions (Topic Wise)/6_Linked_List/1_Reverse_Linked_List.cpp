@@ -18,34 +18,65 @@ using namespace std;
   struct ListNode {
       int val;
       ListNode *next;
-      ListNode() : val(0), next(nullptr) {}
+    //   ListNode() : val(0), next(nullptr) {}
       ListNode(int x) : val(x), next(nullptr) {}            // can look in class and objects or read this article -> https://leetcode.com/problems/add-two-numbers/discuss/122357/c-what-does-listnodeint-x-valx-nextnull-mean
-      ListNode(int x, ListNode *next) : val(x), next(next) {}
+    //   ListNode(int x, ListNode *next) : val(x), next(next) {}
  };
-//Solution
+
+//Look at this animation of the node https://leetcode.com/problems/reverse-linked-list/discuss/803955/C%2B%2B-Iterative-vs.-Recursive-Solutions-Compared-and-Explained-~99-Time-~85-Space
+
 class Solution {
 public:
-    ListNode *reverseList(ListNode *head) {
-        
-        //this cundition checks if wither head is null value or there is just 1 node and no othe next node return head itself 
+    ListNode *reverseList(ListNode *head) { //as this function is returning a ListNode so its ListNode instead of void or int
+
         if (head == NULL || head->next == NULL) {
             return head;
         }
         
-        //creating 2 aditional pointer that we are going to be using as temp storeage to form link
-        ListNode *prev = NULL;
-        // ListNode *curr = head;
-        ListNode *next = head->next;        //we need it initially so we declared it
-        
-        while (head != NULL) {
-            //we are switching addresses
-            next = head->next;      //here next is pointing to the next head 
-            head->next = prev;      //replacing the head next to previous element
+        ListNode *previous = NULL;
+        ListNode *current = head;
+        ListNode *next = NULL;
 
-            prev = head;
-            head = next;
+        while(current!= NULL){
+            next = current->next;
+            current->next = previous;
+            previous = current;
+            current = next;
         }
-        // ListNode *new_head{prev};    //we can make this as the new last head so we can use it.
-        return prev;                    // here previous become the new head
+    return previous;
     }
 };
+
+void traverseNode(ListNode *head)
+{
+    cout << "Start traversal" << endl;
+    while(head!=NULL)
+    {
+        cout << head->val <<"->";
+        head = head->next;
+    }
+    cout <<endl<< "Finish traversal" << endl;
+}
+
+int main()
+{
+    ListNode *node1 = new ListNode(1);
+    ListNode *node2 = new ListNode(2);
+    ListNode *node3 = new ListNode(3);
+    ListNode *node4 = new ListNode(4);
+    ListNode *node5 = new ListNode(5);
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = node4;
+    node4->next = node5;
+    node5->next = NULL;
+    traverseNode(node1);
+
+    cout <<endl;
+
+    Solution sol;
+    ListNode *newHead = sol.reverseList(node1);
+    traverseNode(newHead);
+
+    return 0;
+}

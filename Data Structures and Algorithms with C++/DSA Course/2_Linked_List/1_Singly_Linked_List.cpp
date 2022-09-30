@@ -49,7 +49,7 @@ public:
 
     void print() {
         ListNode *curr = head->next;
-        while (curr) {
+        while (curr!=NULL) {
             cout << curr->val_ << " -> ";
             curr = curr->next;
         }
