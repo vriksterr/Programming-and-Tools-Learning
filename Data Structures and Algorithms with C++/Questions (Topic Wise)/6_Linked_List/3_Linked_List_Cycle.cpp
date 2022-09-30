@@ -14,7 +14,7 @@
  * Definition for singly-linked list.
  * 
  */
-#include <bits/stdc++.h>
+#include<iostream>
 using namespace std;
 
 struct ListNode {
@@ -34,7 +34,7 @@ public:
         ListNode* slow = head;
         ListNode* fast = head;
         
-        while (fast->next != NULL && fast->next->next != NULL) {
+        while (fast->next != NULL && fast->next->next != NULL) {    // read this edge case: https://stackoverflow.com/questions/44734028/member-access-within-null-pointer-of-type-struct-listnode on why we just check for runner speed only
             slow = slow->next;
             fast = fast->next->next;
             if (slow == fast) {
