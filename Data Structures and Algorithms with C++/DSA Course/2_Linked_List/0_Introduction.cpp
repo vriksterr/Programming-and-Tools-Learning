@@ -10,7 +10,7 @@ using namespace std;
 class Node{
     public:
         int Value;
-        Node *Next;
+        Node *Next; //when you try to acces A.next->val = 0; you wont be as it is not initialized and will have a garbage address so you will have to do A.next= new TEST(); and  then you can do the previous command
 };
 
 void printList(Node *n){

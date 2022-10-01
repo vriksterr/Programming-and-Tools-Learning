@@ -17,28 +17,26 @@
 #include <iostream>
 using namespace std;
 
- struct ListNode {
-     int val;
-     ListNode *next;
-     ListNode(int x) : val(x), next(NULL) {}
- };
+int main()
+{
+    int space, rows;
 
+    cout <<"Enter number of rows: ";
+    cin >> rows;
 
-class Solution {
-public:
-    bool hasCycle(ListNode *head) {
-
-        if(head == NULL) return false;
-
-        ListNode *runner1 = head;
-        ListNode *runner2 = head;
-
-        while(runner1->next != NULL && runner1->next->next != NULL){
-            runner1 = runner1->next->next;
-            runner2 = runner2->next;
-
-            if(runner1 == runner2) return true;
+    for(int i = 1, k = 0; i <= rows; ++i, k = 0)
+    {
+        for(space = 1; space <= rows-i; ++space)
+        {
+            cout <<"  ";
         }
-        return false;
-    }
-};
+
+        while(k != 2*i-1)
+        {
+            cout << "* ";
+            ++k;
+        }
+        cout << endl;
+    }    
+    return 0;
+}
