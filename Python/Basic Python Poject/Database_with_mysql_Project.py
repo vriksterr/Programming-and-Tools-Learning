@@ -1,3 +1,4 @@
+#Project of MySQl Database to store and delete 
 from getpass import getpass
 import time
 import mysql.connector
