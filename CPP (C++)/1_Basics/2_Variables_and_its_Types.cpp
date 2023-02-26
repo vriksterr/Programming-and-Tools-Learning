@@ -117,7 +117,7 @@ int main()
         //__________________________________________
 
 
-        const char character[]{"hi"};     // you can put [] = {} but putting = is not required anymore, the [] hold the size of char, " " puts a null character at the end of it if we write it this way
+        char character[]{"hi"};     // you can put [] = {} but putting = is not required anymore, the [] hold the size of char, " " puts a null character at the end of it if we write it this way
         char character2[]{'a','b','c'};
         char character3{'j'};
         char a[100]{'a','b','\0'};   //there should be a null character at the end to avoid garbage value to be printed
@@ -129,6 +129,15 @@ int main()
         short value_no_1{30000};
         short value_no_2{1000};
         //short product{value_no_1*value_no_2}; //Overflow as the short cannot store the value and will throw -Wnarrowing error when compiling
+
+        //__________________________________________
+        //         Constant Types
+        //__________________________________________
+
+        // These types remain constant as the name suggest and its value cannot be chainged again within the program if attempted will throw an compiler error
+        // Also common naming conventions for constants is the naming should be in all CAPS
+        const int NUMBER {1};
+        const char NAME = 'raju';
 
     return 0;
 

@@ -46,7 +46,15 @@ int main(){
 
     cout<<"Value of the getval() in vineet: "<<vineet::getVal(val)<<endl;
     cout<<"Value of the getval() in vriskter: "<<vrikster::getVal()<<endl;
-    
 
+    class omg{
+    public:
+        static void cool(){
+        cout<<"Hello";
+        }
+    };
+    
+    omg dude;
+    dude.cool();
 
 }
