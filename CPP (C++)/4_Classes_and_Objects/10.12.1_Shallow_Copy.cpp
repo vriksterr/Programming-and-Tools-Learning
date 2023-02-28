@@ -3,7 +3,6 @@
     ****************
     * Shallow Copy *
     ****************
-
     • memberwise copy
     • Each data member is copied from the source object
     • The pointer is copied NOT what it points to (shallow copy)
