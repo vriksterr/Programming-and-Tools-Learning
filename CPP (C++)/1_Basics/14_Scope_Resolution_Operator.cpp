@@ -34,8 +34,8 @@ int main ()
 
 // int main(void) {     //https://www.geeksforgeeks.org/difference-int-main-int-mainvoid/
 //   int count = 0;
-//   ::count = 1;  // set global count to 1
-//   count = 2;    // set local count to 2
+//   ::count = 1;       // set global count to 1
+//   count = 2;         // set local count to 2
 //   return 0;
 // }
 

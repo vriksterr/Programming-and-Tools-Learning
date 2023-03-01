@@ -1,6 +1,6 @@
 /*
     **********************
-    * namespace's in c++ *
+    * namespace's in C++ *
     **********************
 
     In C++ you will notice a term such as this 

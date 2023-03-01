@@ -24,7 +24,7 @@ With int a b c as parameter do addition or substraction on these by being within
 */
 #include <iostream>
 
-int main()  //Execution always with the main function
+int main()  //Execution always with the main function also read what is int main(void) here https://www.geeksforgeeks.org/difference-int-main-int-mainvoid/
     { int fav_number{}; // {} = {0} if you dont use {} the value there will be random and non-zero
         std::cout<<"Welcome to our program!"<<std::endl;
         std::cout<<"We are playing a game today! Can you please tell me your Fav number : ";
