@@ -754,8 +754,7 @@ int main()
 
         cout<<"enter an integer between 1 and 5: ";
         cin>>number;
-    }   
-        while (number <= 1 || number >= 5);
+    }while (number <= 1 || number >= 5);
 
         cout<<"Thanks"<<endl;
 
@@ -773,8 +772,7 @@ int main()
 
         cout<<"Calculating another? (Y/N): ";
         cin>>selection;
-    }
-        while (selection == 'y' || selection == 'Y');
+    }while (selection == 'y' || selection == 'Y');
 
     cout<<"Thanks!"<<endl;
 */

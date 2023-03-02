@@ -2,7 +2,10 @@
     *********************
     * Types of variable *
     *********************
-    - 1st Local 2nd Global 3rd Constant 4th Undefined by not using {} and value inside it
+    - 1st Local 
+      2nd Global 
+      3rd Constant 
+      4th Undefined by not using {} and value inside it
 
     Also all different types of variables types such as INT,Float,Boolean,CHAR,double,etc
 
@@ -110,7 +113,6 @@ int main()
         //__________________________________________
 
         bool game_over{false};
-
 
         //__________________________________________
         //               Char Types
