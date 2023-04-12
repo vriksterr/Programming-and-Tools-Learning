@@ -23,12 +23,12 @@
 using namespace std;
 
 int main(){
-    
+
     char value1 = 3;                                //Implicit type conversion where its automatically getting rounded to a character according to ascii table here https://upload.wikimedia.org/wikipedia/commons/d/dd/ASCII-Table.svg
     //or
     cout<<endl<<"conversion: "<<(char)100<<endl;    //This is also implicit conversion
-    double value2 = (int) 3.14;                     //Explicit type conversion were 3.14 got converted to int type and then stored to double
-    int value3 = (int) 'Hello';                      //Wont work when using "" have to use ''(maybe "" is not defined) in this example more than 1 character is showing a warning "warning: multi-character character constant [-Wmultichar]"
+    double value2 = (int) 3.14;                     //Explicit type conversion were 3.14 got converted to int type and then stored to double but here after conversion to int it is going thorugh another implicit conversion to get converted to double so it can be stored.
+    int value3 = (int) 'Hello';                     //Wont work when using "" have to use ''(maybe "" is not defined as in cout and string we can use "" but "" dosent work in char only '' works) in this example more than 1 character is showing a warning "warning: multi-character character constant [-Wmultichar]"
     int value4 = (int) 'V';                         //This is converting text to interger based on ASCII table
 
     cout<<"Value 1: "<<value1<<endl;

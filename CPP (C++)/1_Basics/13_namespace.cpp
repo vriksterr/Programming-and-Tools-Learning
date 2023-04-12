@@ -13,10 +13,11 @@
     We can also use namespace to define our own name spaces for example below
 */
 #include<bits/stdc++.h>
+
 using std::cout;
 using std::endl;
     //or
-using namespace std;    //now you might see that we are using first std::__ and then we are using namespace std, we can basically do this but dosent seem any usefull but we can use it if needed.
+using namespace std;    //now you might see that we are using first std::__ and then we are using namespace std, we can basically do this but is not considered a good practice to use this but using the method is considered fine so in large projects there is no name conflicts.
 
 //namespace can only be defined outside main() function
 namespace vrikster{
