@@ -30,6 +30,6 @@ int main(){  //Execution always with the main function also read what is int mai
 
                     Short Answer: Nothing.
                     Better Answer: return 0 it's used in main like a signal for know the exit of program was a success when return 0 executes.
-                    Best Answer: Still nothing because compilers already "put" return 0 in the the end of your code if you dont explicit it. But still use is a good practice and give better readbility for your code.
+                    Best Answer: Still nothing because compilers already "put" return 0 in the the end of your code if you dont explicit it. But still use is a good practice and give better readability for your code.
                   */
 }
