@@ -21,18 +21,18 @@ using namespace std;
 class X
 {
 public:
-      static int count;           // to understand static and constant better refer to in Funtion -> Static and Constant Functions
+      static int count;              // To understand static and constant better refer to in Funtion -> Static and Constant Functions
 
       void fun() { 
-            cout << "fun() called"; 
+            cout << "fun() called" << endl; 
       }
 
-      void static fun2() { 
-            cout << "fun() called"; 
+      void static fun2() {
+            cout << "fun2() called" << endl; 
       }
 };
 
-int X::count = 10;                // define static data member
+int X::count = 10;                   // Define static data member
 int y = 20;
 
 int main ()
