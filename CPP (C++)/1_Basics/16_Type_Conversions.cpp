@@ -15,9 +15,9 @@
 
     C++ supports 4 additional types of casting: (these dont really do anythying different what the C style implicit/explicit type casting dose but it dose provide extra checks by compiler)
 
-        1. Static Cast
-        2. Dynamic Cast
-        3. Const Cast
+        1. Static Cast - its is same as explecit type casting where we write it as static_cast<int>(10.56)
+        2. Dynamic Cast - can be used only with pointers and references to objects. Its purpose is to ensure that the result of the type conversion is a valid complete object of the requested class.
+        3. Const Cast - it is used to add of remove const, you can add const anyway but its mostly for removing const
         4. Reinterpret Cast
     
     Advantages of Type Conversion
@@ -51,6 +51,10 @@ using namespace std;
 
 int main(){
 
+    //___________________
+    //Implicit & Explicit
+    //___________________
+
     char value1 = 3;                                //Implicit type conversion where its automatically getting rounded to a character according to ascii table here https://upload.wikimedia.org/wikipedia/commons/d/dd/ASCII-Table.svg
     //or
     cout<<endl<<"conversion: "<<(char)100<<endl;    //This is explicit conversion
@@ -79,5 +83,18 @@ int main(){
     //Another example
     int x = 10 + 'a';                   //Now here if you follow the above table you will see int is larger variable than char so char gets implicit type conversion to int according to ASCII table
     int x2 = 10 + 1.0;                  //Now here as you can see 10 is int and 1.0 is float and according to table we know float is larger variable type so 10 will be implicitly converted to float and will become 10.1
+
+    //___________
+    //Static Cast
+    //___________
+    int x3 = static_cast<int>(10.24)+5.5;   //Now here 10.24 is being converted to int and static cast dose conversions checks to make sure the conversion is possible.
+
+    //
+    //ADD CONSTANT DYNAMIC AND OTHER THINGS QUICK
+    //
+    //
+    //
+    //
+    //
 
 }
