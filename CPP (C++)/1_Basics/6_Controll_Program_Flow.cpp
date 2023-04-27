@@ -3,7 +3,7 @@
     - Ordering statements sequentially
 
     Selection
-    - It allws yout to make decisions and execute parts of your program only when certain conditions are true or false.
+    - It allows you to make decisions and execute parts of your program only when certain conditions are true or false.
     - Making decisions
     - if statement
     - if-else statement
@@ -33,6 +33,10 @@ int main()
 //____________________________________________
 //            IF Statement
 //____________________________________________
+/* The difference between if if and if else statement is that in the if else, only one of the two statements can be executed 
+   while in the if if case it is possible for both of them to be executed. In below example, it does not matter since the two 
+   conditions are mutually exclusive, but it may become important if it is possible for both conditions to be true. In that case, 
+   “if else if” would only execute the first “if” statement and “if if” would execute them both in sequence.*/
 
     int num {};
     const int min {10};
@@ -118,7 +122,7 @@ int main()
  
     char letter_grade{};
 
-    if (score>0 && score <=100) {
+    if (score>0 && score<=100) {
 
         if(score > 90)
         letter_grade='A';
