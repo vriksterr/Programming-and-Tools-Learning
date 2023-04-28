@@ -10,6 +10,7 @@
     - Nested if statement if { if {if {}}}
     - Switch statement
     - Conditional operator ?:
+    - Try Catch (exception handling)
 
     Iteration
     - These constructs that let us loop and repeat parts of our program.
@@ -21,6 +22,12 @@
     - continue and break
     - Infinite loops
     - Nested loops (loops withing loops)
+
+    Source:
+    (Exception Handling Resources)
+    https://www.w3schools.com/cpp/cpp_exceptions.asp#:~:text=The%20try%20statement%20allows%20you,occurs%20in%20the%20try%20block.
+    https://www.youtube.com/watch?v=kjEhqgmEiWY
+    https://www.youtube.com/watch?v=EyXXLpFriMc
 
 */
 
@@ -157,6 +164,22 @@ int main()
 //____________________________________________
 //            Switch Statement
 //____________________________________________
+/* The difference between ifelse vs switch is that if we dont use break; after a case it will continue to execute all cases until there is a break statement
+    int a = 10;
+
+    switch(10){
+        case 20: cout<<"10"<<endl;
+        case 10: cout<<"10"<<endl;
+        case 30: cout<<"30"<<endl;
+        case 40: cout<<"40"<<endl;
+        case 50: cout<<"50"<<endl;
+        break;
+    }
+    
+    take the above for an example case 10 and case 30,40,50 will get printed coz there was no break after case 10. If you noticed that case 20 didnt get printed coz
+    it checks for the condition and reached the condition which is true and after that keeps executing until it finds a break statement. Also in the end right before }
+    you dont need to put the break statement coz the switch statements ends at } so there is no need to put a break; there but seems clean if you put it.
+*/
 
     char letter_grade1{};
     cout<<endl<<"Enter the letter grade you expect on the exam: ";
@@ -283,6 +306,47 @@ int main()
 
     else 
     cout<<"The numbers are the same"<<endl;
+
+
+//____________________________________________
+//              Try Catch
+//____________________________________________
+/*
+*C++ Exceptions
+    When executing C++ code, different errors can occur: coding errors made by the programmer, errors due to wrong input, or other unforeseeable things.
+    When an error occurs, C++ will normally stop and generate an error message. The technical term for this is: C++ will throw an exception (throw an error).
+
+*C++ try and catch
+    Exception handling in C++ consist of three keywords: try, throw and catch:
+
+    The try statement allows you to define a block of code to be tested for errors while it is being executed.
+
+    The throw keyword throws an exception when a problem is detected, which lets us create a custom error.
+
+    The catch statement allows you to define a block of code to be executed, if an error occurs in the try block.
+
+    try {
+    // Block of code to try
+    throw exception; // Throw an exception when a problem arise
+    }
+    catch () {
+    // Block of code to handle errors
+    }
+
+    Look in Sources for more examples.
+*/
+    try {
+    int age = 15;
+    if (age >= 18) {
+        cout << "Access granted - you are old enough.";
+    } else {
+        throw (age);    //as you can see age is being thrown to myNum in catch
+    }
+    }
+    catch (int myNum) {
+    cout << "Access denied - You must be at least 18 years old.\n";
+    cout << "Your Age is: " << myNum << "Which is blow 18"<<endl;
+    }
 
 //____________________________________________
 //               Looping
@@ -439,7 +503,7 @@ int main()
         cout<<"Blast OFF"<<endl;    // if this wasent in brackets { } this "blast off" would get printed when the for loop is over
     }
 
-    for (int i{1} ; i<=100;++i){
+    for (int i{1} ; i<=100 ; ++i){
 
         cout<<i;
         if( i % 10 == 0){
