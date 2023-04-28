@@ -834,12 +834,10 @@ int main()
         for( auto val: values){
 
             if (val == -99)
-
-            break;
+                break;
 
             else if(val == -1)
-
-            continue;
+                continue;
 
             else
                 cout<<val<<endl;
