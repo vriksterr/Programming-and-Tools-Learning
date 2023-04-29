@@ -87,6 +87,13 @@ int main()
         
     }
 
+    if (num == min != num == max) {     //This was used to showcase the != Logical Operator
+
+        cout<<endl<<"=================IF Statement 5================="<<endl;
+        cout<<num<<" is nowhere on boundry "<<endl;
+       
+    }
+
 //____________________________________________
 //            IF-Else Statement
 //____________________________________________
@@ -253,7 +260,7 @@ int main()
         cout<<"OK"<<endl;
     }
 //____________________________________________
-//           Conditional Operator
+//           Conditional/Ternary Operator
 //____________________________________________
 /*
     ?:
