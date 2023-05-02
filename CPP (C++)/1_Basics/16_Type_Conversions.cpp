@@ -15,7 +15,7 @@
 
     C++ supports 4 additional types of casting: (these dont really do anythying different what the C style implicit/explicit type casting dose but it dose provide extra checks by compiler)
 
-        1. Static Cast - its is same as explecit type casting where we write it as static_cast<int>(10.56)
+        1. Static Cast - its is same as explicit type casting where we write it as static_cast<int>(10.56), but if it cant be converted compiler will throw an error.
         2. Dynamic Cast - can be used only with pointers and references to objects. Its purpose is to ensure that the result of the type conversion is a valid complete object of the requested class.
         3. Const Cast - it is used to add of remove const, you can add const anyway but its mostly for removing const
         4. Reinterpret Cast

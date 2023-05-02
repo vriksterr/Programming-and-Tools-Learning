@@ -260,7 +260,7 @@ int main()
         cout<<"OK"<<endl;
     }
 //____________________________________________
-//           Conditional/Ternary Operator
+//        Conditional/Ternary Operator
 //____________________________________________
 /*
     ?:
