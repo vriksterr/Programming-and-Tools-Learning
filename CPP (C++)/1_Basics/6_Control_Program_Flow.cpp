@@ -875,8 +875,7 @@ int main()
             
         else
             cout<<"Unknown option"<<endl;
-    }
-        while( selection != 'q' && selection != 'Q');
+    }while( selection != 'q' && selection != 'Q');
     
     cout<<"thanks";
 

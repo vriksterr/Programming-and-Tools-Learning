@@ -261,7 +261,7 @@ int main ()
     //       Compound Assignment Operators & Bitwise Operator
     //__________________________________________________________________
 
-    /*
+    /*  In the Operator section is the Compound Assignment
         In the Meaning section Bitwise Operator is showcased
         _____________________________________________________________
        |     operator   |       Example      |        Meaning        |
@@ -288,6 +288,8 @@ int main ()
                 https://www.ibm.com/docs/en/i/7.2?topic=operators-compound-assignment
                 https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/
                 https://www.programiz.com/cpp-programming/operators#bitwise
+                https://www.youtube.com/watch?v=cy2JF6iFv8k
+                https://stackoverflow.com/questions/4854248/why-are-bitwise-shifts-and-used-for-cout-and-cin
     */
 
 
