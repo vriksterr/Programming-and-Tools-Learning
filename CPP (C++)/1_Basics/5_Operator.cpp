@@ -35,6 +35,7 @@
 
 Source
     https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/
+    https://www.programiz.com/cpp-programming/operators
 
 */
 #include<iostream>
