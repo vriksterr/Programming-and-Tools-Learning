@@ -7,10 +7,13 @@
     Operator overloading in C++ allows operators, such as "+", "-", "*", "/", etc., to be given new meanings when they are used with user-defined types or classes. 
     This makes it possible to write code that can be more expressive and natural, as well as easier to read and maintain.
 
-    To overload an operator in C++, you must provide a special member function that has the operator symbol as its name. This function must take one or two
-
     C++ requires operator overloading to be done within a class or struct because operator overloading is tightly coupled with object-oriented programming (OOP) concepts, 
     which are the fundamental concepts of C++. 
+    
+    Operator overloading in C++ cannot be done without a class or struct.This is because C++ requires the overloaded operators 
+    to have at least one operand that is a user-defined type or class, and the overloaded operator function needs to be a member function of that class or a friend function 
+    of that class.
+
     C++ is designed to provide a powerful and flexible way of defining user-defined types, allowing programmers to create their own data types with custom behaviors and 
     functionality. Operator overloading is an important feature of C++ that enables users to define custom behavior for operators such as +, -, *, /, and many others.
 

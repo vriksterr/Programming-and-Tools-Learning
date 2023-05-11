@@ -29,8 +29,7 @@ public:
     Integer operator+(const Integer &other) const {
         int sum = value + other.value;
         Integer d(sum);
-        // return d;
-        return Integer p(1000)
+        return d;
     }
 
     void print() const {
