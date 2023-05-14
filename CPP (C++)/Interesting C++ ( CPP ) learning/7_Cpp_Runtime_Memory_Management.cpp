@@ -26,6 +26,15 @@
     For temporary objects, the destructor is called automatically by the runtime after the object's scope is exited or the expression it appears in is evaluated. 
     This ensures that any resources held by the object are released in a timely manner and that memory leaks and other resource management issues are avoided.
 
+    The C++ compiler knows that the object's use is complete based on its lifetime, which is determined by its scope and storage duration. When an object's 
+    lifetime ends, its destructor is called to perform any necessary cleanup actions, such as releasing resources or freeing memory.
+
+    For example, if an object is declared within a block, its lifetime ends when the block is exited, and the object's destructor is called automatically. 
+    Similarly, if an object is allocated dynamically using new, its lifetime ends when it is explicitly deleted using delete, which also calls its destructor.
+
+    In general, the C++ language provides well-defined rules for when an object's lifetime begins and ends, and the compiler enforces these rules to ensure that 
+    objects are properly initialized and cleaned up.
+
     For examples look in 2_Plus_Operator_Overloading.cpp
     where we are using temp object
 */

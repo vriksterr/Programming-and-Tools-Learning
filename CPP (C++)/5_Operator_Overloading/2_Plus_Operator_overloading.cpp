@@ -78,6 +78,25 @@ returned by the return statement.
 
 In C++, creating a temporary object is an expression.
 
+!Who creates temp objects
+Temporary objects are objects that are created by the compiler implicitly, without a named identifier, and are used in expressions or assignments. 
+These objects are destroyed automatically by the compiler at the end of their lifetime, typically when the expression or assignment is complete.
+
+For example, in the following statement:
+Integer c = a + b;
+
+The operator+ function creates a temporary object to hold the result of the addition (sum). This temporary object is then assigned to c, which is not a temporary object. 
+The temporary object is destroyed automatically by the compiler after the assignment is complete.
+
+The C++ compiler knows that the object's use is complete based on its lifetime, which is determined by its scope and storage duration. 
+When an object's lifetime ends, its destructor is called to perform any necessary cleanup actions, such as releasing resources or freeing memory.
+
+For example, if an object is declared within a block, its lifetime ends when the block is exited, and the object's destructor is called automatically. 
+Similarly, if an object is allocated dynamically using new, its lifetime ends when it is explicitly deleted using delete, which also calls its destructor.
+
+In general, the C++ language provides well-defined rules for when an object's lifetime begins and ends, and the compiler enforces these rules to ensure 
+that objects are properly initialized and cleaned up.
+
 !What happnes to the temp object after its used
 Yes, the temporary object created by the expression a + b is destroyed at the end of the full expression (which is the entire c = a + b; statement).
 
