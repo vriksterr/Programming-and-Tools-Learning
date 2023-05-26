@@ -26,6 +26,7 @@
     For temporary objects, the destructor is called automatically by the runtime after the object's scope is exited or the expression it appears in is evaluated. 
     This ensures that any resources held by the object are released in a timely manner and that memory leaks and other resource management issues are avoided.
 
+    Q-How dose the compiler know that the object use is complete?
     The C++ compiler knows that the object's use is complete based on its lifetime, which is determined by its scope and storage duration. When an object's 
     lifetime ends, its destructor is called to perform any necessary cleanup actions, such as releasing resources or freeing memory.
 
@@ -37,4 +38,7 @@
 
     For examples look in 2_Plus_Operator_Overloading.cpp
     where we are using temp object
+
+    
+
 */
