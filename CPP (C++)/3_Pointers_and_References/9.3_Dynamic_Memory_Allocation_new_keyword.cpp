@@ -100,6 +100,17 @@ int main() {
     std::cout << "Address of ptr pointer: " << &ptr << std::endl;
     std::cout << "Address of value pointed to by ptr: " << &(*ptr) << std::endl;
     std::cout << "Address stored in ptr: " << ptr << std::endl;
-    
+    /* Output:
+    Value at ptr: 42
+    Address of ptr pointer: 0x7ffd74a85e58
+    Address of value pointed to by ptr: 0xac8750
+    Address stored in ptr: 0xac8750
+
+    AFTER DELETING PTR!!
+    Value at ptr: 0
+    Address of ptr pointer: 0x7ffd74a85e58
+    Address of value pointed to by ptr: 0xac8750
+    Address stored in ptr: 0xac8750
+    */
     return 0;
 }
