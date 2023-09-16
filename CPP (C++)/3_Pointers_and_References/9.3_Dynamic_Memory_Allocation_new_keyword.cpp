@@ -27,7 +27,8 @@
     delete ptr; //this will delete the first 2 ptr coz they both are same
     delete [] ptr;  //will delete entire chunk of array memory 
 
-    
+    Also when you delete a pointer it dosent delete the pointer ptr what it actually dose it delete the value which is stored in heap and makes it available to os
+    but that pointer ptr is still present in memory till the scope of programe take a look at below example about deleting pointer example.    
     
     For Example:
 
@@ -77,8 +78,28 @@ int main() {
     //allocating a heap storage and using it
     int *pointer = new int {6};
     *pointer = 77777777;
-    cout<<*pointer;
+    cout<<endl<<*pointer;
     delete pointer;
+
+
+    // Another Program to check what the values will be of a pointer after the pointer is deleted
+    cout<<endl<<endl;
+    int* ptr = new int;  // Allocate memory for an int
+    *ptr = 42;           // Assign a value to the int
+
+    std::cout << "Value at ptr: " << *ptr << std::endl;
+    std::cout << "Address of ptr pointer: " << &ptr << std::endl;
+    std::cout << "Address of value pointed to by ptr: " << &(*ptr) << std::endl; // this is same as ptr basically which tell the address location of int 42 in Heap memory basically what is stored in ptr
+    std::cout << "Address stored in ptr: " << ptr << std::endl;
+
+    // Deallocate memory
+    delete ptr;
+    std::cout<<std::endl<< "AFTER DELETING PTR!!"<<std::endl;
+    
+    std::cout << "Value at ptr: " << *ptr << std::endl;
+    std::cout << "Address of ptr pointer: " << &ptr << std::endl;
+    std::cout << "Address of value pointed to by ptr: " << &(*ptr) << std::endl;
+    std::cout << "Address stored in ptr: " << ptr << std::endl;
     
     return 0;
 }
