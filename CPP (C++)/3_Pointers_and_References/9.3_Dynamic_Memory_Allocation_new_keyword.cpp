@@ -71,7 +71,7 @@ using namespace std;
 int main() {
     
     int *int_ptr {nullptr};
-    int_ptr = new int;               // allocate the int on the heap
+    int_ptr = new int;               // allocate size of int (4 bytes) on the heap
     cout << int_ptr << endl;         // use it
     delete int_ptr;                  // released the address which can now be used by another program
     
@@ -81,7 +81,7 @@ int main() {
     cout << "How many temps? ";
     cin >> size;
     
-    temp_ptr = new double[size]{};    // allocate the storage on the heap
+    temp_ptr = new double[size]{};    // allocating array which of size on the heap
     cout << *temp_ptr << endl;       // use it
     delete [] temp_ptr;             // release it
     cout << endl;
