@@ -126,8 +126,8 @@ int main() {
     Address stored in ptr: 0x55858b0886f0
     */
 
-   // but if you use ptr = nullptr; after delete ptr the programe will exit if you try to access *ptr (cout << *ptr;) the os will see that you are trying to access something
-   // that dosent exist and will exit the programe which is a good thing Safety.
+   /* but if you use ptr = nullptr; after delete ptr the programe will exit if you try to access *ptr (cout << *ptr;) the os will see that you are trying to access something
+    that dosent exist and will exit the programe which is a good thing Safety. */
     ptr = nullptr;
     std::cout<<std::endl<< "AFTER PUTTING PTR = NULLPTR!!"<<std::endl;
     
