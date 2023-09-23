@@ -4,8 +4,6 @@
     ***********
 
     What is a pointer?
-        -Pointer is something that has its own address in memory and stores addfress of other variable in memory 
-        
         -Pointer points to other variable via there address, pointer stores address of other variables 
          and pointer has its own address to so you can chain pointers if you want to
         
