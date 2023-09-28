@@ -26,10 +26,10 @@ int main(){  //Execution always with the main function also read what is int mai
         std::cout<<"We are playing a game today! Can you please tell me your Fav number : ";
         std::cin>>fav_number;
         std::cout<<"WOW "<<fav_number<<" is my fav number too !"<<std::endl;
-        return 0; /* What happens if you don’t use return 0?
-
-                    Short Answer: Nothing.
-                    Better Answer: return 0 it's used in main like a signal for know the exit of program was a success when return 0 executes.
-                    Best Answer: Still nothing because compilers already "put" return 0 in the the end of your code if you dont explicit it. But still use is a good practice and give better readability for your code.
+        return 0; /* What happens if you don’t use return 0; ?
+                     return 0; is used in main funtion to check weather the program executed correctly or not, this info is used by operating system if the program 
+                     finished perfectly or not if it dosent finish that means there is some issue in the program and os gets to know that the program didnt finish
+                     correctly. In many cases you will see that programmers not adding return 0; in those cases the compiler self adds return 0; at the end of the 
+                     main funtion during compile time. Tho its a good practice to add it yourself in every programe.
                   */
 }
