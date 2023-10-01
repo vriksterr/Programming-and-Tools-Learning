@@ -26,5 +26,19 @@
 #include<iostream>
 
 int main(){
-    std::size_t value;
+    float number1 = (float)1.12345678901234567890;
+    float number2 = 1.12345678901234567890;
+    double number3 = 1.12345678901234567890;
+    long double number4 = 1.1234567890234567890L;
+
+    /*Now you will notice that in above variable assignment of values i have put f and L and in one case i havenot the reason for such is that the compiler will consider
+    that number to be a double and then convert it to float and during this conversion it can chop of some of the values so what we do instead is that we define that the
+    number is a float so there no type conversion done by the compiler*/
+
+    std::cout<<"Float number with f at the end of number is: "<<number1<<std::endl;
+    std::cout<<"Float number with f at the end of number is: "<<number2<<std::endl;
+    std::cout<<"Float number with f at the end of number is: "<<number3<<std::endl;
+    std::cout<<"Float number with f at the end of number is: "<<number4<<std::endl;
+
+
 }
