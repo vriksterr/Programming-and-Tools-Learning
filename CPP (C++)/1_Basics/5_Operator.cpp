@@ -1,27 +1,81 @@
 /*
 
 -> C++ has a rich set of operators
-        •Unary Opertor      ++,--
+    In C++, operators are special symbols or keywords that perform operations on one or more operands. Operators can be classified into several categories 
+    based on their functionality. Here are the main types of operators in C++:
 
-        •Binary Operator    + , -, *, /, %         (Arithmetic Operator)
-                            <, <=, >, >=, ==, !=   (Relational Operator)
-                            &&, ||, !              (Logical Operator)
-                            &, |, <<, >>, ~, ^     (Bitwise Operator)
-                            =, +=, -=, *=, /=, %=  (Assignment Operator)
+    1. Arithmetic Operators:
+    - `+` (Addition)
+    - `-` (Subtraction)
+    - `*` (Multiplication)
+    - `/` (Division)
+    - `%` (Modulus)
 
-        •Ternary            ?:  (Ternary/Conditional Operator)  //See 6_Controll_Program_Flow.cpp for more examples its not coverd here.
-     
-    
--> Common operators can be grouped as follows:
-    •Assignment-> By assigning a new value eg a=1
-    •Arthmetic-> They are used to perform mathematical operations on operands eg 2*5 and + - * / % (modulo or remainder works only with integers)
-    •Unary Opertor -> Part of them work like an assignment and part of them work like arthmetic.
-    •Relational/Comparision-> They allow you to compare the values of two objects. eg. = != > < <= >= <=>
-    •Logical-> They are used to test for logical or Boolean conditions. eg- if you you want to execute a specific statement when the temp is above or below a certain point ( not, and, or)
-    •Compound Assignment-> The compound assignment operators consist of a binary operator and the simple assignment operator. They perform the operation of the binary operator on both operands and store the result of that operation into the left operand, which must be a modifiable lvalue.
-    •Bitwise Operator-> These are used to perform operations on individual bits. They can only be used alongside char and int data types.
-    •Member Access-> These operaters are used to access memebers eg. array subscript operator [] it allows you to access to a specific memeber data.at(0) for vetor or cout<<data[0] for array
-    •Other-> Operators that dont fit very well in the above operators
+    2. Relational Operators:
+    - `==` (Equal to)
+    - `!=` (Not equal to)
+    - `<` (Less than)
+    - `>` (Greater than)
+    - `<=` (Less than or equal to)
+    - `>=` (Greater than or equal to)
+
+    3. Logical Operators:
+    - `&&` (Logical AND)
+    - `||` (Logical OR)
+    - `!` (Logical NOT)
+
+    4. Assignment Operators:
+    - `=` (Assignment)
+    - `+=` (Addition assignment)
+    - `-=` (Subtraction assignment)
+    - `*=` (Multiplication assignment)
+    - `/=` (Division assignment)
+    - `%=` (Modulus assignment)
+    - `=` (Bitwise OR assignment)
+    - `&=` (Bitwise AND assignment)
+    - `^=` (Bitwise XOR assignment)
+    - `<<=` (Left shift assignment)
+    - `>>=` (Right shift assignment)
+
+    5. Increment and Decrement Operators:
+    - `++` (Increment)
+    - `--` (Decrement)
+
+    6. Bitwise Operators:
+    - `&` (Bitwise AND)
+    - `|` (Bitwise OR)
+    - `^` (Bitwise XOR)
+    - `~` (Bitwise NOT)
+    - `<<` (Left shift)
+    - `>>` (Right shift)
+
+    7. Conditional (Ternary) Operator:
+    - `? :` (Conditional operator)
+
+    8. Comma Operator:
+    - `,` (Comma operator)
+
+    9. Member Access Operators:
+    - `.` (Dot operator, used to access class or structure members)
+    - `->` (Arrow operator, used to access class or structure members through pointers)
+
+    10. Sizeof Operator:
+        - `sizeof` (Used to determine the size in bytes of an expression or data type)
+
+    11. Type Cast Operators:
+        - `static_cast<T>(expression)` (Static cast)
+        - `dynamic_cast<T>(expression)` (Dynamic cast)
+        - `const_cast<T>(expression)` (Const cast)
+        - `reinterpret_cast<T>(expression)` (Reinterpret cast)
+
+    12. Pointer Operators:
+        - `*` (Dereference operator, used to access the value pointed to by a pointer)
+        - `&` (Address-of operator, used to get the address of a variable)
+
+    13. Increment and Decrement Operators (for Pointers):
+        - `++` and `--` can also be used with pointers to increment or decrement memory addresses.
+
+    These are the fundamental operators in C++. Each operator has a specific purpose and syntax, and they are used to perform various operations on variables and data in C++ programs.
     _______________________________________________________________
 
 
@@ -31,7 +85,6 @@
     
     Source
         https://en.cppreference.com/w/cpp/language/operator_precedence
-
 
 Source
     https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/
@@ -160,6 +213,7 @@ int main ()
        <  means Less than
        >= means Greater than or Equal to
        <= means Less than or Equal to
+       <=> Spaceship Operator C++20
     */
 
     bool equal_result {false};
@@ -330,7 +384,22 @@ int main ()
             https://en.cppreference.com/w/cpp/language/operator_member_access
     */   
 
+    //____________________________________________
+    //       Conditional (Ternary) Operator
+    //____________________________________________
+    /*  
+        !Example 1
+        int number = 10;
+        string result = (number % 2 == 0) ? "Even" : "Odd";
+        
+        cout << "The number is " << result << endl;
 
+        !Example 2
+        int score = 75;
+        string grade = (score >= 90) ? "A" : (score >= 80) ? "B" : (score >= 70) ? "C" : "F";
+            
+        cout << "Your grade is: " << grade << endl;
+    */
 
     //____________________________________________
     //          Other C++ Operators          
@@ -365,5 +434,7 @@ int main ()
         |_______________|____________________________________________________________|______________________________________________________|
     
     */
+
+
     
 }

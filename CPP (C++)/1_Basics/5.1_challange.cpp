@@ -45,7 +45,7 @@ int main()
     const int dollar_value{100},quarter_value{25},dime_value{10},nickle_value{5};
     int change_amount{};
 
-        cout<<"Enter an amount in cents: ";
+    cout<<"Enter an amount in cents: ";
     cin>> change_amount;
 
     int balance{},dollars{},quarters{},dimes{},nickels{},pennies{};
@@ -86,6 +86,4 @@ int main()
 
     cout<<"Dollars: "<<dollars<<endl<<"Quarters: "<<quarters<<endl<<"Dimes: "<<dimes<<endl<<"Nickels: "<<nickels<<endl<<"Pennies: "<<pennies<<endl;
 
-    
-    
 }
