@@ -4,7 +4,8 @@
     ********************
     Converting a value of one data type to another data type
     There are of 2 types:
-        Implicit = Automaticly done by the compiler on its own, without any external trigger from the user. All the data types of the variables are upgraded to the data type of the variable with the largest data type.
+        Implicit = Automaticly done by the compiler on its own, without any external trigger from the user. All the data types of the variables are upgraded to the data type of 
+                   the variable with the largest data type.
         Explicit = Precede value with new data type (int)
     
     Variables data size:
@@ -13,10 +14,12 @@
         where bool is the smallest and long double is the largest data variable. So when doing type conversions the largest variable will be preferred and any smaller variable
         will be converted to the largest present variable
 
-    C++ supports 4 additional types of casting: (these dont really do anythying different what the C style implicit/explicit type casting dose but it dose provide extra checks by compiler)
+    C++ supports 4 additional types of casting: (these dont really do anythying different what the C style implicit/explicit type casting dose but it dose provide extra checks 
+    by compiler)
 
         1. Static Cast - its is same as explicit type casting where we write it as static_cast<int>(10.56), but if it cant be converted compiler will throw an error.
-        2. Dynamic Cast - can be used only with pointers and references to objects. Its purpose is to ensure that the result of the type conversion is a valid complete object of the requested class.
+        2. Dynamic Cast - can be used only with pointers and references to objects. Its purpose is to ensure that the result of the type conversion is a valid complete 
+                          object of the requested class.
         3. Const Cast - it is used to add of remove const, you can add const anyway but its mostly for removing const
         4. Reinterpret Cast
     
@@ -97,4 +100,46 @@ int main(){
     //
     //
 
+
+    //________________________________________
+    // User Defined Type Conversion Operator
+    //________________________________________
+
+    /*
+    In C++, a type conversion operator allows you to define a conversion from an object of one class to an object of another class or a built-in data type. 
+    This feature is particularly useful in user-defined classes when you want to provide a way to convert objects of your class to other types.
+
+    The type conversion operator is defined using the operator keyword, followed by the target data type. It's a member function of the class you are 
+    defining it in. Here's the general syntax for a type conversion operator:
+    
+    #include <iostream>
+
+    class MyInt {
+    private:
+        int value;
+
+    public:
+        MyInt(int val) : value(val) {}
+
+        !// Type conversion operator to convert MyInt to int
+        operator int() {
+            return value;
+        }
+    };
+
+    int main() {
+        MyInt myInt(42);
+        int num = myInt; // Implicit conversion using the type conversion operator
+        std::cout << "Converted integer: " << num << std::endl;
+
+        return 0;
+    }
+
+    In this example, the MyInt class defines a type conversion operator that converts an object of MyInt into an int. 
+    When you assign a MyInt object to an int, the type conversion operator is called automatically.
+
+    Keep in mind that type conversion operators should be used carefully, as they can lead to unexpected behavior. 
+    Make sure the conversion is meaningful and follows good programming practices.
+
+    */
 }

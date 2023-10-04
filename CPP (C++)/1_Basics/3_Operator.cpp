@@ -18,6 +18,7 @@
     - `>` (Greater than)
     - `<=` (Less than or equal to)
     - `>=` (Greater than or equal to)
+    - `<=>` (3 Way Compirision)
 
     3. Logical Operators:
     - `&&` (Logical AND)
@@ -243,6 +244,88 @@ int main ()
     std::cout<<num5<<" >= "<<num6<<" : "<<(num5 >= num6)<<std::endl;
     std::cout<<num5<<" <= "<<num6<<" : "<<(num5 <= num6)<<std::endl<<std::endl;
 
+    //! Spaceship Operator (3 way Comparision) (C++20 or above compiler needed)
+   /*
+    In C++, the term "spaceship operator" refers to the three-way comparison operator, which was introduced in C++20. It is officially known as 
+    the "three-way comparison operator" and is represented by the symbol `<=>`. The purpose of this operator is to simplify the process of comparing 
+    two objects and determining whether one is less than, equal to, or greater than the other.
+
+    Here's how the spaceship operator works:
+
+    1. When you use the `<=>` operator between two objects, it returns a special type called `std::strong_ordering`, which can have one of three values:
+    - `std::strong_ordering::less` if the left operand is less than the right operand.
+    - `std::strong_ordering::equal` if the left operand is equal to the right operand.
+    - `std::strong_ordering::greater` if the left operand is greater than the right operand.
+
+    2. You can use the result of the spaceship operator in conditions, such as `if` statements or sorting algorithms, to perform comparisons more efficiently and concisely.
+
+    Here's an example of how you might use the spaceship operator in C++:
+
+    ->Example 1
+    #include <iostream>
+    #include <compare>
+
+    int main() {
+        int a = 5;
+        int b = 10;
+
+        auto result = a <=> b;
+
+        switch (result) {
+            case std::strong_ordering::less:
+                std::cout << "a is less than b" << std::endl;
+                break;
+            case std::strong_ordering::equal:
+                std::cout << "a is equal to b" << std::endl;
+                break;
+            case std::strong_ordering::greater:
+                std::cout << "a is greater than b" << std::endl;
+                break;
+        }
+
+        return 0;
+    }
+
+    -> Example 2
+    #include <compare>
+
+    class MyClass {
+    public:
+        int value;
+
+        // Define the spaceship operator for MyClass
+        auto operator<=>(const MyClass& other) const {
+            return value <=> other.value;
+        }
+    };
+
+    int main() {
+        MyClass a{5};
+        MyClass b{10};
+
+        // Compare two instances of MyClass using the spaceship operator
+        if (a <=> b == std::strong_ordering::less) {
+            std::cout << "a is less than b" << std::endl;
+        } else if (a <=> b == std::strong_ordering::equal) {
+            std::cout << "a is equal to b" << std::endl;
+        } else {
+            std::cout << "a is greater than b" << std::endl;
+        }
+
+        return 0;
+    }
+    ```
+
+    In this example, `MyClass` defines the spaceship operator (`operator<=>`) to compare instances based on their `value` member. 
+    The result of the comparison is used to determine whether `a` is less than, equal to, or greater than `b`.
+
+    when you overload an operator for a class, the object on the left-hand side of the operator (the caller) is used to initiate the 
+    overload, and the object on the right-hand side (the argument) is passed to the operator function as one of its parameters.
+
+    Keep in mind that the spaceship operator simplifies comparison code and can be especially useful when you need to compare objects
+    in custom data types or when implementing sorting algorithms. It is one of the notable features introduced in C++20 to improve code readability and maintainability.
+    */
+
     //____________________________________________
     //            Logical Operators
     //____________________________________________
@@ -312,9 +395,9 @@ int main ()
 
 
 
-    //__________________________________________________________________
-    //       Compound Assignment Operators & Bitwise Operator
-    //__________________________________________________________________
+    //_______________________________________________________
+    //       Compound Assignment & Bitwise Operator
+    //_______________________________________________________
 
     /*  In the Operator section is the Compound Assignment
         In the Meaning section Bitwise Operator is showcased
@@ -432,6 +515,9 @@ int main ()
         |               |                                                            |                                                      |
         |      >>       | gets the input value                                       |  cin >> num;                                         |
         |_______________|____________________________________________________________|______________________________________________________|
+
+
+        https://www.youtube.com/watch?v=CML5RwadKMo&pp=ygUTaSBuZWVkIG1vcmUgYnVsbGV0cw%3D%3D <- watch this and add more explanation
     
     */
 

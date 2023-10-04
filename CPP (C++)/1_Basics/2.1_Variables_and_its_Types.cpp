@@ -143,7 +143,7 @@ int main()
 
 
         //__________________________________________
-        //            LITERAL SUFFIX
+        //         LITERAL SUFFIX & PREFIX
         //__________________________________________
         
         /*In C++, a "literal suffix" is a sequence of characters that you can append to a numeric or string literal to indicate its type or make it explicit. 
@@ -279,7 +279,7 @@ int main()
 
             //Another Example
             // Define a user-defined literal for converting a string to uppercase
-            constexpr std::string operator""_uppercase(const char* str, size_t size) {
+            constexpr std::string operator "" _uppercase(const char* str, size_t size) {
                 std::string result(str, size);
                 for (char& c : result) {
                     c = std::toupper(c);

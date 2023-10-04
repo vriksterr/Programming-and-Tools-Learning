@@ -5,10 +5,13 @@
     *****************************
 
     The :: (scope resolution) operator
-    Read more from the source for better detail.
+    It is used to access members (variables or functions) of a class or namespace. The scope resolution operator allows you to specify 
+    the namespace or class from which you want to access a particular member.
 
       In C++, the scope resolution operator is ::. It is used for the following purposes.
-       -> To access a global variable when there is a local variable with same name: 
+       -> To access a global variable when there is a local variable with same name
+       -> Accessing Class Members
+       -> Accessing Namespace Members
     Source: https://www.youtube.com/watch?v=59fy7la7yEI
             https://www.geeksforgeeks.org/scope-resolution-operator-in-c/
             https://stackoverflow.com/questions/13274876/c-a-member-with-an-in-class-initializer-must-be-const
@@ -17,6 +20,11 @@
 
 #include <iostream>
 using namespace std;
+
+namespace custom{
+      int y = 69;
+      int custom_namespace_func(){return 1+1;}
+}
 
 class X
 {
@@ -43,6 +51,8 @@ int main ()
       int y = 30;
       cout << X::count << endl;      // use static member of class X
       cout << ::y <<endl;            // here y is being refered to global variable when it is not a local variable.
+      cout << custom::y <<endl;      // here we using :: to access custom namespace variables
+      cout << custom::custom_namespace_func() <<endl;
 }
 
 //Another example
