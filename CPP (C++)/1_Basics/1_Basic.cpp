@@ -3,7 +3,8 @@
 Typing basic commands to take input and show output of the taken input of the program 
 HERE IS THE LINK OF C++ Keywords: https://en.cppreference.com/w/cpp/keyword
 
-In C++ programs are read by compiler from top to bottom in a series while compiling
+In C++ programs are read by COMPILERS from top to bottom in a series while compiling and look here fow which Compiler is supporting a feature
+based on the c++ version you are using: https://en.cppreference.com/w/cpp/compiler_support
 
 
 int age {21} is c++11 list initialization syntax
