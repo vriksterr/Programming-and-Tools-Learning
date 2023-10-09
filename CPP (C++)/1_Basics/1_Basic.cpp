@@ -12,7 +12,8 @@ float
 double
 string
 
-- {} curly brackets holds value,data,instruction/defination  it also helps in seeing narrowing 
+- {} curly brackets holds value,data,instruction/defination  it also helps in seeing narrowing when you pass a value/data that is not same as variable 
+  so it gets converterted to the type that the variable is.
 - () paranthesis holds parameters meaning what values a function will need like (int a) for its instruction to execute
 Parameter means for eg
 With int a b c as parameter do addition or substraction on these by being within this a b c cant get d which is not in parameter
