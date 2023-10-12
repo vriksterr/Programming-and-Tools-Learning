@@ -64,5 +64,3 @@ int main ()
 //   count = 2;         // set local count to 2
 //   return 0;
 // }
-
-//Another Example Related to Class
