@@ -18,3 +18,8 @@
     •
 
 */
+#include <iostream>
+
+int a;
+
+a.operator=(5);
