@@ -7,7 +7,7 @@ In C++ programs are read by COMPILERS from top to bottom in a series while compi
 based on the c++ version you are using: https://en.cppreference.com/w/cpp/compiler_support
 
 
-int age {21} is c++11 list initialization syntax
+int age {21}; is c++11 list initialization syntax
 float
 double
 string
