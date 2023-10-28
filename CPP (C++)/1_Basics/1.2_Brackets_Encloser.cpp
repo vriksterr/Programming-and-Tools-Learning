@@ -101,7 +101,7 @@ void func(Foo a)
 
 int main(){
 
-    int marks{100}; //vs {} vs =   https://www.educative.io/answers/declaring-a-variable-with-braces-in-cpp
+    int marks{100}; //vs {} vs watch this https://www.educative.io/answers/declaring-a-variable-with-braces-in-cpp
 
     School rohit(100,{200});
 
