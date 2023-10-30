@@ -1,3 +1,45 @@
+/*
+    *********************
+    * Size of Datatypes *
+    *********************
+    Here we will see the size of the datatypes tho do remember based on system architecture 
+    and compiler the size of these datatypes can vary.
+
+    The size of data types in programming languages can vary based on the compiler and CPU 
+    architecture being used. The size of data types is not always standardized and can be 
+    influenced by several factors:
+
+    1. Compiler: Different compilers may have different rules for data type sizes. 
+    For example, the size of an `int` in C or C++ can be 2 bytes on some compilers and 
+    4 bytes on others. The compiler may also offer options to control data type sizes, 
+    such as using compiler flags to specify the size of integers.
+
+    2. CPU Architecture: The underlying hardware and CPU architecture can also affect 
+    data type sizes. For example, on a 32-bit CPU architecture, an `int` may be 
+    4 bytes, while on a 64-bit architecture, it might be 8 bytes. This is because the 
+    CPU's word size and memory addressing capabilities can influence the size of data types.
+
+    3. Operating System: The choice of the operating system can also impact data type 
+    sizes. Operating systems may have conventions or standards for data type sizes that 
+    compilers on that platform adhere to.
+
+    4. Language Standards: Some programming languages have standards that define the 
+    size of data types, but even within these standards, there can be some flexibility 
+    or variations allowed, especially for integer types like `int`, `long`, or `short`.
+
+    To ensure portability and consistent behavior across different platforms, it's a 
+    good practice to use data types with known sizes, especially when working with 
+    low-level programming or when you need to interact with hardware or other software 
+    components. For example, C and C++ provide fixed-size data types like 
+    `int32_t` or `uint64_t` from the `<stdint.h>` or `<cstdint>` headers, which 
+    ensure a specific size regardless of the platform.
+
+    In summary, the size of data types can vary based on the compiler, CPU architecture, and 
+    other factors, so it's important to be aware of these variations when writing code 
+    that needs to work across different systems.
+
+*/
+
 #include <iostream>
 #include <string>
 #include <climits> // make sure to include climit for integer types similar information for floating point numbers is contained in <cfloat>
