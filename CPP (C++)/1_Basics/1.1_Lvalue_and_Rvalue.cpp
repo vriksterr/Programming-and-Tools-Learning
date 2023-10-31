@@ -100,8 +100,6 @@ int *pika (){
 
 };
 
-
-
 int main(){
     Car a;
 
