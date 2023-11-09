@@ -34,7 +34,6 @@
     In summary, lvalues are expressions that represent memory locations where values can be stored or modified, while rvalues are expressions that represent 
     temporary values or values that can be used but not directly modified.
 
-
      ______________________________
     | Lvalue and Rvalue References |
     |______________________________|
