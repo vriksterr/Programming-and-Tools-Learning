@@ -58,7 +58,6 @@
     • Used by move constructor and move assignment operator to efficiently move an object rather than copy it
     • R-value reference operator (&&)
 
-
     For Example:
 
     int a = 10;
