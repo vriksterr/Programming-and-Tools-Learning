@@ -20,7 +20,6 @@
 */
 // what's the value of j
 
-
 #include<iostream>
 using namespace std;
 
