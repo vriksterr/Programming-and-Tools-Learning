@@ -35,5 +35,7 @@ int main(){  //Execution always with the main function also read what is int mai
                      finished perfectly or not if it dosent finish that means there is some issue in the program and os gets to know that the program didnt finish
                      correctly. In many cases you will see that programmers not adding return 0; in those cases the compiler self adds return 0; at the end of the 
                      main funtion during compile time. Tho its a good practice to add it yourself in every programe.
+
+                     Also Return returns to the funtion in this case its the int main() function.
                   */
 }

