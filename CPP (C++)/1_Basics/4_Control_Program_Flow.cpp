@@ -37,6 +37,19 @@ using namespace std;
 int main()
 {
 
+  //____________________________
+ //     Continue & Break
+//______________________________
+/*
+    In C++ continue and break are used in a loop only like while, for, do-while, switch statements. Outside of these contexts, these statements are not applicable, and attempting to use them may result in compilation errors.
+    When you are using continue; in program like for example in if else statements and you use continue it will continue and if you use break; it will exit out of the loop.
+
+    However, it's important to note that the use of break and continue is specific to control flow structures, and they don't have a broader application outside of loops and switch statements in the C++ language.
+
+    If you're looking for more generalized ways to alter the flow of your program or exit a function, you might want to explore other constructs and 
+    statements such as return (to exit a function), goto (although its use is generally discouraged due to its potential for creating spaghetti code), or throwing and catching exceptions (for more advanced error handling scenarios).
+*/
+
 //____________________________________________
 //            IF Statement
 //____________________________________________
