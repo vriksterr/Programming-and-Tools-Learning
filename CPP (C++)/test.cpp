@@ -56,6 +56,6 @@ int main() {
         }
     value = 1;
     }
-    value = 1;
+
     return 0; // The program will exit when the loop ends
 }
