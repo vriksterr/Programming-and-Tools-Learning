@@ -281,6 +281,26 @@ int main() {
         • can create many, many objects 
         • each has its own identity 
         • each can use the defined class methods
+        • is also variable
+        In C++, class objects are considered variables because, at a fundamental level, a class is a blueprint for 
+        creating objects, and objects are instances of a class. In object-oriented programming (OOP), a class defines 
+        a data structure along with the functions or methods that operate on that data. When you create an object 
+        of a class, you are essentially instantiating a variable of that class type.
+
+        Here's a brief explanation:
+
+        Class Definition:
+
+        A class is a user-defined data type in C++.
+        It serves as a template or blueprint that defines the structure and behavior of objects.
+        Object Creation:
+
+        When you create an object of a class, you are creating an instance of that class with its own set of data members and member functions.
+        Variables and Objects:
+
+        In C++, variables are named storage locations that hold values.
+        Objects, when instantiated from a class, are essentially variables of that class type.
+
 
     • Example Account objects
         • Frank's account is an instance of an Account 

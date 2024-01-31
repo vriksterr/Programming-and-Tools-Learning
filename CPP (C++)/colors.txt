@@ -1,0 +1,47 @@
+keywords{
+    "keyword" = #include #define #if using return try catch
+    "storage" = namespace template int void class private: public: const
+} 
+
+Terminator{
+    "punctuation.terminator" = ;
+    "punctuation.section" = <>it stays as static color () {}
+    "punctuation.separator" = ::
+}
+
+function{
+    "entity.name.function" = normal function
+    "entity.name.function.member" = these function are part of a class like .begin() in vector class.
+
+    "support.function" = std::movie() it returns an iterator
+}
+
+Operator{
+    "keyword.operator" = << + - / % <> &&
+}
+
+String{
+    "string" = what it says
+}
+
+Alias(using){
+    "entity.name.type" = for Alias name when we use using keyword but do understand that if a alias is of a class that alias becomes a class so the color will be of a class
+}
+
+("entity.name.namespace" & "entity.name" = std namespace or what ever your make)
+
+("entity.name.type.class" = class Player -> here Player is the entity name
+ "support.class" = string(an alias of a class),vector,list,deque is a class name just like Players but under std namespace)
+
+Variable{
+("entity.name.type.parameter" = i in template<int i> variable names
+"variable.parameter" #dfbfff = variables that are a parameter for a function like car(int a, int b)
+"variable.other.readwrite" = Objects of a a class can be treated as variables in many ways that matter in C++. They can be passed as arguments to functions, they can be returned as values from functions, and operations can be defined for them. 
+                            C/C++ standard use (comes from the C standard, which isn't an Object-Oriented Language:
+                            -Object: Some piece of storage, whether it has a name or not.
+                            -Object of Class Type: Some piece of storage whose datatype is class(=struct). 
+"variable" & "variable.parameter.function-call" = normal variable names)
+}
+
+("constant.numeric" = 123456780 numbers basically)
+

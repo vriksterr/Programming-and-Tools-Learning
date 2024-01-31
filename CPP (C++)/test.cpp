@@ -19,43 +19,75 @@
 
 */
 
-#include<iostream>
-using namespace std;
-
-int option0() {
-    cout << "Program Ending" << endl;
-    return 0;
-}
-
-int option1() {
-    cout << "Program Continuing" << endl;
-    return 1;
-}
-
+#include <iostream>
+#include <vector>
+#include <list>
+#include <deque>
+#include <set>
+#include <map>
+#include <string>
+#include <algorithm>
+#include <iterator>
+#include <fstream>
+#include <thread>
+#include <mutex>
+#include <cmath>
+#include <memory>
+#include <stdexcept>
+using vrik= int;
 int main() {
-    int value = 1;
-    while (value == 1) {
-        int option;
-        cin >> option;
+    int car;
+    // Containers
+    std::vector<int> myVector = {4, 2, 7, 1, 9};
+    std::list<double> myList = {3.14, 2.71, 1.618};
+    std::deque<char> myDeque = {'a', 'b', 'c'};
 
-        if (option == 0) {
-            int value = option0();
-            cout << "Value of Value 0 is = " << value << endl;
+    // Strings
+    std::string myString = "Hello, ";
+    std::wstring myWideString = L"World!";
 
-            if (value == 0) {
-                break; // Exit the loop
-            }
+    // Streams
+    std::cout << "Containers:" << std::endl;
+    std::copy(myVector.begin(), myVector.end(), std::ostream_iterator<int>(std::cout, " "));
+    std::cout << std::endl;
 
-        } else if (option == 1) {
-            int value = option1();
-            cout << "Value of Value 1 is = " << value << endl;
-            if (value == 1) {
-                continue;
-            }
-            // else, the loop will continue without the need for an explicit continue statement
-        }
-    value = 1;
+    // Algorithms
+    std::sort(myVector.begin(), myVector.end());
+    std::reverse(myList.begin(), myList.end());
+
+    // Iterators
+    std::cout << "Sorted Vector:";
+    std::copy(myVector.begin(), myVector.end(), std::ostream_iterator<int>(std::cout, " "));
+    std::cout << std::endl;
+
+    // Memory Management
+    std::unique_ptr<int> myUniquePtr = std::make_unique<int>(42);
+
+    // Concurrency
+    std::mutex myMutex;
+    std::thread myThread([&myMutex]() {
+        std::lock_guard<std::mutex> lock(myMutex);
+        std::cout << "Thread ID: " << std::this_thread::get_id() << std::endl;
+    });
+
+    myThread.join();
+
+    // Numeric Functions
+    double sqrtResult = std::sqrt(25.0);
+    std::cout << "Square root of 25: " << sqrtResult << std::endl;
+
+    // Utility Functions
+    std::swap(myVector[0], myVector[1]);
+    std::cout << "Swapped elements: ";
+    std::copy(myVector.begin(), myVector.end(), std::ostream_iterator<int>(std::cout, " "));
+    std::cout << std::endl;
+
+    // Exception Handling
+    try {
+        throw std::runtime_error("An exception occurred!");
+    } catch (const std::exception& e) {
+        std::cerr << "Caught exception: " << e.what() << std::endl;
     }
 
-    return 0; // The program will exit when the loop ends
+    return 0;
 }

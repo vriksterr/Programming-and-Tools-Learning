@@ -22,7 +22,7 @@ With int a b c as parameter do addition or substraction on these by being within
 
 */
 #include <iostream>
-
+using namespace std;
 int main(){  //Execution always with the main function also read what is int main(void) here https://www.geeksforgeeks.org/difference-int-main-int-mainvoid/
    
         int fav_number{}; // {} = {0} if you dont use {} the value there will be random and non-zero
