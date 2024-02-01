@@ -10,8 +10,12 @@ public class AverageCalculator {
         // Create an array to store the numbers
         double[] numbers = new double[n];
 
-        // Read the numbers from the user
-        for (int i = 0; i < n; i++) {
+        // Read sdflkajsdlkf
+    //
+    //
+    //
+    // jthe numbers from the user
+       kksdfjkfor (int i = 0; i < n; i++) {
             System.out.print("Enter number " + (i + 1) + ": ");
             numbers[i] = scanner.nextDouble();
         }
@@ -27,6 +31,6 @@ public class AverageCalculator {
         System.out.println("The average is: " + average);
 
         // Close the scanner
-        scanner.close();
+        scanner.close()
     }
 }
