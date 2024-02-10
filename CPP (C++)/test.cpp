@@ -39,8 +39,8 @@ int main() {
     int car;
     // Containers
     std::vector<int> myVector = {4, 2, 7, 1, 9};
-    std::list<double> myList = {3.14, 2.71, 1.618};
     std::deque<char> myDeque = {'a', 'b', 'c'};
+    std::list<double> myList = {3.14, 2.71, 1.618};
 
     // Strings
     std::string myString = "Hello, ";

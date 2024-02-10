@@ -65,15 +65,15 @@
         "minimap.background": "#1c1a1a",        //entire code tree map color
 
         "editorGroupHeader.tabsBorder": "#574325",      //tabs border
-        "tab.activeBackground": "#252221",
+        "tab.activeBackground": "#4f4f4d",
 		"tab.activeForeground": "#cccac2",
 		"tab.border": "#252221",
-        "tab.inactiveBackground": "#ff0000",
+        "tab.inactiveBackground": "#252221",
 		"tab.inactiveForeground": "#707a8c",
 
         "editor.background": "#252221",     //place where we are writing text
 		"editor.foreground": "#cccac2",
-        "editor.lineHighlightBackground": "#474746",
+        "editor.lineHighlightBackground": "#2e2e2d",
         
         "panel.background": "#252221",      //terminal menu border
 		"panel.border": "#171b24",
@@ -83,29 +83,31 @@
 		"statusBar.border": "#252221",
         "statusBar.debuggingForeground": "#242936",     //color of text when debugging
 
-        "titleBar.activeBackground": "#252221", //top status bar color
+        "titleBar.activeBackground": "#735a01", //top status bar color
 		"titleBar.activeForeground": "#cccac2",
 		"titleBar.inactiveBackground": "#252221",
 		"titleBar.inactiveForeground": "#707a8c",
 		"titleBar.border": "#252221",
 
+
+        //didnot set this up
         "welcomePage.tileBackground": "#ff0000",
 		"welcomePage.tileShadow": "#12151cb3",
 		"welcomePage.progress.background": "#1a1f29",
 		"welcomePage.buttonBackground": "#ffcc6666",
 
-        "terminal.background": "#252221",
+        "terminal.background": "#1c1a1a",
 		"terminal.foreground": "#cccac2",
 
-        "dropdown.background": "#242936",
-        "input.background": "#ff0000",      //color of the input box
+        "dropdown.background": "#292929",
+        "input.background": "#1c1a1a",      //color of the input box
 
-        "editorSuggestWidget.background": "#1c212b",
-		"editorSuggestWidget.border": "#171b24",
+        "editorSuggestWidget.background": "#1f1f1e",
+		"editorSuggestWidget.border": "#5c4f20",
 		"editorSuggestWidget.highlightForeground": "#ffcc66",
-		"editorSuggestWidget.selectedBackground": "#63759926",
+		"editorSuggestWidget.selectedBackground": "#2e2e2d",
 
-        "editorWidget.background": "#1c212b",   //mircosoft suggestions 
-		"editorWidget.border": "#171b24",
+        "editorWidget.background": "#292929",   //mircosoft suggestions 
+		"editorWidget.border": "#5c4f20",
     }
 }
