@@ -2,23 +2,23 @@
     *****************
     * Basics of C++ *
     *****************
-Typing basic commands to take input and show output of the taken input of the program 
-HERE IS THE LINK OF C++ Keywords: https://en.cppreference.com/w/cpp/keyword
+    Typing basic commands to take input and show output of the taken input of the program 
+    HERE IS THE LINK OF C++ Keywords: https://en.cppreference.com/w/cpp/keyword
 
-In C++ programs are read by COMPILERS from top to bottom in a series while compiling and look here fow which Compiler is supporting a feature
-based on the c++ version you are using: https://en.cppreference.com/w/cpp/compiler_support
+    In C++ programs are read by COMPILERS from top to bottom in a series while compiling and look here fow which Compiler is supporting a feature
+    based on the c++ version you are using: https://en.cppreference.com/w/cpp/compiler_support
 
 
-int age {21}; is c++11 list initialization syntax
-float
-double
-string
+    int age {21}; is c++11 list initialization syntax
+    float
+    double
+    string
 
-- {} curly brackets holds value,data,instruction/defination  it also helps in seeing narrowing when you pass a value/data that is not same as variable 
-  so it gets converterted to the type that the variable is.
-- () paranthesis holds parameters meaning what values a function will need like (int a) for its instruction to execute
-Parameter means for eg
-With int a b c as parameter do addition or substraction on these by being within this a b c cant get d which is not in parameter
+    - {} curly brackets holds value,data,instruction/defination  it also helps in seeing narrowing when you pass a value/data that is not same as variable 
+      so it gets converterted to the type that the variable is.
+    - () paranthesis holds parameters meaning what values a function will need like (int a) for its instruction to execute
+    Parameter means for eg
+    With int a b c as parameter do addition or substraction on these by being within this a b c cant get d which is not in parameter
 
      __________________
     | Librarys of C++ |
@@ -36,14 +36,37 @@ With int a b c as parameter do addition or substraction on these by being within
     was required to make that box same way in <algorithm> where we type what calculations to perform without writing 
     the algorithm ourselfs.
 
+     ___________
+    | Comments |
+    |__________|
+    In C++ you can have single line comment with // and have multiline comment like we 
+    are in one right now but you cannot do nesting of comment meaning your cannot have
+    1 multiline comment inside another multiline one tho its not the case for single 
+    line but either way dont do comment nesting as its meaningless.
+
+     _________
+    | Errors |
+    |________|
+    In C++ we can have 
+    1.Compile time errors: Errors which gets spotted at the time of compiling this 
+                           are the bugs that the compiler catches can be anything from
+                           syntax errors, variable naming and more. 
+    2.Runtime Errors: These errors are spotted during the execution of the program and 
+                      mostly consists of missing/wrong logic in some cases the programe
+                      will continue to run normally with wrong output but in same cases
+                      like a number divided by 0 the programe is going to crash.
+    3.Warnings: These are the warnings the compiler tells you so you can fix you program
+                tho these warnings dont mean your code wont compile some examples can
+                be unused variable, things which can be out of limit/scope, exceding
+                the limit of a variable/logic(divide by 0) etc.
 
 */
-#include <iostream>
-using namespace std;
+#include <iostream>   //Library
+using namespace std;  //namespace
 int main(){  //Execution always with the main function also read what is int main(void) here https://www.geeksforgeeks.org/difference-int-main-int-mainvoid/
    
         int fav_number{}; // {} = {0} if you dont use {} the value there will be random and non-zero
-        std::cout<<"Welcome to our program!"<<std::endl;
+        std::cout<<"Welcome to our program!"<<std::endl;  // endl ends the line and starts printing from a new one same is for \n that is used i C
         std::cout<<"We are playing a game today! Can you please tell me your Fav number : ";
         std::cin>>fav_number;
         std::cout<<"WOW "<<fav_number<<" is my fav number too !"<<std::endl;
