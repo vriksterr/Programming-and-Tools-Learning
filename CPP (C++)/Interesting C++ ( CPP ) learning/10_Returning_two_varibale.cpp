@@ -36,6 +36,8 @@
 
         https://twitter.com/supahvee1234/status/1761824431821713710
         https://x.com/CustomWetware/status/1762008769662198112?s=20
+        https://twitter.com/lemire/status/1761841181242147172
+        https://x.com/nomad421/status/1761902176773791960?s=20
 */
 
 #include <iostream>
