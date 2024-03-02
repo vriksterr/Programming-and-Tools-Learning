@@ -19,15 +19,16 @@
 
 */
 #include <iostream>
-using namespace std;
+#include <utility> // for std::pair
 
-long long get(){
-  return 100l, 150l;
+int func() {
+    int a = 5, b = 10;
+    return b=11, b; // Returns b
 }
 
-int main(){
-  long long a=get(),b = get();
-  printf("%ld\n",b);
-  printf("%ld\n",a);
+int main() {
+    // Call the function
+    std::cout<<func();
 
+    return 0;
 }

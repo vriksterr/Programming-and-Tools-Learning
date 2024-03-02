@@ -44,11 +44,11 @@
 using namespace std;
 
 long long get(){
-  return 100l, 150l;
+  return 100l, 150l;  //In C++, when you use the comma operator , it evaluates the expressions on both sides of it and returns the result of the rightmost expression. This means that the result of the entire expression return 100l, 150l; is 150l, because it's the rightmost expression.
 }
 
 int main(){
-  long long a,b = get();
+  long long a,b = get();  //here a is diclared but its not initialized to initialize a=get(),b=get(); 
   printf("%ld\n",b);
   printf("%ld\n",a);
 
