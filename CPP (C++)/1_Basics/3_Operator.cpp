@@ -14,6 +14,7 @@
     2. Unary / Increment & Decrement Opertor Operators:
     - `++` (Increment)
     - `--` (Decrement)
+    - `++` and `--` can also be used with pointers to increment or decrement memory addresses.
 
     3. Relational Operators:
     - `==` (Equal to)
@@ -72,9 +73,7 @@
     12. Pointer Operators:
         - `*` (Dereference operator, used to access the value pointed to by a pointer)
         - `&` (Address-of operator, used to get the address of a variable)
-
-    13. Increment and Decrement Operators (for Pointers):
-        - `++` and `--` can also be used with pointers to increment or decrement memory addresses.
+        
 
     These are the fundamental operators in C++. Each operator has a specific purpose and syntax, and they are used to perform various operations on variables and data in C++ programs.
     _______________________________________________________________
@@ -188,6 +187,18 @@ int main ()
     result=++counter + counter++ ; // ++ after counter means the value will be put intu result first and after that it will be increased by 1 for further use
     std::cout<<"Counter6: "<<counter<<std::endl;
     std::cout<<"Result6: "<<result<<std::endl<<std::endl;
+
+    //Example 7 - Pointer Example
+    int arr1[] = {1, 2, 3, 4, 5};
+    int *ptr1 = arr1; // pointer points to the first element of arr
+    ptr1++; // now ptr points to the second element of arr which is 2
+
+    //Example 7.1 - Pointer Decrement
+    int arr2[] = {1, 2, 3, 4, 5};
+    int *ptr2 = &arr2[3]; // pointer points to the fourth element of arr which is 4
+    ptr2--; // now ptr points to the third element of arr which is 3
+
+
 
     //____________________________________________
     //      Relational/Comparision Operators
