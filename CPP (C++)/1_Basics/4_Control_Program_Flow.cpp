@@ -56,7 +56,18 @@ int main()
 /* The difference between if if and if else statement is that in the if else, only one of the two statements can be executed 
    while in the if if case it is possible for both of them to be executed. In below example, it does not matter since the two 
    conditions are mutually exclusive, but it may become important if it is possible for both conditions to be true. In that case, 
-   “if else if” would only execute the first “if” statement and “if if” would execute them both in sequence.*/
+   “if else if” would only execute the first “if” statement and “if if” would execute them both in sequence.
+    
+   Also in if statement the value inside bracket is evaluated to either be 0=false and 1(or any non zero number)=true
+   so if we do this:
+   int a = 0;
+   int b = 5;
+   if (a = b) {
+        std::cout<<"it works";
+    }
+   the result of a = b where a is now 5 which is a non zero number so if statement is true and "it works" gets printed.
+
+*/
 
     int num {};
     const int min {10};

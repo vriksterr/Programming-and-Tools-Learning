@@ -1,4 +1,6 @@
-/*
+/*  
+    This have be understood previously in 3_Operator.cpp in Basics below Comma Operator.
+
     In C++, the comma operator `,` is used to separate expressions. In the `get()` function, the expression `100l, 150l` uses the comma operator. However, only the value `150l` will be returned because the comma operator evaluates each expression from left to right and returns the value of the last expression.
 
     So effectively, `get()` returns `150l`.

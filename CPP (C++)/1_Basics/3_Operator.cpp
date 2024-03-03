@@ -11,7 +11,11 @@
     - `/` (Division)
     - `%` (Modulus)
 
-    2. Relational Operators:
+    2. Unary / Increment & Decrement Opertor Operators:
+    - `++` (Increment)
+    - `--` (Decrement)
+
+    3. Relational Operators:
     - `==` (Equal to)
     - `!=` (Not equal to)
     - `<` (Less than)
@@ -20,35 +24,31 @@
     - `>=` (Greater than or equal to)
     - `<=>` (3 Way Compirision)
 
-    3. Logical Operators:
+    4. Logical Operators:
     - `&&` (Logical AND)
     - `||` (Logical OR)
     - `!` (Logical NOT)
 
-    4. Assignment Operators:
-    - `=` (Assignment)
-    - `+=` (Addition assignment)
-    - `-=` (Subtraction assignment)
-    - `*=` (Multiplication assignment)
-    - `/=` (Division assignment)
-    - `%=` (Modulus assignment)
-    - `=` (Bitwise OR assignment)
-    - `&=` (Bitwise AND assignment)
-    - `^=` (Bitwise XOR assignment)
-    - `<<=` (Left shift assignment)
-    - `>>=` (Right shift assignment)
-
-    5. Increment and Decrement Operators:
-    - `++` (Increment)
-    - `--` (Decrement)
-
-    6. Bitwise Operators:
+    5. Bitwise Operators:
     - `&` (Bitwise AND)
     - `|` (Bitwise OR)
     - `^` (Bitwise XOR)
     - `~` (Bitwise NOT)
     - `<<` (Left shift)
     - `>>` (Right shift)
+
+    6. Assignment Operators:
+    - `=` (Assignment)
+    - `+=` (Addition assignment)
+    - `-=` (Subtraction assignment)
+    - `*=` (Multiplication assignment)
+    - `/=` (Division assignment)
+    - `%=` (Modulus assignment)
+    - `&=` (Bitwise AND assignment)
+    - `|=` (Bitwise OR assignment)
+    - `^=` (Bitwise XOR assignment)
+    - `<<=` (Bitwise Left shift assignment)
+    - `>>=` (Bitwise Right shift assignment)
 
     7. Conditional (Ternary) Operator:
     - `? :` (Conditional operator)
@@ -93,24 +93,10 @@ Source
 
 */
 #include<iostream>
+using namespace std;
 
 int main ()
 {   //____________________________________________
-    //          Assignment Operator
-    //____________________________________________
-    int a{5},b{6};
-    
-    a = b;  // value of right is put into left basically the value assignment goes from right to left and not the other way around
-
-    std::cout<<"Value of a is: "<<a<<std::endl;
-
-    const int c{7};
-
-    //c = a; // this will throw an error coz c is constant integer and is read only
-
-    //100 = a; // this will also not work as 100 is a literal (value) 100 dosent have a location in memory like a,b,c dose
-    
-    //____________________________________________
     //          Arthmetic Operator
     //____________________________________________
 
@@ -122,7 +108,7 @@ int main ()
     std::cout<<"The result of multiplication of 2 values are: "<<answer<<std::endl;
 
     //_____________________________________________
-    //              Unary Opertor
+    //    Unary / Increment & Decrement Opertor
     //_____________________________________________
 
     /* Increment operator ++
@@ -392,44 +378,192 @@ int main ()
 
     within_bounds = (num7 > lower1 && num7 < upper1);
     std::cout<<num7<<" is between "<<lower1<<" and "<<upper1<<" : "<<within_bounds<<std::endl;
+        
+    //____________________________________________
+    //            Bitwise Operator
+    //____________________________________________
+
+    int a = 5;  // binary: 0101
+    int b = 3;  // binary: 0011
+
+    // Bitwise AND
+    cout << (a & b) << endl;  // Output: 1 (binary: 0001)
+
+    // Bitwise OR
+    cout << (a | b) << endl;  // Output: 7 (binary: 0111)
+
+    // Bitwise XOR
+    cout << (a ^ b) << endl;  // Output: 6 (binary: 0110)
+
+    // Bitwise NOT
+    cout << (~a) << endl;     // Output: -6 (binary: 11111010 in two's complement)
+
+    // Left Shift
+    cout << (a << 1) << endl; // Output: 10 (binary: 1010)
+
+    // Right Shift
+    cout << (a >> 1) << endl; // Output: 2 (binary: 0010)
 
 
+    //____________________________________________
+    //          Assignment Operator
+    //____________________________________________
+   
+    /*Take Note:
+        int a = 10;
+        const int c{7};
+        c = a; // this will throw an error coz c is constant integer and is read only
+        100 = a; // this will also not work as 100 is a literal (value) 100 dosent have a location in memory like a,b,c dose
 
-    //_______________________________________________________
-    //       Compound Assignment & Bitwise Operator
-    //_______________________________________________________
 
-    /*  In the Operator section is the Compound Assignment
-        In the Meaning section Bitwise Operator is showcased
-        _____________________________________________________________
-       |     operator   |       Example      |        Meaning        |
-       |________________|____________________|_______________________|
-       |       +=       |     lhs += rhs;    |  lhs = lhs + (rhs);   |
-       |       -=       |     lhs -= rhs;    |  lhs = lhs - (rhs);   |
-       |       *=       |     lhs *= rhs;    |  lhs = lhs * (rhs);   |
-       |       /=       |     lhs /= rhs;    |  lhs = lhs / (rhs);   |
-       |       &=       |     lhs &= rhs;    |  lhs = lhs & (rhs);   |
-       |       >>=      |     lhs >>= rhs;   |  lhs = lhs >> (rhs);  |
-       |       <<=      |     lhs <<= rhs;   |  lhs = lhs << (rhs);  |
-       |       &=       |     lhs &= rhs;    |  lhs = lhs & (rhs);   |
-       |       ^=       |     lhs ^= rhs;    |  lhs = lhs ^ (rhs);   |
-       |       |=       |     lhs |= rhs;    |  lhs = lhs | (rhs);   |
-       |       ~=       |     lhs ~= rhs;    |  lhs = lhs ~ (rhs);   |
-       |________________|____________________|_______________________|
-
-       Example
-
-       a += 1;   // a = a+1;
-       a *= b+c; // a = a * (b + c);
-
-       Source:
+      Source:
                 https://www.ibm.com/docs/en/i/7.2?topic=operators-compound-assignment
                 https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/
                 https://www.programiz.com/cpp-programming/operators#bitwise
                 https://www.youtube.com/watch?v=cy2JF6iFv8k
                 https://stackoverflow.com/questions/4854248/why-are-bitwise-shifts-and-used-for-cout-and-cin
     */
+    
+    // = (assignment)
+    int num = 10;
+    cout << "After =: " << num << endl;
 
+    // += (Addition assignment)
+    num += 5;
+    cout << "After +=: " << num << endl;
+
+    // -= (Subtraction assignment)
+    num -= 3;
+    cout << "After -=: " << num << endl;
+
+    // *= (Multiplication assignment)
+    num *= 2;
+    cout << "After *=: " << num << endl;
+
+    // /= (Division assignment)
+    num /= 4;
+    cout << "After /=: " << num << endl;
+
+    // %= (Modulus assignment)
+    num %= 3;
+    cout << "After %=: " << num << endl;
+
+    // &= (Bitwise AND assignment)
+    num &= 3;
+    cout << "After &=: " << num << endl;
+
+    // |= (Bitwise OR assignment)
+    num |= 5;
+    cout << "After |=: " << num << endl;
+
+    // ^= (Bitwise XOR assignment)
+    num ^= 6;
+    cout << "After ^=: " << num << endl;
+
+    // <<= (Bitwise Left shift assignment)
+    num <<= 2;
+    cout << "After <<=: " << num << endl;
+
+    // >>= (Bitwise Right shift assignment)
+    num >>= 1;
+    cout << "After >>=: " << num << endl;
+
+    //____________________________________________
+    //       Conditional (Ternary) Operator
+    //____________________________________________
+    /*  
+        !Example 1
+        int number = 10;
+        string result = (number % 2 == 0) ? "Even" : "Odd";
+        
+        cout << "The number is " << result << endl;
+
+        !Example 2
+        int score = 75;
+        string grade = (score >= 90) ? "A" : (score >= 80) ? "B" : (score >= 70) ? "C" : "F";
+            
+        cout << "Your grade is: " << grade << endl;
+    */
+
+    //____________________________________________
+    //              Comma Operator
+    //____________________________________________
+    /*  
+        1. Multiple Declarations/Initialization: It can be used to declare or initialize multiple variables in a single statement.
+        !Example
+        int a = 5, b = 10, c = 15;
+
+        2. For Loop: It's often used in the initialization, condition, and update parts of a for loop.
+        !Example
+        for (int i = 0, j = 10; i < j; ++i, --j) {
+            // Loop body
+        }
+
+        3. Function Arguments: It can be used to separate arguments in a function call.
+        !Example
+        func(arg1, arg2, arg3);
+
+        4. Expression Evaluation: It's useful when multiple expressions need to be evaluated, and only the result of the last one is needed.
+        !Example
+        int result = (a++, b++, a + b); // Increments a and b, returns the sum of a and b
+
+        5. Chaining Member Access: It's used to chain multiple member access operations.
+        !Example
+        struct Foo {
+            int x;
+            int y;
+        };
+
+        Foo foo = {5, 10};
+        int sum = (foo.x, foo.y); // Accesses foo.x, then foo.y
+
+        6. Returning Multiple Values (less common): While not recommended due to potential confusion, it can be used to return multiple values from a function. However, only the value of the rightmost expression is returned.
+        !Example 1 - Where a & b both are evaluated in a sequences(left to right evaluation) and the right most expression is returned.
+        int func() {
+            int a = 5, b = 10;
+            return a, b;
+        }
+
+        !Example 2 - Now similar as above but as first expression in result is setting the value of b to be 11 and in the second expression which is just b and is also the right most expression and that is returned so the output of b now is 11.
+        int func() {
+            int a = 5, b = 10;
+            return b=11, b; // Returns b where value of b is 11
+        }
+
+        !Example 3 - Where we are calculating something os it also gets processed. We can use many expression with the use of comma and all will be evaluated but only the right most one will be returned and all the previsous expression can alter the result as you can see.
+        int func() {
+            int a = 5, b = 10;
+            return b=a+b+5, a=b+10, b; // Returns b where value of b is 20
+        }
+
+        !Example 4 - When we assign func() to result object the Pair fucntion returns object that object dosent have specific name within the scope of function its just a temporary object created on the fly which holds value of a and b.
+        class Pair {
+            public:
+                int first;
+                int second;
+        };
+
+        //here function returns an temporary no name object of type Pair which is a class.
+        Pair func() {
+            int a = 5, b = 10;
+            return {a, b};
+        }
+
+        //above function can also be written as this to understand better that a nameless object is created on the fly by compiler within the function scope. this is to understand it bettr whats happening.
+        //But here we are returning a named object.
+        Pair func()2 {
+            int a = 5, b = 10;
+            Pair myPair = {a, b};
+            return myPair;
+        }
+
+        int main() {
+            Pair result = func();
+            std::cout << "First value: " << result.first << std::endl;
+            std::cout << "Second value: " << result.second << std::endl;
+            return 0;
+        }
+    */
 
     //____________________________________________
     //          Member access operators           
@@ -466,23 +600,6 @@ int main ()
     Source:
             https://en.cppreference.com/w/cpp/language/operator_member_access
     */   
-
-    //____________________________________________
-    //       Conditional (Ternary) Operator
-    //____________________________________________
-    /*  
-        !Example 1
-        int number = 10;
-        string result = (number % 2 == 0) ? "Even" : "Odd";
-        
-        cout << "The number is " << result << endl;
-
-        !Example 2
-        int score = 75;
-        string grade = (score >= 90) ? "A" : (score >= 80) ? "B" : (score >= 70) ? "C" : "F";
-            
-        cout << "Your grade is: " << grade << endl;
-    */
 
     //____________________________________________
     //          Other C++ Operators          
