@@ -61,34 +61,76 @@
     - `.` (Dot operator, used to access class or structure members)
     - `->` (Arrow operator, used to access class or structure members through pointers)
 
-    10. Sizeof Operator:
+    10. Scope Resolution Operator
+    - `::`
+
+    11. Pointer/Address Operators:
+    - `*` (Dereference operator, used to access the value pointed to by a pointer)
+    - `&` (Address-of operator, used to get the address of a variable)
+
+
+    In C++, sizeof() and others below are not a function, but an operator. It returns the size in bytes of its operand. This operator 
+    doesn't have a "definition" in the traditional sense, as it's part of the language itself rather than being implemented 
+    as a function. The size of a type or expression is determined by the compiler based on the platform and the type of the operand.
+
+    However, if you're curious about how sizeof() works internally, it's typically implemented by the compiler, which determines 
+    the size of types during compilation based on the target architecture and data model. The compiler knows the size of 
+    each data type and computes it during compilation. This information is then used to replace sizeof() expressions with 
+    the appropriate size values in the generated machine code.
+
+    12. Sizeof Operator:
         - `sizeof` (Used to determine the size in bytes of an expression or data type)
 
-    11. Type Cast Operators:
+    13. Type Cast Operators:
         - `static_cast<T>(expression)` (Static cast)
         - `dynamic_cast<T>(expression)` (Dynamic cast)
         - `const_cast<T>(expression)` (Const cast)
         - `reinterpret_cast<T>(expression)` (Reinterpret cast)
 
-    12. Pointer Operators:
-        - `*` (Dereference operator, used to access the value pointed to by a pointer)
-        - `&` (Address-of operator, used to get the address of a variable)
+    14. Memory Allocate/Deallocate Operator
+        - `new` - used to Allocate memory in C++
+        - `delete` - used to Deallocate memory in C++
+        on the other hand malloc is a function which is from C its not a operator
+        
         
 
-    These are the fundamental operators in C++. Each operator has a specific purpose and syntax, and they are used to perform various operations on variables and data in C++ programs.
+    These are all the fundamental operators in C++. Each operator has a specific purpose and syntax, and they are used to perform various operations on variables and data in C++ programs.
     _______________________________________________________________
 
 
 ->Operator Precedence
 
-    Higher to lower watch the video in c++ for all the mathematical and other operators that are going to be executed first 
-    
+    Operator precedence in C++ determines the order in which operators are evaluated in an expression. Operators with higher precedence are 
+    evaluated before operators with lower precedence. Here's a summary of the operator precedence in C++ from highest to lowest:
+
+    1. Scope resolution operator (::)
+    2. Postfix increment/decrement (++, --)
+    3. Function call ()
+    4. Array subscripting []
+    5. Member selection through pointer (->)
+    6. Member selection (.)
+    7. Type cast (e.g., static_cast<>, dynamic_cast<>, etc.)
+    8. Multiplication, division, and modulus (*, /, %)
+    9. Addition and subtraction (+, -)
+    10. Bitwise left and right shift (<<, >>)
+    11. Relational operators (<, <=, >, >=)
+    12. Equality operators (==, !=)
+    13. Bitwise AND (&)
+    14. Bitwise XOR (^)
+    15. Bitwise OR (|)
+    16. Logical AND (&&)
+    17. Logical OR (||)
+    18. Conditional ternary operator (?:)
+    19. Assignment operators (=, +=, -=, *=, /=, %=, &=, |=, ^=, <<=, >>=)
+    20. Comma operator (,)
+
+    Remember, parentheses can be used to explicitly specify the order of evaluation, overriding the default precedence.
     Source
         https://en.cppreference.com/w/cpp/language/operator_precedence
 
-Source
-    https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/
-    https://www.programiz.com/cpp-programming/operators
+    Source
+        https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/
+        https://www.programiz.com/cpp-programming/operators
 
 */
 #include<iostream>
@@ -197,8 +239,6 @@ int main ()
     int arr2[] = {1, 2, 3, 4, 5};
     int *ptr2 = &arr2[3]; // pointer points to the fourth element of arr which is 4
     ptr2--; // now ptr points to the third element of arr which is 3
-
-
 
     //____________________________________________
     //      Relational/Comparision Operators
@@ -580,75 +620,56 @@ int main ()
     //          Member access operators           
     //____________________________________________
     /*
+        - `.` (Dot operator, used to access class or structure members)
+        - `->` (Arrow operator, used to access class or structure members through pointers)
 
-         ___________________________________________________________________________________________________________________________
-        |                   |                   |              |                   Prototype examples (for class T)                 |
-        |   Operator Name   |      Synatax      | Overloadable |____________________________________________________________________|
-        |                   |                   |              |      Inside class definition      |    Outside class definition    |
-        |___________________|___________________|______________|___________________________________|________________________________|
-        |                   |       a[b]        |              |      R& T::operator[](S b);       |                                |
-        |     subscript     |a[...](since C++23)|     YES      |R& T::operator[](...);(since C++23)|             N/A                |
-        |___________________|___________________|______________|___________________________________|________________________________|
-        |                   |                   |              |                                   |                                |
-        |    indirection    |       *a          |     YES      |        R& T::operator*();         |        R& operator*(T a);      |
-        |___________________|___________________|______________|___________________________________|________________________________|
-        |                   |                   |              |                                   |                                |
-        |    address-of     |       &a          |     YES      |        R* T::operator&();         |        R* operator&(T a);      |
-        |___________________|___________________|______________|___________________________________|________________________________|
-        |                   |                   |              |                                   |                                |
-        |  member of object |       a.b         |     NO       |                N/A                |              N/A               |
-        |___________________|___________________|______________|___________________________________|________________________________|
-        |                   |                   |              |                                   |                                |
-        | member of pointer |       a->b        |     YES      |        R* T::operator->();        |              N/A               |
-        |___________________|___________________|______________|___________________________________|________________________________|
-        |    Pointer to     |                   |              |                                   |                                |
-        |  member of object |       a.*b        |     NO       |                N/A                |              N/A               |
-        |___________________|___________________|______________|___________________________________|________________________________|
-        |    Pointer to     |                   |              |                                   |                                |
-        | member of pointer |       a->*b       |     YES      |        R& T::operator->*(S b);    |     R& operator->*(T a, S b);  |
-        |___________________|___________________|______________|___________________________________|________________________________|
-    
-    Source:
-            https://en.cppreference.com/w/cpp/language/operator_member_access
-    */   
-
-    //____________________________________________
-    //          Other C++ Operators          
-    //____________________________________________
-    /*
-        Here's a list of some other common operators available in C++. We will learn about them in later tutorials.
-
-         ___________________________________________________________________________________________________________________________________
-        |               |                                                            |                                                      |
-        |   Operator    |                      Description                           |                      Example                         |
-        |_______________|____________________________________________________________|______________________________________________________|
-        |               |                                                            |                                                      |
-        |   sizeof      | returns the size of data type                              |  sizeof(int);  //4                                   |
-        |_______________|____________________________________________________________|______________________________________________________|
-        |               |                                                            |                                                      |
-        |      ?:       | returns value based on the condition                       |  string result = (5 > 0) ? "even" : "odd"; //"even"  |
-        |_______________|____________________________________________________________|______________________________________________________|
-        |               |                                                            |                                                      |
-        |      &        | represents memory address of the operand                   |  &num; //address of num                              |
-        |_______________|____________________________________________________________|______________________________________________________|
-        |               |                                                            |                                                      |
-        |      .        | accesses member of struct variables or class objects       |  s1.marks = 92;                                      |
-        |_______________|____________________________________________________________|______________________________________________________|
-        |               |                                                            |                                                      |
-        |      ->       | used with pointers to access the class or struct variable  |  ptr->marks = 92;                                    |
-        |_______________|____________________________________________________________|______________________________________________________|
-        |               |                                                            |                                                      |
-        |      <<       | prints the output value                                    |  cout << 5;                                          |
-        |_______________|____________________________________________________________|______________________________________________________|
-        |               |                                                            |                                                      |
-        |      >>       | gets the input value                                       |  cin >> num;                                         |
-        |_______________|____________________________________________________________|______________________________________________________|
-
-
-        https://www.youtube.com/watch?v=CML5RwadKMo&pp=ygUTaSBuZWVkIG1vcmUgYnVsbGV0cw%3D%3D <- watch this and add more explanation
-    
     */
 
-
+    //____________________________________________
+    //          Scope Resolution Operators           
+    //____________________________________________
     
+    /* Check 3.2_Scope_Resolution_Operator.cpp for more detail*/
+    
+    //____________________________________________
+    //          Pointer/Address Operators           
+    //____________________________________________
+
+    int num8 = 5; // Declare an integer variable
+    int *ptr;    // Declare a pointer to an integer
+    ptr = &num8;  // Assign the address of 'num' to the pointer 'ptr'
+
+
+    //____________________________________________
+    //          sizeof/type cast Operators           
+    //____________________________________________
+
+    int num9 = 10;
+    double dbl = 5.5;
+    char ch = 'A';
+
+    // Sizeof Operator
+    std::cout << "Size of int: " << sizeof(int) << " bytes" << std::endl;
+    std::cout << "Size of double: " << sizeof(double) << " bytes" << std::endl;
+    std::cout << "Size of char: " << sizeof(char) << " byte" << std::endl;
+    std::cout << "Size of num: " << sizeof(num9) << " bytes" << std::endl;
+    std::cout << "Size of dbl: " << sizeof(dbl) << " bytes" << std::endl;
+    std::cout << "Size of ch: " << sizeof(ch) << " byte" << std::endl;
+
+    // Type Cast Operators
+    double result1 = static_cast<double>(num9); // Static Cast
+    int result2 = static_cast<int>(dbl); // Static Cast
+    int* ptr3 = reinterpret_cast<int*>(&num); // Reinterpret Cast
+
+    std::cout << "Static Cast - int to double: " << result1 << std::endl;
+    std::cout << "Static Cast - double to int: " << result2 << std::endl;
+    std::cout << "Reinterpret Cast - Address of num: " << ptr3 << std::endl;
+
+    //____________________________________________
+    //    Memory Allocate/Deallocate Operator          
+    //____________________________________________
+    int *ptr4 = new int; // Allocate memory for an integer
+    cout<< &ptr4;        // Tells the memory address of an object
+    delete ptr4;        // Deallocate memory pointed to by ptr   
+
 }

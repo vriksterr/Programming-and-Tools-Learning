@@ -54,22 +54,27 @@
     |__________________________________|
 
     • In C++, almost all operators can be overloaded, including:
-       1. Arithmetic operators: +, -, *, /, %, ++, --
-       2. Relational operators: <, >, <=, >=, ==, !=
-       3. Logical operators: !, &&, ||
-       4. Bitwise operators: &, |, ^, ~, <<, >>
-       5. Assignment operators: =, +=, -=, *=, /=, %=, <<=, >>=, &=, ^=, |=
-       6. Member selection operators: . and ->
-       7. Function call operator: ()
-       8. Subscript operator: []
-       9. Type conversion operator: cast operator
+        1. Arithmetic operators: +, -, *, /, %, ++, --
+        2. Relational operators: <, >, <=, >=, ==, !=
+        3. Logical operators: !, &&, ||
+        4. Bitwise operators: &, |, ^, ~, <<, >>
+        5. Assignment operators: =, +=, -=, *=, /=, %=, <<=, >>=, &=, ^=, |=
+        6. Function call operator: ()
+        7. Subscript operator: []
+        8. Type conversion operator: cast operator
+        9. Type Cast Operators: `static_cast<T>(expression)` (Static cast)
 
     • The following operators cannot be overloaded
-        ::      Scope resolution operator
-        :?      Conditional operator
-        .*      Pointer to Member operator
-        .       Dot operator
-        sizeof  sizeof operator
+        1. Member access operators: . and ->
+        2. Pointer to Member operator:    .*
+        3. Scope resolution operator:    ::      
+        4. Conditional operator:    :?
+        5. sizeof  sizeof operator
+        6. Type Case Operator:  - `dynamic_cast<T>(expression)` (Dynamic cast)
+                                - `const_cast<T>(expression)` (Const cast)
+                                - `reinterpret_cast<T>(expression)` (Reinterpret cast)
+        7. Memory Allocate/Deallocate Operator: - `new` - used to Allocate memory in C++
+                                                - `delete` - used to Deallocate memory in C++
 
      __________________
     | Some basic rules |
@@ -82,7 +87,8 @@
     • [], (), ->, and the assignment operator (=) must be declared as member methods
     • Other operators can be declared as member methods or global functions
 
-
+    Source:
+            https://en.cppreference.com/w/cpp/language/operator_member_access
 */
 // Reference for the below example: https://www.youtube.com/watch?v=BnMnozsSPmw
 //Operator Overloading
