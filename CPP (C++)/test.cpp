@@ -20,22 +20,17 @@
 */
 #include <iostream>
 
-void increment(int &x) {
-    // Increment the value of x by 1
-  int assumption;
-    x++;
+// Function template to find the maximum of two values
+template <typename T>
+T max(T a, T b) {
+    return (a > b) ? a : b;
 }
 
 int main() {
-    int number = 5;
-    int &car= number;
-    std::cout << "Original number: " << number << std::endl;
-
-    // Pass number by reference to the increment function
-    increment(number);
-
-    std::cout << "Incremented number: " << number << std::endl;
+    // Using the max function template with different data types
+    std::cout << "Max of 5 and 10 (int): " << max(5, 10) << std::endl;
+    std::cout << "Max of 3.5 and 2.7 (double): " << max(3.5, 2.7) << std::endl;
+    std::cout << "Max of 'hello' and 'world' (string): " << max("hello", "world") << std::endl;
 
     return 0;
 }
-

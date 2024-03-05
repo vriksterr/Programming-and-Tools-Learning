@@ -671,5 +671,4 @@ int main ()
     int *ptr4 = new int; // Allocate memory for an integer
     cout<< &ptr4;        // Tells the memory address of an object
     delete ptr4;        // Deallocate memory pointed to by ptr   
-
 }
