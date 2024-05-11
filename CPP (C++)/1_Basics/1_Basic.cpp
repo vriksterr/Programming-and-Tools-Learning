@@ -63,7 +63,7 @@
 */
 #include <iostream>   //Library
 using namespace std;  //namespace
-int main(){  //Execution always with the main function also read what is int main(void) here https://www.geeksforgeeks.org/difference-int-main-int-mainvoid/
+int main(){  //Execution always starts with the main function also read what is int main(void) here https://www.geeksforgeeks.org/difference-int-main-int-mainvoid/
    
         int fav_number{}; // {} = {0} if you dont use {} the value there will be random and non-zero
         std::cout<<"Welcome to our program!"<<std::endl;  // endl ends the line and starts printing from a new one same is for \n that is used i C

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Video Player</title>
+    <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
+</head>
+<body>
+    <div class="media-container">
+        <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="640" height="360" playsinline>
+            <source src="1923.mkv" type="video/mp4">
+            <!-- Fallback content -->
+            Your browser does not support the video tag or the video format.
+        </video>
+    </div>
+    <script>
+        var player = videojs('my-video');
+        // Additional customizations or fallbacks can be added here
+    </script>
+</body>
+</html>
