@@ -206,6 +206,8 @@
     Please Read:
     Source: https://www.youtube.com/watch?v=4fJBrditnJU
             https://www.youtube.com/watch?v=RC7uE_wl1Uc
+            https://www.youtube.com/watch?v=f3FVU-iwNuA     //static
+            https://www.youtube.com/watch?v=u8jw0LsQFFg     //static
             https://www.geeksforgeeks.org/difference-between-static-and-constant-function-in-cpp/
             https://www.geeksforgeeks.org/const-member-functions-c/
             https://stackoverflow.com/questions/28404538/what-is-the-difference-between-int-const-functionparameters-int-functioncons
