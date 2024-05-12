@@ -62,6 +62,7 @@
 
 */
 #include <iostream>   //Library
+#include <string>     //Library used for multiple characters
 using namespace std;  //namespace
 int main(){  //Execution always starts with the main function also read what is int main(void) here https://www.geeksforgeeks.org/difference-int-main-int-mainvoid/
    
@@ -70,6 +71,11 @@ int main(){  //Execution always starts with the main function also read what is 
         std::cout<<"We are playing a game today! Can you please tell me your Fav number : ";
         std::cin>>fav_number;
         std::cout<<"WOW "<<fav_number<<" is my fav number too !"<<std::endl;
+            
+        std::string full_name;
+        std::cout<<"Whats your name? : "<<endl;
+        std::getline(std::cin,full_name);   //getline is used to get the entire string in cmd line even if it includes spaces
+        std::cout<<"Welcome to the course "<<full_name<<" hope you enjoy and learn a lot.";
         return 0; /* What happens if you don’t use return 0; ?
                      return 0; is used in main funtion to check weather the program executed correctly or not, this info is used by operating system if the program 
                      finished perfectly or not if it dosent finish that means there is some issue in the program and os gets to know that the program didnt finish
