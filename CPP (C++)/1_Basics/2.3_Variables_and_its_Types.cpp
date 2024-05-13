@@ -42,6 +42,7 @@
         3rd_Test_Grade
         2myvar
         my-var
+        my+var
         my var
         ,myvar
         !myvar

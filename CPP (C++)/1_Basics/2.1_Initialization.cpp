@@ -14,10 +14,10 @@
     #include <iostream>
 
     int main(){
-    int myint(3.14);                              //compiler will allow and narrowing warning wont be shownthis this method is called Function variable initialization
+    int myint(3.14);                              //compiler will allow and narrowing error wont be shownthis this method is called Function variable initialization
     std::cout << "myint: " << myint << std::endl;
 
-    int myint1{3.14};                             //will throw warning for narrowing so this wont compile
+    int myint1{3.14};                             //will throw error for narrowing so this wont compile
     std::cout << "myint: " << myint1 << std::endl;
 
     }
