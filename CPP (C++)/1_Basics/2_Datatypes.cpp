@@ -2,6 +2,12 @@
     ********************
     * Datatypes in C++ *
     ********************
+         _____________
+        |   Padding  |
+        |____________|
+        Adding the missing binary is called padding.
+        In Binary if there is a number 1 in binary we add the missing digits and complete it as 0001, another example can be
+        11 and in this case we will pad it to 0011.
          ______________________________
         | Understanding Binary System |
         |_____________________________|
@@ -167,8 +173,8 @@
     1. **Fundamental Data Types:**
     - `int`: Represents integers.
     - `char`: Represents a single character.
-    - `float`: Represents single-precision floating-point numbers.
-    - `double`: Represents double-precision floating-point numbers.
+    - `float`: Represents single-precision floating-point numbers. Size: 4bytes Precision: 7. No long for float coz we have a double for that
+    - `double`: Represents double-precision floating-point numbers.Size: 8bytes Precision: 15. For Long double Size: 12 Precision: 15+
     - `bool`: Represents Boolean values (`true` or `false`).
     - `void`: Represents typeless meaning there is no type its just void.
     - `auto`: Represents auto detection what is the type of data and assign it accordingly.
@@ -262,7 +268,7 @@
         int integerNumber = 42;
         char character = 'A';
         float floatValue = 3.14159;
-        double doubleValue = 2.71828;
+        long double doubleValue = 2.71828;
         bool isTrue = true;
 
         cout << "Integer: " << integerNumber << endl;

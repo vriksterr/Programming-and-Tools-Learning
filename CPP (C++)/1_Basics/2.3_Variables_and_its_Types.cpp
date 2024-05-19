@@ -25,7 +25,7 @@
     - Reserved words (like C++ keywords, such as int) cannot be used as names
 
     acceptable variable names:
-        Grade 
+        Grade or grade  //both of these are going to 2 different variables coz one has G and another has g so even tho they are the same word for C++ they are 2 different variable coz of this change
         GradeOnTest
         Grade_On_Test
         _my_var
@@ -79,52 +79,42 @@ int main()
 
         int my_room_area{6969};     // Overshadows the Global Variable if written locally
         std::cout<<"But my Room Area is :"<<my_room_area<<std::endl;
+        
+        //signed (only applies to integers dont work for other data types)
+        signed int value0{-20000000};   //this can store a range from negative to positive numbers.
 
-        //unsigned short int
+        //unsigned (only applies to integers dont work for other data types)
+        unsigned int value{123456789123456789123456789};    //unsigned can only story +ve values and signed can store a range of negative and positive value for unsigned as you dont have to store negative values you can now store double the positive values compared to signed values
         unsigned short int exam_score{55};
-        //long
+        
+        //long (only applies to integers dont work for other data types)
         long people_in_florida{20610000};
         long people_on_earth{7'600'000'000};
         long people_on_earth_C_Style = 7'600'000'000; // this is old C style and will give buffer overflow when you run it so ditch this and use new C++ style where we use {}
-        //long long
+
+        //long long (only applies to integers dont work for other data types)
         long long distance_to_alpha_centuari{9'461'000'000'000};
 
-        //__________________________________________
-        //   Different bit size variable 8,16,32,64
-        //__________________________________________
-
+        //   Different bit size variable 8,16,32,64 bits
         std::int64_t my_64_bit_int = 0x1122334455667788; 
-        std::uint64_t my_other_64_bit_int = 0x2233445566778899;
+        std::uint64_t my_other_64_bit_int = 0x2233445566778899; //this is often same as unsigned long long but give 64bit size guarante and is more portable.
 
         std::int8_t my_32_bit_int {32}; 
         std::uint32_t my_other_32_bit_int ; 
         // and so and so forth for 16 and 8 bit and 4 bit
 
 
-        //__________________________________________
-        //          Floating Point Types
-        //__________________________________________
-
+        //Floating Point Types (Floating Point number Memory Representation IEEE_754 https://en.wikipedia.org/wiki/IEEE_754 )
         float car_payment{401.23};
         double pi{3.14159};
         long double large_amount{2.7e120};
+        long double small_amount{2.7e-120};
 
         //__________________________________________
         //              Boolean Type
         //__________________________________________
 
-        bool game_over{false};
-
-        //__________________________________________
-        //               Char Types
-        //__________________________________________
-
-
-        char character[]{"hi"};     // you can put [] = {} but putting = is not required anymore, the [] hold the size of char, " " puts a null character at the end of it if we write it this way
-        char character2[]{'a','b','c'};
-        char character3{'j'};
-        char a[100]{'a','b','\0'};   //there should be a null character at the end to avoid garbage value to be printed
-        std::cout<<"Character: "<<character<<" & "<<character2<<" & "<<character3<<std::endl;
+        bool game_over{false};  //basically 0 = false, 1 = true at binary level for whole number range anything that is non 0 = true including -ve numbers.
 
         //__________________________________________
         //          Overflow Example
@@ -134,20 +124,10 @@ int main()
         //short product{value_no_1*value_no_2}; //Overflow as the short cannot store the value and will throw -Wnarrowing error when compiling
 
         //__________________________________________
-        //         Constant Types
-        //__________________________________________
-
-        // These types remain constant as the name suggest and its value cannot be chainged again within the program if attempted will throw an compiler error
-        // Also common naming conventions for constants is the naming should be in all CAPS
-        const int NUMBER {1};
-        const char NAME = 'raju';
-
-
-        //__________________________________________
         //         LITERAL SUFFIX & PREFIX
         //__________________________________________
         
-        /*In C++, a "literal suffix" is a sequence of characters that you can append to a numeric or string literal to indicate its type or make it explicit. 
+        /*In C++, a "literal suffix/prefix" is a sequence of characters that you can append before/after to a string/number literal to indicate its type or make it explicit. 
           Literal suffixes are used to specify the data type of the literal, and they are often helpful to avoid type ambiguity or to explicitly specify the intended data type.
 
         Here are some common literal suffixes in C++:
@@ -171,7 +151,7 @@ int main()
 
         For example: */
 
-        float a = 3.14f;
+        float a = 3.123456789123456789f;    //the reason why we use f here even tho the variable is a float coz the compiler will consider it as a double by default so we use the suffix to tell compiler to treat it as a float
         double b = 3.14;
         long double c = 3.14L;
 
@@ -180,14 +160,14 @@ int main()
         - `u8`: UTF-8 encoded character or string literal.
         - `u`: UTF-16 encoded character or string literal.
         - `U`: UTF-32 encoded character or string literal.
-        - `L`: Wide character or string literal.
+        - `L`: Wide/Long character or string literal.
 
         For example: */
 
-        char8_t ch8 = u8'A';
+        //std::char8_t ch8 = u8'A'; //implemented in C++20 maybe not ready yet with compiler.
         char16_t ch16 = u'B';
-        char32_t ch32 = U'C';
-        wchar_t wideCh = L'D';
+        char32_t ch32 = U'C';   //is guaranteed to be exactly 32 bits in size, regardless of the platform or compiler.
+        wchar_t wideCh = L'D';  //16 bits (on Windows) or 32 bits (on Unix-like systems).
 
         const char* utf8Str = u8"This is a UTF-8 string.";
         const char16_t* utf16Str = u"This is a UTF-16 string.";
@@ -249,10 +229,36 @@ int main()
 
             6. **Expressiveness**: Literal suffixes make C++ code more expressive, allowing developers to convey the intent of the code more clearly. This can lead to more 
                                    self-documenting code.
+            
+            Also In C and C++, when you explicitly declare a variable with the `long double` type, like `long double ld = 1.1234567891234567;`, you don't necessarily need 
+            to include the `L` suffix after the literal. The `L` suffix is optional in this context because the compiler can infer that you intend for the literal to be 
+            of type `long double` based on the type of the variable it's assigned to (`ld` in this case).
+
+            So, the statement `long double ld = 1.1234567891234567;` is perfectly valid and will be interpreted by the compiler as initializing `ld` with a `long double` value. The `L` suffix 
+            is more necessary when you're using literals directly without explicit type declarations, especially when you want to ensure that a literal is treated as a specific type (like `long double`).
+
+            Here's an example to illustrate:
+
+            ```cpp
+            long double ld = 1.1234567891234567;  // Compiler infers long double type
+            ```
+
+            In this example, the compiler knows that `ld` is a `long double`, so it interprets the literal `1.1234567891234567` as a `long double` without needing an explicit `L` suffix.
+
+            However, if you were using the literal without assigning it directly to a variable, like in an expression or function argument, you would need the `L` suffix to specify its type explicitly:
+
+            ```cpp
+            long double result = someFunction(1.1234567891234567L);  // Explicitly specify long double type
+            ```
+
+            In summary, the `L` suffix is often optional when assigning literals directly to variables of specific types because the compiler can infer the type 
+            from the context. However, it becomes necessary when you want to explicitly specify the type of a literal, especially when it's not directly assigned to a variable.
+
 
             Here's a simple example to illustrate the use of literal suffixes:
-            */
-            
+
+            #include<iostream>
+            //Example1
             // Define a custom type for representing distances in meters
             class Meter {
             public:
@@ -268,19 +274,9 @@ int main()
                 return Meter(static_cast<double>(value));
             }
 
-            int main() {
-                // Use the custom literal suffix to create a Meter object
-                Meter distance = 10.5_m;
-
-                // Use the Meter object
-                double value = distance.getValue(); // 10.5
-
-                return 0;
-            }
-
-            //Another Example
+            //Example2
             // Define a user-defined literal for converting a string to uppercase
-            constexpr std::string operator "" _uppercase(const char* str, size_t size) {
+             std::string operator "" _uppercase(const char* str, size_t size) {
                 std::string result(str, size);
                 for (char& c : result) {
                     c = std::toupper(c);
@@ -289,19 +285,38 @@ int main()
             }
 
             int main() {
+                //Example1
+                // Use the custom literal suffix to create a Meter object
+                Meter distance = 10.5_m;
+
+                // Use the Meter object
+                double value = distance.getValue(); // 10.5
+
+
+                //Example2
                 // Use the custom literal suffix
                 std::string message = "hello"_uppercase;
                 std::cout << message << std::endl;  // Output: "HELLO"
-                
                 return 0;
             }
 
-            
-        /*
             In this example, the `10.5_m` literal is used to create a `Meter` object, providing a clear and intuitive way to represent distances in meters.
 
-            Overall, literal suffixes in C++ provide a way to extend the language's expressiveness and make it more suitable for a wider range of programming tasks, especially those involving custom types and domain-specific requirements.
+            Overall, literal suffixes in C++ provide a way to extend the language's expressiveness and make it more suitable for a wider range of 
+            programming tasks, especially those involving custom types and domain-specific requirements.
         */
+       
+        //__________________________________________
+        //               Char Types
+        //__________________________________________
+
+
+        char character[]{"hi"};     // you can put [] = {} but putting = is not required anymore, the [] hold the size of char, " " puts a null character at the end of it if we write it this way
+        char character2[]{'a','b','c'};
+        char character3{'j'};
+        char a[100]{'a','b','\0'};   //there should be a null character at the end to avoid garbage value to be printed
+        std::cout<<"Character: "<<character<<" & "<<character2<<" & "<<character3<<std::endl;
+
         return 0;
 
     }
