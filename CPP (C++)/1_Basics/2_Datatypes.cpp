@@ -74,7 +74,7 @@
             |        32       |    4    |            0 ~ 34,359,738,367  |
             |        64       |    8    | 0 ~ 18,446,744,073,709,551,615 |
             |_________________|_________|________________________________|
-
+            Formula 2^n where n is bits to find the range
          ___________________________________
         | Understanding Hexadecimal System |
         |__________________________________|
@@ -172,14 +172,14 @@
 
     1. **Fundamental Data Types:**
     - `int`: Represents integers.
-    - `char`: Represents a single character.
+    - `char`: Represents a single character.  Size: 8 bits or 1 bytes. All characters are represed using ASCII Read more at https://www.cs.cmu.edu/~pattis/15-1XX/common/handouts/ascii.html
     - `float`: Represents single-precision floating-point numbers. Size: 4bytes Precision: 7. No long for float coz we have a double for that
-    - `double`: Represents double-precision floating-point numbers.Size: 8bytes Precision: 15. For Long double Size: 12 Precision: 15+
-    - `bool`: Represents Boolean values (`true` or `false`).
+    - `double`: Represents double-precision floating-point numbers.Size: 8bytes Precision: 15. For Long double Size: 12 Precision: 15+. Also every floating point number is considered as a double by default by the compiler.
+    - `bool`: Represents Boolean values (`true` or `false`). Size: 8 bits or 1 bytes. In binary true is represented as 00000001 or 0x01 in hexadecimal.
     - `void`: Represents typeless meaning there is no type its just void.
     - `auto`: Represents auto detection what is the type of data and assign it accordingly.
 
-    2. **Modifiers:**
+    2. **Modifiers:** -> Just using modifiers and not mentioning variable type (int,double) compiler will consider it as int by default so mention whats the data type for better safety.
     - `short`: Modifies `int` to represent short integers.
     - `long`: Modifies `int` to represent long integers.
     - `signed` and `unsigned`: Modifies integer types to represent signed or unsigned values.

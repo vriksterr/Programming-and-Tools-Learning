@@ -55,6 +55,7 @@ int main()
         std::cout<<"short: "<< sizeof(short) << "bytes"<<std::endl;
         std::cout<<"long: "<< sizeof(long) << "bytes"<<std::endl;
         std::cout<<"long long: "<< sizeof(long long) << "bytes"<<std::endl;
+        std::cout<<"bool: "<< sizeof(bool) << "bytes"<<std::endl;
 
         std::cout<<"================================"<<std::endl;
 

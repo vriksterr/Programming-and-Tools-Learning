@@ -2,10 +2,10 @@
     *********************
     * Types of variable *
     *********************
-    - 1st Local 
-      2nd Global 
-      3rd Constant 
-      4th Undefined by not using {} and value inside it
+    1. Local: Defined in local scope and can be accessed locally only
+    2. Global: These are defined globally and everyone can access them 
+    3. Constant: These values cant be altered
+    4. Undefined: by not using {} and value inside it can be anything garbage if chosen {} it will be initialized with 0.
 
     Also all different types of variables types such as INT,Float,Boolean,CHAR,double,etc
 
@@ -55,6 +55,7 @@
 
 
 #include<iostream>
+#include<iomanip>   // used for precision
 #include<cstdint> // i didnt seem to need it for declaring a different bit size integer but it was used in a https://www.quora.com/How-do-you-declare-a-64-bit-integer-in-C-1 we dont need to use this as this is a part of namespace std liberary https://en.cppreference.com/w/cpp/header/cstdint
                  // also read https://stackoverflow.com/questions/50505212/how-am-i-able-to-use-int32-t-without-without-using-std where you will see why we to add this coz it might not working with other compilers
 
@@ -62,6 +63,16 @@ int const my_room_area{200}; // Global Variable which is also constant, these co
 
 int main()
     {   //__________________________________________
+        //            Auto Types
+        //__________________________________________
+        
+        //This auto determines the type of value which is being entered the compiler auto determines it.
+        auto value1 {1};
+        auto value2 {3.14};
+        auto value3 {"Hello"};
+        auto value4 {"how are you doing"};
+
+        //__________________________________________
         //            Integer Types
         //__________________________________________
 
@@ -81,15 +92,15 @@ int main()
         std::cout<<"But my Room Area is :"<<my_room_area<<std::endl;
         
         //signed (only applies to integers dont work for other data types)
-        signed int value0{-20000000};   //this can store a range from negative to positive numbers.
+        signed int value0{-20000000};   //signed can store a range from negative to positive numbers.
 
         //unsigned (only applies to integers dont work for other data types)
-        unsigned int value{123456789123456789123456789};    //unsigned can only story +ve values and signed can store a range of negative and positive value for unsigned as you dont have to store negative values you can now store double the positive values compared to signed values
+        unsigned int value{123456789123456789123456789};    //unsigned can only story +ve values for unsigned as you dont have to store negative values you can now store double the positive values compared to signed values
         unsigned short int exam_score{55};
         
         //long (only applies to integers dont work for other data types)
-        long people_in_florida{20610000};
-        long people_on_earth{7'600'000'000};
+        long people_in_florida{20610000};       //also not mentoning variable type(int,double) compiler will consider it as int so compiler will look at it as long int people_in_florida{20610000};
+        long people_on_earth{7'600'000'000};    //using ' only helps to read compiler just ignores these and not effect takes place on value when using these you just also type it as long e = 1'2'3'4'5'6'7'8'9'1'2'3'4'5'6'7'8'9'1; and this will also work fine but is useless to do so.
         long people_on_earth_C_Style = 7'600'000'000; // this is old C style and will give buffer overflow when you run it so ditch this and use new C++ style where we use {}
 
         //long long (only applies to integers dont work for other data types)
@@ -105,7 +116,7 @@ int main()
 
 
         //Floating Point Types (Floating Point number Memory Representation IEEE_754 https://en.wikipedia.org/wiki/IEEE_754 )
-        float car_payment{401.23};
+        float car_payment{401.23};      //by defaunt floating point values are treated as double by default by the compiler so use Literal Suffix scroll below for better understanding.
         double pi{3.14159};
         long double large_amount{2.7e120};
         long double small_amount{2.7e-120};
@@ -135,13 +146,17 @@ int main()
         1. Integer Literal Suffixes:
         - `u` or `U`: Unsigned integer.
         - `l` or `L`: Long integer.
+        - `ul` or `UL`: unsigned long
         - `ll` or `LL`: Long long integer.
+        - `ull` or `ULL`: unsigned long long
 
         For example: */
         int x = 42;
         unsigned int y = 42u;
         long int z = 42l;
+        unsigned long int p = 12345678923456789ul;
         long long int w = 42ll;
+        unsigned long int q = 12345678923456789ull;
 
 
         /*
@@ -151,11 +166,57 @@ int main()
 
         For example: */
 
-        float a = 3.123456789123456789f;    //the reason why we use f here even tho the variable is a float coz the compiler will consider it as a double by default so we use the suffix to tell compiler to treat it as a float
-        double b = 3.14;
-        long double c = 3.14L;
+        float a = 3.123456789123456789f;    //the reason why we use f here even tho the variable is defined as float coz the compiler will consider the floating point number as a double by default so we use the suffix to tell compiler to treat it as a float this will make us loose some precision but the value will be treated as you want it to be treated by compiler.
+        double b = 3.1234567891234567789;   //dont have a literal for double as all floating point numbers are treated as a double by default unless some literal suffix is used.
+        long double c = 3.1234567891234567789L;
+
+        //Useless example but good for understanding whats happening
+        float a = (double)3.123456789123456789f;
+        std::cout<< std::setprecision(20);      // we used #include<iomanip> for this function
+        std::cout <<a<<std::endl;
+        /*
+                Let's break down the statement `float a = (double)3.123456789123456789f;` and explain each part step by step.
+
+                1. **`3.123456789123456789f` (Float Literal):**
+                - The literal `3.123456789123456789f` has an `f` suffix, indicating that it is a `float` type.
+                - A `float` typically has a precision of about 7 decimal digits. Therefore, the literal `3.123456789123456789f` will be rounded to fit within the precision of a `float`.
+
+                2. **`(double)` (Casting to Double):**
+                - The `(double)` cast converts the `float` literal to a `double`.
+                - A `double` has a higher precision (typically about 15-17 decimal digits) and a larger range than a `float`. However, since the initial value was a `float`, it already lost some precision.
+                - The cast from `float` to `double` doesn't increase the precision of the already rounded number but represents the `float` value as a `double`.
+
+                3. **Assignment to `float a`:**
+                - After converting the `float` literal to a `double`, we assign this `double` value to the `float` variable `a`.
+                - This assignment involves converting the `double` back to a `float`. Since the precision of `float` is lower than `double`, this might result in further rounding, although in this case, the value remains the same as the initial `float` precision was already limited.
+
+                ### Step-by-Step Example
+
+                To see the exact process:
+
+                1. **Initial float literal:**
+                - `3.123456789123456789f` becomes `3.1234567f` due to `float` precision (approximation).
+
+                2. **Casting to double:**
+                - `(double)3.1234567f` produces a `double` value representing `3.1234567` precisely but as a `double`.
+
+                3. **Assigning to float:**
+                - `float a = 3.1234567` converts the `double` back to `float`, retaining the same `3.1234567`.
+
+                The key points are:
+                - The initial literal is interpreted as a `float` with limited precision.
+                - Casting to `double` doesn't improve precision but holds the `float` value in a `double` type.
+                - Assigning the `double` back to `float` keeps the precision at the `float` level.
+
+                Here's the final understanding of `float a = (double)3.123456789123456789f;`:
+                - The literal `3.123456789123456789f` is approximated to `3.1234567f`.
+                - This `float` value is cast to a `double`, which still represents `3.1234567`.
+                - The `double` is then assigned to a `float`, maintaining the value `3.1234567f`.
+
+                So, `a` will have the value `3.1234567f` after this operation.*/
 
         /*
+        
         3. Character and String Literal Suffixes (for characters we use prefix):
         - `u8`: UTF-8 encoded character or string literal.
         - `u`: UTF-16 encoded character or string literal.
@@ -179,11 +240,14 @@ int main()
         Using them is a good practice for writing clear and maintainable C++ code. */
 
         // More Explanation for Litral Suffix and how Compiler stores data in variables.
-        auto num1 = 1;
-        auto num2 = 1.1;
-        auto num3 = 1.1f;   // you can either use f or F
-        auto num4 = 1.1l;   // you can either use l or L
-        auto num5 = 'e';
+        auto num1 = 1;                      // will be deduced as int
+        auto num2 = 12345678923456789ll;   // will be deduced as long long int
+        auto num3 = 12345678923456789ul;   // will be deduced as unsigned long long int
+        auto num4 = 1.1;                    // will be deduced as double
+        auto num5 = 1.123456789f;           // will be deduced as float
+        auto num6 = 1.12345678923456789l;   // will be deduced as long double
+        auto num7 = 1.12345678923456789l;   // will be deduced as long long double
+        auto num8 = u'hello how are you doing all well ?';
 
         /*  
             The Compiler checks the values and sees if its a int, double etc and based on that auto will be deduced as int, double etc.
@@ -201,6 +265,9 @@ int main()
         std::cout<<"num3 is: "<<num3<<" and size of number 3 is: "<<sizeof(num3)<<std::endl;
         std::cout<<"num4 is: "<<num4<<" and size of number 4 is: "<<sizeof(num4)<<std::endl;
         std::cout<<"num5 is: "<<num5<<" and size of number 5 is: "<<sizeof(num5)<<std::endl;
+        std::cout<<"num6 is: "<<num6<<" and size of number 6 is: "<<sizeof(num6)<<std::endl;
+        std::cout<<"num7 is: "<<num7<<" and size of number 7 is: "<<sizeof(num7)<<std::endl;
+        std::cout<<"num8 is: "<<num8<<" and size of number 8 is: "<<sizeof(num8)<<std::endl;
 
         //! Why were Literal Suffix needed and can we have our own literal suffix ?
         /*
@@ -230,33 +297,33 @@ int main()
             6. **Expressiveness**: Literal suffixes make C++ code more expressive, allowing developers to convey the intent of the code more clearly. This can lead to more 
                                    self-documenting code.
             
-            Also In C and C++, when you explicitly declare a variable with the `long double` type, like `long double ld = 1.1234567891234567;`, you don't necessarily need 
-            to include the `L` suffix after the literal. The `L` suffix is optional in this context because the compiler can infer that you intend for the literal to be 
-            of type `long double` based on the type of the variable it's assigned to (`ld` in this case).
-
-            So, the statement `long double ld = 1.1234567891234567;` is perfectly valid and will be interpreted by the compiler as initializing `ld` with a `long double` value. The `L` suffix 
-            is more necessary when you're using literals directly without explicit type declarations, especially when you want to ensure that a literal is treated as a specific type (like `long double`).
-
-            Here's an example to illustrate:
-
-            ```cpp
-            long double ld = 1.1234567891234567;  // Compiler infers long double type
+            Also as you already know every floating point number is as a double so using prefix for better accuracy is important for eg.:
             ```
-
-            In this example, the compiler knows that `ld` is a `long double`, so it interprets the literal `1.1234567891234567` as a `long double` without needing an explicit `L` suffix.
+            #include<iostream>
+            #include<iomanip>
+            int main(){
+                    
+                    long double d = 3.123456789123456789L;
+                    long double e = 3.123456789123456789;
+                    
+                    std::cout<< std::setprecision(20);
+                    std::cout <<d<<std::endl;
+                    std::cout <<e<<std::endl;
+                    return 0;
+            }
+            ```
+            In the above example the output of d and e will be 3.123456789123456789, 
+                                                               3.1234567891234568116 and you can see where we use L suffix the precision is not lost like in the case of variable e because in that
+            case the value was considered as double by default as no suffix was provided so that will get rounded down to double and when its stored in long double it will have garbage value due to loss
+            of precision.
 
             However, if you were using the literal without assigning it directly to a variable, like in an expression or function argument, you would need the `L` suffix to specify its type explicitly:
-
-            ```cpp
+            ```
             long double result = someFunction(1.1234567891234567L);  // Explicitly specify long double type
             ```
 
-            In summary, the `L` suffix is often optional when assigning literals directly to variables of specific types because the compiler can infer the type 
-            from the context. However, it becomes necessary when you want to explicitly specify the type of a literal, especially when it's not directly assigned to a variable.
-
-
-            Here's a simple example to illustrate the use of literal suffixes:
-
+            Here's a simple example to illustrate the use of defining literal suffixes:
+            ```
             #include<iostream>
             //Example1
             // Define a custom type for representing distances in meters
@@ -299,7 +366,7 @@ int main()
                 std::cout << message << std::endl;  // Output: "HELLO"
                 return 0;
             }
-
+            ```
             In this example, the `10.5_m` literal is used to create a `Meter` object, providing a clear and intuitive way to represent distances in meters.
 
             Overall, literal suffixes in C++ provide a way to extend the language's expressiveness and make it more suitable for a wider range of 
@@ -310,11 +377,11 @@ int main()
         //               Char Types
         //__________________________________________
 
-
+        char charater0 {65};        //will represent A according to ASCII table read here https://www.cs.cmu.edu/~pattis/15-1XX/common/handouts/ascii.html
         char character[]{"hi"};     // you can put [] = {} but putting = is not required anymore, the [] hold the size of char, " " puts a null character at the end of it if we write it this way
         char character2[]{'a','b','c'};
         char character3{'j'};
-        char a[100]{'a','b','\0'};   //there should be a null character at the end to avoid garbage value to be printed
+        char a[100]{'a','b','\0'};   //there should be a null character(\0) at the end to avoid garbage value to be printed, it also determines string end.
         std::cout<<"Character: "<<character<<" & "<<character2<<" & "<<character3<<std::endl;
 
         return 0;
