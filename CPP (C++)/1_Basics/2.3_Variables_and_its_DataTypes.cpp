@@ -72,6 +72,11 @@ int main()
         auto value3 {"Hello"};
         auto value4 {"how are you doing"};
 
+        //If you deduce a type of data of one type lets say unsigned integer and then later try to add -ve value to that variable compiler will add garbage data to the variable as unsigned can only have +ve values
+        auto var3{333u}; //Declaring and initializing with type deduction
+        var3 = -22; //Assign negative number. Danger! compiler will not pick this up as a warning.
+        std::cout<<"var3:" << var3 << std::endl;
+
         //__________________________________________
         //            Integer Types
         //__________________________________________

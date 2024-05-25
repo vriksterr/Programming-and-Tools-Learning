@@ -134,6 +134,7 @@
 
 */
 #include<iostream>
+#include<cmath>     //used for fmod()
 using namespace std;
 
 int main ()
@@ -147,6 +148,12 @@ int main ()
     //or
     answer=num1*num2;
     std::cout<<"The result of multiplication of 2 values are: "<<answer<<std::endl;
+
+    // Modulus Operator % - We can only do whole numbers with it if you want to still do floating point operations with modulus use std::fmod(x,y)
+    // In maths % was defined to be used with whole numbers
+    double x = 6.3;
+    int y = 2;
+    double z = std::fmod(x,y);
 
     //_____________________________________________
     //    Unary / Increment & Decrement Opertor
