@@ -7,7 +7,7 @@
     * Constants *
     *************
 
-    This parameter that is effectively read only code is moe secure and conveys intent useful for references and pointers and variables that you dont want to be changed.
+    This parameter that is effectively read only code is more secure and conveys intent useful for references and pointers and variables that you dont want to be changed.
 
     In C++, constants are values that cannot be modified once they are initialized. They provide a way to define fixed, immutable values in your code. 
     Constants are typically used to represent values that are known at compile-time and are not expected to change during program execution.
@@ -34,6 +34,7 @@
     It's important to note that constants should be declared and defined in appropriate scopes (e.g., inside a function, within a class, or at the global level) 
     based on where they are intended to be used and their desired visibility.
 
+    Do note that const dosent mean other program cant change the value the const power remains withing the program meaning that rule only applies to the program.
 
     !For the Below topics referred the all the other topics to get the undestanding before persusing the const topics for them.
 
@@ -216,5 +217,95 @@
             https://stackoverflow.com/questions/177437/what-does-const-static-mean-in-c-and-c
             https://www.tutorialspoint.com/cplusplus/cpp_static_members.htm#:~:text=A%20static%20member%20function%20can,functions%20from%20outside%20the%20class.
 
+
+    *************
+    * Constexpr *
+    *************
+    `constexpr` is a keyword introduced in C++11 that allows the definition of expressions and functions that can be evaluated at compile time. This keyword provides a 
+    way to create constants with more complex initializations and functions that can be executed during compilation, leading to potential performance improvements and safer, more predictable code.
+
+    Remember when you use Constexpr that variable or expression is also constant.
+
+    ### Key Features of `constexpr`:
+
+    1. **Compile-Time Evaluation**:
+    - `constexpr` ensures that a variable or a function can be evaluated at compile time, provided the inputs are also constant expressions.
+
+    2. **Constant Expressions**:
+    - `constexpr` can be applied to variables, functions, constructors, and destructors to specify that they can be evaluated at compile time.
+
+    3. **Variables**:
+    - A variable declared with `constexpr` is implicitly `const` and must be initialized with a constant expression.
+    ```cpp
+    constexpr int square(int x) {
+        return x * x;
+    }
+    constexpr int result = square(5); // Evaluated at compile time
+    ```
+
+    4. **Functions**:
+    - A function declared with `constexpr` must have a body that can be evaluated at compile time. All expressions within the function body must also be constant expressions.
+    ```cpp
+    constexpr int factorial(int n) {
+        return (n <= 1) ? 1 : (n * factorial(n - 1));
+    }
+    constexpr int fact5 = factorial(5); // Evaluated at compile time
+    ```
+
+    5. **Constructors**:
+    - `constexpr` constructors allow objects to be initialized at compile time.
+    ```cpp
+    struct Point {
+        constexpr Point(double x, double y) : x_(x), y_(y) {}
+        constexpr double getX() const { return x_; }
+        constexpr double getY() const { return y_; }
+    private:
+        double x_, y_;
+    };
+
+    constexpr Point p(3.0, 4.0); // Evaluated at compile time
+    constexpr double x = p.getX(); // Evaluated at compile time
+    ```
+
+    6. **Destructors**:
+    - Since C++20, destructors can also be declared as `constexpr`, allowing the objects to be destroyed at compile time if the program requires it.
+
+    ### Benefits of `constexpr`:
+
+    - **Performance**: Code evaluated at compile time can lead to faster runtime performance since calculations are done during compilation.
+    - **Safety**: Compile-time evaluation catches errors early, during the compilation process, rather than at runtime.
+    - **Predictability**: Ensures certain values are truly constant, providing guarantees about immutability and making the code easier to reason about.
+
+    ### Usage Notes:
+
+    - **Constraints**: Not all functions or expressions can be made `constexpr`. They must adhere to rules that ensure they can be evaluated at compile time (e.g., no dynamic memory allocation or non-constant global variables).
+    - **Evaluation Context**: `constexpr` functions can also be called with runtime values, in which case they will be evaluated at runtime. The `constexpr` keyword only guarantees compile-time evaluation when all inputs are constant expressions.
+
+    ### Example:
+
+    ```cpp
+    #include <iostream>
+
+    // constexpr function
+    constexpr int add(int a, int b) {
+        return a + b;
+    }
+
+    int main() {
+        // Evaluated at compile time
+        constexpr int sum = add(3, 4);
+        std::cout << "Sum: " << sum << std::endl;
+
+        // Evaluated at runtime
+        int x = 5;
+        int y = 6;
+        int runtimeSum = add(x, y);
+        std::cout << "Runtime Sum: " << runtimeSum << std::endl;
+
+        return 0;
+    }
+    ```
+
+    In this example, `sum` is computed at compile time, while `runtimeSum` is computed at runtime because `x` and `y` are not constant expressions.
 */
 
