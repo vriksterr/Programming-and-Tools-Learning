@@ -1,23 +1,33 @@
-/*
-    *********************
-    * Types of variable *
-    *********************
+/*  
+
+    ************
+    * Literals *
+    ************
+    Literals are literally means these values are stored directly in our program binary code for eg.
+    int a = 10; //here a is a variable and 10 is a literal
+
+    *************
+    * Variables *
+    *************
+    variables you can undetstand from above example
+     ________________________
+    |   Types of variable   |
+    |_______________________|
     1. Local: Defined in local scope and can be accessed locally only
     2. Global: These are defined globally and everyone can access them 
     3. Constant: These values cant be altered
     4. Undefined: by not using {} and value inside it can be anything garbage if chosen {} it will be initialized with 0.
 
     Also all different types of variables types such as INT,Float,Boolean,CHAR,double,etc
-
-    *****************************
-    * Declaration of a Variable *
-    *****************************
+     ________________________________
+    |   Declaration of a Variable   |
+    |_______________________________|
     - Variables is the name given to a location in the memory location to the variable that is 
       in programming
     
-    **************************
-    * Variables names in C++ *
-    **************************
+     ____________________________
+    |   Variables names in C++  |
+    |___________________________|
 
     - Variables names can contain $, letters, digits, _(underscore)
     - Names are case sensitive (myVar and myvar are different variables)
@@ -83,25 +93,25 @@ int main()
 
         //INT
         std::cout<<"Enter Room Length: ";
-        int room_lenght{0};     //Local Variable
+        int room_lenght{0};     //Local Variable 4 bytes in size
         std::cin>>room_lenght;
-
         std::cout<<"Enter Room Breadth: ";
         int room_breadth{0};    //Local Variable
         std::cin>>room_breadth;
-
-
         std::cout<<"Area of the room is: "<< room_lenght*room_breadth << std::endl;
 
         int my_room_area{6969};     // Overshadows the Global Variable if written locally
         std::cout<<"But my Room Area is :"<<my_room_area<<std::endl;
         
-        //signed (only applies to integers dont work for other data types)
+        //signed 
         signed int value0{-20000000};   //signed can store a range from negative to positive numbers.
 
-        //unsigned (only applies to integers dont work for other data types)
+        //unsigned
         unsigned int value{123456789123456789123456789};    //unsigned can only story +ve values for unsigned as you dont have to store negative values you can now store double the positive values compared to signed values
         unsigned short int exam_score{55};
+        
+        //Short int (only applies to integers dont work for other data types)
+        short int smallint = 1; // 2 bytes in size
         
         //long (only applies to integers dont work for other data types)
         long people_in_florida{20610000};       //also not mentoning variable type(int,double) compiler will consider it as int so compiler will look at it as long int people_in_florida{20610000};
@@ -381,6 +391,12 @@ int main()
         //__________________________________________
         //               Char Types
         //__________________________________________
+
+        //signed 
+        signed char char0 = 5;
+
+        //unsigned 
+        unsigned char char1 = 10;
 
         char charater0 {65};        //will represent A according to ASCII table read here https://www.cs.cmu.edu/~pattis/15-1XX/common/handouts/ascii.html
         char character[]{"hi"};     // you can put [] = {} but putting = is not required anymore, the [] hold the size of char, " " puts a null character at the end of it if we write it this way

@@ -32,5 +32,6 @@ int main() {
     std::cout << "Max of 3.5 and 2.7 (double): " << max(3.5, 2.7) << std::endl;
     std::cout << "Max of 'hello' and 'world' (string): " << max("hello", "world") << std::endl;
 
+    short int push = (short)155464;
     return 0;
 }

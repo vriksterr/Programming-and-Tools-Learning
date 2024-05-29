@@ -49,7 +49,7 @@ int main()
         std::cout<<"sizeof information"<<std::endl;
         std::cout<<"==============================="<<std::endl;
 
-        std::cout<<"char: "<< sizeof(char) << "bytes"<<std::endl;
+        
         std::cout<<"int: "<< sizeof(int) << "bytes"<<std::endl;
         std::cout<<"unsigned int: "<< sizeof(unsigned int) << "bytes"<<std::endl;
         std::cout<<"short: "<< sizeof(short) << "bytes"<<std::endl;
@@ -62,6 +62,12 @@ int main()
         std::cout<<"float: "<<sizeof(float)<<"bytes"<<std::endl;
         std::cout<<"double: "<<sizeof(double)<<"bytes"<<std::endl;
         std::cout<<"long double: "<<sizeof(long double)<<"bytes"<<std::endl;
+
+        std::cout<<"================================"<<std::endl;
+
+        std::cout<<"char: "<< sizeof(char) << "bytes"<<std::endl;
+        std::cout<<"signed char: "<< sizeof(signed char) << "bytes"<<std::endl;
+        std::cout<<"unsigned char: "<< sizeof(unsigned char) << "bytes"<<std::endl;
 
         // use value defined in <climit>
         std::cout<<"================================"<<std::endl;

@@ -38,7 +38,7 @@
     - `<<` (Left shift)
     - `>>` (Right shift)
 
-    6. Assignment Operators:
+    6. Compound Assignment Operators (except `=`):
     - `=` (Assignment)
     - `+=` (Addition assignment)
     - `-=` (Subtraction assignment)
@@ -82,6 +82,10 @@
         - `sizeof` (Used to determine the size in bytes of an expression or data type)
 
     13. Type Cast Operators:
+    //C Style Casting
+        - `(type)expression` This is the original C-style cast, which can perform any type of casting: const_cast, static_cast, dynamic_cast, or reinterpret_cast. It is not recommended in C++ due to its lack of specificity and safety.
+
+    //C++ Style Casting
         - `static_cast<T>(expression)` (Static cast)
         - `dynamic_cast<T>(expression)` (Dynamic cast)
         - `const_cast<T>(expression)` (Const cast)
