@@ -229,83 +229,139 @@
     ### Key Features of `constexpr`:
 
     1. **Compile-Time Evaluation**:
-    - `constexpr` ensures that a variable or a function can be evaluated at compile time, provided the inputs are also constant expressions.
+        - `constexpr` ensures that a variable or a function can be evaluated at compile time, provided the inputs are also constant expressions.
 
     2. **Constant Expressions**:
-    - `constexpr` can be applied to variables, functions, constructors, and destructors to specify that they can be evaluated at compile time.
+        - `constexpr` can be applied to variables, functions, constructors, and destructors to specify that they can be evaluated at compile time.
 
     3. **Variables**:
-    - A variable declared with `constexpr` is implicitly `const` and must be initialized with a constant expression.
-    ```cpp
-    constexpr int square(int x) {
-        return x * x;
-    }
-    constexpr int result = square(5); // Evaluated at compile time
-    ```
+        - A variable declared with `constexpr` is implicitly `const` and must be initialized with a constant expression.
+        ```cpp
+        constexpr int square(int x) {
+            return x * x;
+        }
+        constexpr int result = square(5); // Evaluated at compile time
+        ```
 
     4. **Functions**:
-    - A function declared with `constexpr` must have a body that can be evaluated at compile time. All expressions within the function body must also be constant expressions.
-    ```cpp
-    constexpr int factorial(int n) {
-        return (n <= 1) ? 1 : (n * factorial(n - 1));
-    }
-    constexpr int fact5 = factorial(5); // Evaluated at compile time
-    ```
+        - A function declared with `constexpr` must have a body that can be evaluated at compile time. All expressions within the function body must also be constant expressions.
+        ```cpp
+        constexpr int factorial(int n) {
+            return (n <= 1) ? 1 : (n * factorial(n - 1));
+        }
+        constexpr int fact5 = factorial(5); // Evaluated at compile time
+        ```
+    5. **if functions**:
+        The `if constexpr` statement, introduced in C++17, allows compile-time conditional branching. This feature is particularly useful in template metaprogramming, where the condition can 
+        depend on template parameters. If the condition in `if constexpr` evaluates to true, the associated block is compiled; otherwise, it is ignored by the compiler.
 
-    5. **Constructors**:
-    - `constexpr` constructors allow objects to be initialized at compile time.
-    ```cpp
-    struct Point {
-        constexpr Point(double x, double y) : x_(x), y_(y) {}
-        constexpr double getX() const { return x_; }
-        constexpr double getY() const { return y_; }
-    private:
-        double x_, y_;
-    };
+        Here's an example to illustrate how `if constexpr` can be used:
 
-    constexpr Point p(3.0, 4.0); // Evaluated at compile time
-    constexpr double x = p.getX(); // Evaluated at compile time
-    ```
+        ```cpp
+        #include <iostream>
+        #include <type_traits>
 
-    6. **Destructors**:
-    - Since C++20, destructors can also be declared as `constexpr`, allowing the objects to be destroyed at compile time if the program requires it.
+        // Function to print a value; behaves differently based on whether the value is an integral type or not
+        template <typename T>
+        void printValue(const T& value) {
+            if constexpr (std::is_integral_v<T>) {
+                std::cout << "The value is an integral type: " << value << std::endl;
+            } else {
+                std::cout << "The value is not an integral type: " << value << std::endl;
+            }
+        }
 
-    ### Benefits of `constexpr`:
+        int main() {
+            printValue(42);          // Integral type
+            printValue(3.14);        // Non-integral type
+            printValue("Hello");     // Non-integral type
 
-    - **Performance**: Code evaluated at compile time can lead to faster runtime performance since calculations are done during compilation.
-    - **Safety**: Compile-time evaluation catches errors early, during the compilation process, rather than at runtime.
-    - **Predictability**: Ensures certain values are truly constant, providing guarantees about immutability and making the code easier to reason about.
+            return 0;
+        }
+        ```
 
-    ### Usage Notes:
+        ### Explanation:
 
-    - **Constraints**: Not all functions or expressions can be made `constexpr`. They must adhere to rules that ensure they can be evaluated at compile time (e.g., no dynamic memory allocation or non-constant global variables).
-    - **Evaluation Context**: `constexpr` functions can also be called with runtime values, in which case they will be evaluated at runtime. The `constexpr` keyword only guarantees compile-time evaluation when all inputs are constant expressions.
+        1. **Template Function**:
+        - `printValue` is a template function that takes a value of any type.
 
-    ### Example:
+        2. **Conditional Compilation with `if constexpr`**:
+        - The `if constexpr` statement checks if the type `T` is an integral type using `std::is_integral_v<T>`. This is a compile-time check.
+        - If `T` is an integral type, the block inside `if constexpr (std::is_integral_v<T>)` is compiled, and the corresponding message is printed.
+        - If `T` is not an integral type, the `else` block is compiled instead, and a different message is printed.
 
-    ```cpp
-    #include <iostream>
+        3. **Main Function**:
+        - `printValue` is called with different types of arguments: an integer, a floating-point number, and a string literal.
+        - The output will be:
+            ```
+            The value is an integral type: 42
+            The value is not an integral type: 3.14
+            The value is not an integral type: Hello
+            ```
 
-    // constexpr function
-    constexpr int add(int a, int b) {
-        return a + b;
-    }
+        In this example, `if constexpr` enables the function to behave differently based on the type of the argument, and the unused branch of the `if constexpr` statement 
+        is not compiled, ensuring that there are no compilation errors or overhead associated with the unused code.
 
-    int main() {
-        // Evaluated at compile time
-        constexpr int sum = add(3, 4);
-        std::cout << "Sum: " << sum << std::endl;
+    6. **Constructors**:
+        - `constexpr` constructors allow objects to be initialized at compile time.
+        ```cpp
+        struct Point {
+            constexpr Point(double x, double y) : x_(x), y_(y) {}
+            constexpr double getX() const { return x_; }
+            constexpr double getY() const { return y_; }
+        private:
+            double x_, y_;
+        };
 
-        // Evaluated at runtime
-        int x = 5;
-        int y = 6;
-        int runtimeSum = add(x, y);
-        std::cout << "Runtime Sum: " << runtimeSum << std::endl;
+        constexpr Point p(3.0, 4.0); // Evaluated at compile time
+        constexpr double x = p.getX(); // Evaluated at compile time
+        ```
 
-        return 0;
-    }
-    ```
+    7. **Destructors**:
+        - Since C++20, destructors can also be declared as `constexpr`, allowing the objects to be destroyed at compile time if the program requires it.
 
-    In this example, `sum` is computed at compile time, while `runtimeSum` is computed at runtime because `x` and `y` are not constant expressions.
+        ### Benefits of `constexpr`:
+
+        - **Performance**: Code evaluated at compile time can lead to faster runtime performance since calculations are done during compilation.
+        - **Safety**: Compile-time evaluation catches errors early, during the compilation process, rather than at runtime.
+        - **Predictability**: Ensures certain values are truly constant, providing guarantees about immutability and making the code easier to reason about.
+
+        ### Usage Notes:
+
+        - **Constraints**: Not all functions or expressions can be made `constexpr`. They must adhere to rules that ensure they can be evaluated at compile time (e.g., no dynamic memory allocation or non-constant global variables).
+        - **Evaluation Context**: `constexpr` functions can also be called with runtime values, in which case they will be evaluated at runtime. The `constexpr` keyword only guarantees compile-time evaluation when all inputs are constant expressions.
+
+        ### Example:
+
+        ```cpp
+        #include <iostream>
+
+        // constexpr function
+        constexpr int add(int a, int b) {
+            return a + b;
+        }
+
+        int main() {
+            // Evaluated at compile time
+            constexpr int sum = add(3, 4);
+            std::cout << "Sum: " << sum << std::endl;
+
+            // Evaluated at runtime
+            int x = 5;
+            int y = 6;
+            int runtimeSum = add(x, y);
+            std::cout << "Runtime Sum: " << runtimeSum << std::endl;
+
+            return 0;
+        }
+        ```
+
+        In this example, `sum` is computed at compile time, while `runtimeSum` is computed at runtime because `x` and `y` are not constant expressions.
+
+    Source:
+    https://www.youtube.com/watch?v=8-VZoXn8f9U
+    https://youtu.be/frifFlPO_uI?si=FushTUP6cYignGqY
+    https://youtu.be/fZjYCQ8dzTc?si=AwA0UalW_F3gQmoJ
+    https://www.youtube.com/watch?v=MGsSDSa6uSQ         //if constexpr C++17
 */
 
