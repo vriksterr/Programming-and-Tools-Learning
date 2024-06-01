@@ -224,7 +224,7 @@
     `constexpr` is a keyword introduced in C++11 that allows the definition of expressions and functions that can be evaluated at compile time. This keyword provides a 
     way to create constants with more complex initializations and functions that can be executed during compilation, leading to potential performance improvements and safer, more predictable code.
 
-    Remember when you use Constexpr that variable or expression is also constant.
+    Remember when you use Constexpr that variable or expression is also constant and compiler dosenot gurantee that it will work all the time.
 
     ### Key Features of `constexpr`:
 
@@ -363,7 +363,167 @@
     https://youtu.be/frifFlPO_uI?si=FushTUP6cYignGqY
     https://youtu.be/fZjYCQ8dzTc?si=AwA0UalW_F3gQmoJ
     https://www.youtube.com/watch?v=r2ZxhpSk8EA
+    https://www.youtube.com/watch?v=QVHwOOrSh3w
+    https://www.youtube.com/watch?v=KBny6MZJR64         // tells all
     https://www.youtube.com/watch?v=MGsSDSa6uSQ         //if constexpr C++17
-    
+
+    *************
+    * Consteval *
+    *************
+    The `consteval` keyword, introduced in C++20, is used to declare functions that "must" be evaluated at compile time. This ensures that the function is called with constant expressions 
+    and that the result is also a constant expression. If a `consteval` function is invoked in a context where the result cannot be computed at compile time, the program will not compile.
+
+    ### Key Features of `consteval`:
+
+    1. **Compile-Time Only**:
+    - Functions declared with `consteval` must be evaluated at compile time. They cannot be used in runtime evaluations.
+
+    2. **Guaranteed Constant Expressions**:
+    - Any expression involving a `consteval` function will be a constant expression, provided the arguments are also constant expressions.
+
+    3. **Immediate Invocation**:
+    - Ensures that the function is always executed at compile time, providing strong guarantees about when and how the function will be evaluated.
+
+    ### Example Usage:
+
+    Here is an example demonstrating how to use `consteval`:
+
+    ```cpp
+    #include <iostream>
+
+    // consteval function to compute the factorial of a number
+    consteval int factorial(int n) {
+        if (n <= 1) return 1;
+        else return n * factorial(n - 1);
+    }
+
+    int main() {
+        constexpr int fact5 = factorial(5); // Evaluated at compile time
+        std::cout << "Factorial of 5: " << fact5 << std::endl;
+
+        // Uncommenting the following lines will cause a compilation error,
+        // because factorial is a consteval function and must be evaluated at compile time.
+        // int n = 6;
+        // int result = factorial(n); // Compilation error
+
+        return 0;
+    }
+    ```
+
+    ### Explanation:
+
+    1. **`consteval` Function**:
+    - `factorial` is declared with `consteval`, meaning it must be evaluated at compile time. It calculates the factorial of a given integer `n`.
+
+    2. **Compile-Time Evaluation**:
+    - In `main`, the `factorial(5)` call is evaluated at compile time, and the result is stored in `fact5`.
+
+    3. **Compilation Error**:
+    - The commented-out section demonstrates a scenario that would cause a compilation error. Attempting to call `factorial` with a non-constant expression (like a runtime variable `n`) is not allowed, as `consteval` functions require compile-time arguments and evaluation.
+
+    ### Comparison with `constexpr`:
+
+    - **`constexpr`**:
+    - Functions can be evaluated at compile time or runtime, depending on the context.
+    - A `constexpr` function can be called with runtime values, and the evaluation will happen at runtime in such cases.
+
+    - **`consteval`**:
+    - Functions must be evaluated at compile time.
+    - If called with anything other than constant expressions, it results in a compilation error.
+
+    ### Use Cases for `consteval`:
+
+    - **Ensuring Compile-Time Computations**: When you need to guarantee that certain calculations or operations are always performed at compile time.
+    - **Template Metaprogramming**: Useful in template metaprogramming where compile-time constants are crucial.
+    - **Static Assertions**: When you want to use the result of a computation in static assertions or other compile-time checks.
+
+    By using `consteval`, you can enforce stricter compile-time evaluation, which can help catch errors early and optimize performance by eliminating runtime overhead for certain calculations.
+
+    Source:
+    https://www.youtube.com/watch?v=KBny6MZJR64         // tells all
+
+
+    *************
+    * Constinit *
+    *************
+    It just cares about variable has a value at compile time and is not blank it is not same as const, constexpr or consteval where they are also constant and are
+    not changeable whereas in the case of constinit it just cares about presense of a value for a variable.
+
+    Example 1
+    ```
+    #include <iostream>
+
+    int getValue() {
+        return 42;
+    }
+
+    constexpr int getCompileTimeValue() {
+        return 100;
+    }
+
+    // Use of constinit
+    constinit int staticVar = getValue();               // Must be initialized at compile time
+    constinit int constexprStaticVar = getCompileTimeValue(); // Initialized at compile time
+
+    int main() {
+        std::cout << "staticVar: " << staticVar << std::endl;
+        std::cout << "constexprStaticVar: " << constexprStaticVar << std::endl;
+        return 0;
+    }
+    ```
+    Guarantee Initialization:
+       •staticVar is ensured to be initialized at compile time using getValue(), even though getValue() is not a constexpr function.
+       •constexprStaticVar is initialized using the constexpr function getCompileTimeValue(), ensuring compile-time initialization.
+
+
+
+    Example 2:
+    ```
+    #include <iostream>
+
+    // Function that is known at compile time
+    constexpr int compileTimeValue() {
+        return 42;
+    }
+
+    // Function that provides a value at runtime
+    int runtimeValue() {
+        return 100;
+    }
+
+    // Use of constinit
+    constinit int compileTimeVar = compileTimeValue(); // Initialized at compile time
+    constinit int runtimeVar = runtimeValue();         // Must be initialized at compile time
+
+    int main() {
+        std::cout << "compileTimeVar: " << compileTimeVar << std::endl;
+        std::cout << "runtimeVar: " << runtimeVar << std::endl;
+        return 0;
+    }
+    ```
+    In the above example you can see that you have one function that is using constexpr meaning its value will be available at compile time and for the
+    other one which is not going to be available at runtime so for `runtimevar` wont have a value associated to it at compile time so you will get an error.
+
+
+
+    *****************
+    * static_assert *
+    *****************
+    It is a keyword that you can put anywhere in your program to check if the use of constexpr, consteval, constinit are actually evaluating at compiletime or not
+    if they are not getting evaluated at compile time using `static_assert` you will get an error during compilation that way you can know that the compile time 
+    evluation did not work and you need to fix some logic for it to work.
+    |||||||||||||
+    |||||||||||||
+        |||||||||||||
+    |||||||||||||
+        |||||||||||||
+    |||||||||||||
+        |||||||||||||           add the remaining tutorial
+    |||||||||||||
+        |||||||||||||
+    |||||||||||||    |||||||||||||
+    |||||||||||||
+        |||||||||||||
+    |||||||||||||
 */
 
