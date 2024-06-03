@@ -449,6 +449,9 @@
     It just cares about variable has a value at compile time and is not blank it is not same as const, constexpr or consteval where they are also constant and are
     not changeable whereas in the case of constinit it just cares about presense of a value for a variable.
 
+    Also you cannot combine constexpr constinit together but you cant do const constinit. And constinit cant be inside main() coz its designed to solve problems that
+    happen outside the main function as it can only be applied to a variable with static or thread storage duration.
+
     Example 1
     ```
     #include <iostream>
@@ -509,21 +512,13 @@
     *****************
     * static_assert *
     *****************
-    It is a keyword that you can put anywhere in your program to check if the use of constexpr, consteval, constinit are actually evaluating at compiletime or not
+    It is a compile time checker keyword that you can put anywhere in your program to check if the use of constexpr, consteval, constinit are actually evaluating at compiletime or not
     if they are not getting evaluated at compile time using `static_assert` you will get an error during compilation that way you can know that the compile time 
     evluation did not work and you need to fix some logic for it to work.
-    |||||||||||||
-    |||||||||||||
-        |||||||||||||
-    |||||||||||||
-        |||||||||||||
-    |||||||||||||
-        |||||||||||||           add the remaining tutorial
-    |||||||||||||
-        |||||||||||||
-    |||||||||||||    |||||||||||||
-    |||||||||||||
-        |||||||||||||
-    |||||||||||||
+
+    static_assert(eye_count == 2);
+    static_assert(SOME_LIB_MAJOR_VERSION = 123);
+
+    this way we can know if its evluated at compile time or not if not we will get an error.
 */
 

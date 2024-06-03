@@ -4,11 +4,41 @@
     ********************
     Converting a value of one data type to another data type
     There are of 2 types:
-        Implicit = Automaticly done by the compiler on its own, without any external trigger from the user. All the data types of the variables are upgraded to the data type of 
-                   the variable with the largest data type.
+     ___________________________
+    |   Implicit Conversion    | 
+    |__________________________|
+    Automaticly done by the compiler on its own, without any external trigger from the user. All the data types of the variables are upgraded to the data type of the variable with the largest data type.
+    For example1.
+        ```
+        double price {45.6};
+        int units {10};
+
+        double total_price = price * units;
+
+        std::cout<<"Total price: "<< total_price << std::endl;
+        std::cout<<"size of Total price: "<< sizeof(total_price) << std::endl;
+        ```
+        in the above example price is double and units is in int so when they are multiplied compiler will see that when int and double will be multiplied the answer will be double
+        so what it dose is sees which is the smallest in the bunch in this case its int and will convert it to the largest of the bunch which is double in this case. So units is converted
+        to double and then both are multiplied and result is stored.
+
+    For example2.
+        ```
+        int x;
+        double y {45.44};
+        x = y;
+        std::cout << "The value of x is : " << x << std::endl;
+        ```
+        now in the above example narrowing is taking place as we have x as int and y as double but later in the program we are putting the value of double y in int x so 
+        there another implicit conversion is going to happen where y will be converted to int and then stored in variable x which is of type int. 
+     _________________________
+    |   Explicit Conversion  |
+    |________________________|
+
+
         Explicit = Precede value with new data type (int)
     
-    Variables data size:
+    •Variables data size Conversion Guidline:
         bool -> char -> short int -> int -> unsigned int -> long -> unsigned -> long long -> float -> double -> long double
         
         where bool is the smallest and long double is the largest data variable. So when doing type conversions the largest variable will be preferred and any smaller variable
