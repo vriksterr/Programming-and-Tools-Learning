@@ -50,6 +50,10 @@
     - `^=` (Bitwise XOR assignment)
     - `<<=` (Bitwise Left shift assignment)
     - `>>=` (Bitwise Right shift assignment)
+    - why no ~= or !=  //Compound assignment operators like +=, -= are designed to combine an operation with assignment in a concise 
+                         manner. For example, a += b means "add b to a and assign the result back to a.". So as ~ is use as not and there is no variable on the right side
+                         like its in in case of other operators so makes no sense to have one in first place and != is used as a relation operator.
+                         ~ is also an unary operator whereas others(+ - / * .....) are binary operators.
 
     7. Conditional (Ternary) Operator:
     - `? :` (Conditional operator)
@@ -451,16 +455,49 @@ int main ()
     std::cout << "value of a variable in (bin) : " << std::bitset<4>(a) << std::endl;
 
     // Bitwise AND
+    /*
+        its basically an and operator and we compair each bit and output the result for eg.
+        a = 0 1 0 1 in binary
+        b = 0 0 1 1 in binary
+      ans = 0 0 0 1
+    */
     cout << (a & b) << endl;  // Output: 1 (binary: 0001)
 
+    // Bitwise NAND
+    /*
+        its basically an and operator and we compair each bit and output the result for eg.
+        a = 0 1 0 1 in binary
+        b = 0 0 1 1 in binary
+      ans = 1 1 1 0
+    */
+    cout << !(a & b) << endl;  // Output: 14 (binary: 1 1 1 0)
+
     // Bitwise OR
+    /*
+        its an or operator and here also we compare each bit for eg.
+        a = 0 1 0 1 in binary
+        b = 0 0 1 1 in binary
+      ans = 0 1 1 1
+
+    */
     cout << (a | b) << endl;  // Output: 7 (binary: 0111)
 
     // Bitwise XOR
+    /*
+        in this operator it will act like a normal or but if all in comparision are 1 the result will be 0
+        a = 0 1 0 1 in binary
+        b = 0 0 1 1 in binary
+      ans = 0 1 1 0
+    */
     cout << (a ^ b) << endl;  // Output: 6 (binary: 0110)
 
     // Bitwise NOT
-    cout << (~a) << endl;     // Output: -6 (binary: 11111010 in two's complement)
+    /*
+        in this operator we just flip the bit to the other bit if its 0 we change it to 1 and if its 1 we change it to 0
+        a = 0 1 0 1 in binary
+      ans = 1 0 1 0
+    */
+    cout << (~a) << endl;     // Output: 10 (binary: 1010)
 
     // Left Shift
     /*  Only works on integers and bit shifting is not supported for types shorted than an integer so lets say you have a short int the comversion will type implecit cast it to integer do the operation
