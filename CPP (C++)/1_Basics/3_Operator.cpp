@@ -139,6 +139,7 @@
 */
 #include<iostream>
 #include<cmath>     //used for fmod()
+#include<bitset>    //used for bitset<>()
 using namespace std;
 
 int main ()
@@ -445,8 +446,9 @@ int main ()
     //            Bitwise Operator
     //____________________________________________
 
-    int a = 5;  // binary: 0101
+    int a = 5;  // binary: 0101 To find binary value of a variable use bitset lib check Library section
     int b = 3;  // binary: 0011
+    std::cout << "value of a variable in (bin) : " << std::bitset<4>(a) << std::endl;
 
     // Bitwise AND
     cout << (a & b) << endl;  // Output: 1 (binary: 0001)
@@ -461,10 +463,27 @@ int main ()
     cout << (~a) << endl;     // Output: -6 (binary: 11111010 in two's complement)
 
     // Left Shift
-    cout << (a << 1) << endl; // Output: 10 (binary: 1010)
+    /*  Only works on integers and bit shifting is not supported for types shorted than an integer so lets say you have a short int the comversion will type implecit cast it to integer do the operation
+        so it will be your duty to explicit cast it to the thing you want it to be else the data will be in integer format not short int or char that you want it to be.
+        what left shift dose is it shifts all the digits to the left for example
+          Binary (5)          :   0 1 0 1
+                                  / / /  
+          Left Shift by 1 bit :  1 0 1 0
+        when you do this you get a brand new value so in above exame the value will be 10 in decimal
+        but do note the value of 5 and 0 at the start of it is thrown off and a 0 was padded in on the right.
+    */
+    cout << (a << 1) << endl; // Output: 10 (binary: 1010). We are shifting by 1 position 
 
     // Right Shift
-    cout << (a >> 1) << endl; // Output: 2 (binary: 0010)
+    /*  Only works on integers and bit shifting is not supported for types shorted than an integer so lets say you have a short int the comversion will type implecit cast it to integer do the operation
+        so it will be your duty to explicit cast it to the thing you want it to be else the data will be in integer format not short int or char that you want it to be.
+        same as left shift but shifts to the right side for example
+        Binary (5)          :   0 1 0 1
+                                 \ \ \
+        Left Shift by 1 bit :   0 0 1 0
+        in this the 0 is getting padded on the left side.
+    */
+    cout << (a >> 1) << endl; // Output: 2 (binary: 0010). We are shifting by 1 position 
 
 
     //____________________________________________
