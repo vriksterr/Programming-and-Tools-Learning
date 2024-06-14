@@ -2,6 +2,7 @@
     *****************************
     * Constants & Static in C++ *
     *****************************
+    To understand this first understand Datatypes, Functions and Control Program Flow then you will understand where all you can you this in other parts in C++ such as pointers.
 
     *************
     * Constants *
