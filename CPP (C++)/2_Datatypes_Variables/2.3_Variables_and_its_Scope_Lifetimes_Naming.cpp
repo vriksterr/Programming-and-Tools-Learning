@@ -246,6 +246,11 @@ int main() {
     // External variable
     std::cout << "External variable: " << externalVar << std::endl;
 
+        {
+            int value1 = 10;    //local variable dies at the end of the scope
+            int value2 = 20;
+        }
+
     return 0;
 }
 
