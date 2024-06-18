@@ -72,6 +72,10 @@ int main()
     int num {};
     const int min {10};
     const int max {100};
+
+    if (min){
+        cout<<"In if statements any value gets converted to a bool by compiler and any value other than 0 will be true including -ve numbers." <<endl;
+    }
  
     cout<<"Enter a number between "<<min<<" and "<<max<<" : ";
     cin>>num;
@@ -296,6 +300,7 @@ int main()
         -if cond_expr is false then the value of expr2 is returned
 
     -Similar to if-else construct
+    -both expr1 and expr2 needs to of the same type of should be convertable to the type.
     -Tenary operator
     -Very usefull when used inline
     -Very easy to abuse!
@@ -314,7 +319,7 @@ int main()
 
     cout<<((score >90) ? "Excellent" : "Good");  
 */
-
+    //Example 1
     int num2{};
 
     cout<<"Enter an integer: ";
@@ -322,8 +327,7 @@ int main()
 
     cout<<num<<" is "<< ((num % 2 == 0) ? "even" : "odd") <<endl;   //easier to use this instead of other ways if you just 1 pair of if-else 
 
-    //another example would be
-
+    //Example 2
     int num3{},num4{};
 
     cout<<endl<<"Enter two integers seprated by space: ";
@@ -337,6 +341,14 @@ int main()
 
     else 
     cout<<"The numbers are the same"<<endl;
+
+    //Example 3
+    int value_t = 10;
+    int value2_t = 20;
+
+    int value_result{};
+    value_result = (value_t < value2_t) ? value_t : 22.12f; //here the types are not same but float can be converted to int but lets say if we had value_result = (value_t < value2_t) ? value_t : "hello"; this wont work can we cant convert char to int.
+    cout<<"smallest value is: "<< value_result << endl;
 
 
 //____________________________________________

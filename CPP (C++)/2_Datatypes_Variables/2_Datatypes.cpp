@@ -174,7 +174,7 @@
             - `char`: Represents a single character.  Size: 8 bits or 1 bytes. All characters are represed using ASCII Read more at https://www.cs.cmu.edu/~pattis/15-1XX/common/handouts/ascii.html
             - `float`: Represents single-precision floating-point numbers. Size: 4bytes Precision: 7. No long for float coz we have a double for that
             - `double`: Represents double-precision floating-point numbers.Size: 8bytes Precision: 15. For Long double Size: 12 Precision: 15+. Also every floating point number is considered as a double by default by the compiler.
-            - `bool`: Represents Boolean values (`true` or `false`). Size: 8 bits or 1 bytes. In binary true is represented as 00000001 or 0x01 in hexadecimal.
+            - `bool`: Represents Boolean values (`true` or `false`). Size: 8 bits or 1 bytes. In binary true is represented as 00000001 or 0x01 in hexadecimal for true. Any value other than 0 is considered True even -ve numbers.
             - `void`: Represents typeless meaning there is no type its just void.
             - `auto`: Represents auto detection what is the type of data and assign it accordingly.
 
