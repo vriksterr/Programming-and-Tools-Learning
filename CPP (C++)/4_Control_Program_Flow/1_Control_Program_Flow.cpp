@@ -1,27 +1,24 @@
 /* 
-    Sequence
-    - Ordering statements sequentially
+    **************************
+    *  Control Program Flow  *
+    **************************
+    We can change the flow of program based on condition.
 
-    Selection
-    - It allows you to make decisions and execute parts of your program only when certain conditions are true or false.
-    - Making decisions
-    - if statement
-    - if-else statement
-    - Nested if statement if { if {if {}}}
-    - Switch statement
-    - Conditional operator ?:
-    - Try Catch (exception handling)
+    Selection: It allows you to make decisions and execute parts of your program only when certain conditions are true or false.
+        - if statement, if Statement with Initialization (since C++17), if-else statement, Nested if statement if { if {if {}}}
+        - Switch statement, Switch with Initialization
+        - Conditional operator ?:
+        - Try Catch (exception handling)
 
-    Iteration
-    - These constructs that let us loop and repeat parts of our program.
-    - Looping or repeating 
-    - for loop
-    - Range-based for loop
-    - while loop
-    - do-while loop
-    - continue and break
-    - Infinite loops
-    - Nested loops (loops withing loops)
+    Iteration: These constructs that let us loop and repeat parts of our program. Looping or repeating.
+        - for loop, Range-based for loop
+        - while loop
+        - do-while loop
+        - continue and break
+
+    Some other types of Control Flow for knowledge
+        - Infinite loops
+        - Nested loops- loops withing loops
 
     Source:
     (Exception Handling Resources)
@@ -37,9 +34,9 @@ using namespace std;
 int main()
 {
 
-  //____________________________
- //     Continue & Break
-//______________________________
+//____________________________
+//     Continue & Break
+//____________________________
 /*
     In C++ continue and break are used in a loop only like while, for, do-while, switch statements. Outside of these contexts, these statements are not applicable, and attempting to use them may result in compilation errors.
     When you are using continue; in program like for example in if else statements and you use continue it will continue and if you use break; it will exit out of the loop.
@@ -50,9 +47,9 @@ int main()
     statements such as return (to exit a function), goto (although its use is generally discouraged due to its potential for creating spaghetti code), or throwing and catching exceptions (for more advanced error handling scenarios).
 */
 
-//____________________________________________
-//            IF Statement
-//____________________________________________
+//____________________________
+//       IF Statement
+//____________________________
 /* The difference between if if and if else statement is that in the if else, only one of the two statements can be executed 
    while in the if if case it is possible for both of them to be executed. In below example, it does not matter since the two 
    conditions are mutually exclusive, but it may become important if it is possible for both conditions to be true. In that case, 
@@ -193,7 +190,34 @@ int main()
 
     else {
 
-        cout<<"Sorry "<<score<<" is not in range"<<endl;
+        cout<<"Sorry "<<score<<" is not in range"<<endl<<endl;
+    }
+//____________________________________________
+//    IF-Else Statement with Initialization
+//____________________________________________
+/*
+    In C++ we can pollute with global variables but if we want to use a variable in if statements we can initialize it with it and the advantage is the scope of that 
+    variable stays with the if statement.
+    Now you might wonder why not just declare it inside the if statement scope well the problem is it wont its not going to be available for else statement.
+
+    Do note it will only work for if-else, if-else if-else and not other if types.
+*/  
+bool go {false};
+    if(int speed{33}; go){
+        int useless_speed = 50;
+        if(speed > 5){
+            cout<<"Slow Down!"<<endl;
+        }
+        else{
+            cout<<"All Good!"<<endl;
+        }
+    }
+    else if(1){                     //we are putting 1 so that this gets initialized 
+        cout << "Your current Speed: " << speed << endl;
+        //cout<< useless_speed;     //This is not accessable coz it ends in the if scope never gets 
+    }
+    else{
+        cout << "Nothing!" << endl;
     }
 
 //____________________________________________
@@ -287,6 +311,63 @@ int main()
         defaut:             // if you dont use this the other up & down constants wont be handled
         cout<<"OK"<<endl;
     }
+
+//____________________________________________
+//    Switch Statement with Initialization
+//____________________________________________
+/*
+In the the switch case are the variables replaced by its values during comparision ?
+
+In the switch case, the value of the variable tool is compared against the case labels, which are the values of the constants 
+like Pen, Marker, Eraser, etc. These constants are replaced by their respective integer values during compilation.
+
+To answer your question directly: Yes, in the switch case, Eraser is replaced with its value (30) by the compiler. During 
+compilation, the constant Eraser is replaced by its integer value (30), and this value is used in the comparison in the switch statement.
+*/
+
+const int Pen{ 10 };
+const int Marker{ 20 };
+const int Eraser{ 30 };
+const int Rectangle{ 40 };
+const int Circle{ 50 };
+const int Ellipse{ 60 };
+
+int tool {Eraser};
+
+    switch (double strength{3.56};tool)
+    {
+        case Pen : {
+             std::cout << "Active tool is Pen. strength : " <<  strength << std::endl;
+        }
+        break;
+
+        case Marker : {
+             std::cout << "Active tool is Marker. strength : " <<  strength << std::endl;
+        }
+        break;
+
+
+        case Eraser :
+        case Rectangle : 
+        case Circle : {
+             std::cout << "Drawing Shapes. strength : " <<  strength << std::endl;
+        }
+        break;
+
+        case Ellipse : {
+             std::cout << "Active tool is Ellipse. strength : " <<  strength << std::endl;
+        }
+        break;
+    
+        default: {
+            std::cout << "No match found. strength : " <<  strength << std::endl;
+        }
+        break;
+    }
+
+    std::cout << "Moving on" << std::endl;
+    //strength++;       //out of scope as its declared inside switch case
+
 //____________________________________________
 //        Conditional/Ternary Operator
 //____________________________________________
@@ -391,9 +472,9 @@ int main()
     cout << "Your Age is: " << myNum << "Which is blow 18"<<endl;
     }
 
-//____________________________________________
-//               Looping
-//____________________________________________
+//_____________________
+//      Looping
+//_____________________
 /*
 
     -The third basic building block of programming

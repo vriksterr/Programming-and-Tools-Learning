@@ -22,19 +22,58 @@
 
 */
 #include <iostream>
+// #include <string>
 
-// Function template to find the maximum of two values
-template <typename T>
-T max(T a, T b) {
-    return (a > b) ? a : b;
-}
 
-int main() {
-    // Using the max function template with different data types
-    std::cout << "Max of 5 and 10 (int): " << max(5, 10) << std::endl;
-    std::cout << "Max of 3.5 and 2.7 (double): " << max(3.5, 2.7) << std::endl;
-    std::cout << "Max of 'hello' and 'world' (string): " << max("hello", "world") << std::endl;
+// Tools
+const int Pen{ 10 };
+const int Marker{ 20 };
+const int Eraser{ 30 };
+const int Rectangle{ 40 };
+const int Circle{ 50 };
+const int Ellipse{ 60 };
 
-    short int push = (short)155464;
+
+int main(){
+
+    int tool {Eraser};
+
+    switch (double strength{3.56};tool)
+    {
+        case Pen : {
+             std::cout << "Active tool is Pen. strength : " <<  strength << std::endl;
+        }
+        break;
+
+        case Marker : {
+             std::cout << "Active tool is Marker. strength : " <<  strength << std::endl;
+        }
+        break;
+
+
+        case Eraser :
+        case Rectangle : 
+        case Circle : {
+             std::cout << "Drawing Shapes. strength : " <<  strength << std::endl;
+        }
+        break;
+
+        case Ellipse : {
+             std::cout << "Active tool is Ellipse. strength : " <<  strength << std::endl;
+        }
+        break;
+    
+        default: {
+            std::cout << "No match found. strength : " <<  strength << std::endl;
+        }
+        break;
+    }
+
+    std::cout << "Moving on" << std::endl;
+    //strength++;
+
+
+
+   
     return 0;
 }
