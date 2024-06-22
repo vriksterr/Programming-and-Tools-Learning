@@ -22,58 +22,36 @@
 
 */
 #include <iostream>
-// #include <string>
-
-
-// Tools
-const int Pen{ 10 };
-const int Marker{ 20 };
-const int Eraser{ 30 };
-const int Rectangle{ 40 };
-const int Circle{ 50 };
-const int Ellipse{ 60 };
-
 
 int main(){
+    switch (0){
 
-    int tool {Eraser};
-
-    switch (double strength{3.56};tool)
-    {
-        case Pen : {
-             std::cout << "Active tool is Pen. strength : " <<  strength << std::endl;
-        }
-        break;
-
-        case Marker : {
-             std::cout << "Active tool is Marker. strength : " <<  strength << std::endl;
-        }
-        break;
-
-
-        case Eraser :
-        case Rectangle : 
-        case Circle : {
-             std::cout << "Drawing Shapes. strength : " <<  strength << std::endl;
-        }
-        break;
-
-        case Ellipse : {
-             std::cout << "Active tool is Ellipse. strength : " <<  strength << std::endl;
-        }
-        break;
-    
-        default: {
-            std::cout << "No match found. strength : " <<  strength << std::endl;
-        }
+    default: {
+        int u;
+        std::cout << "Statement5" << std::endl;
+        std::cout << "Statement6" << std::endl;
         break;
     }
 
-    std::cout << "Moving on" << std::endl;
-    //strength++;
+    case 0: {
+        int y {5};
+        std::cout << "x : " << y << std::endl;
+        std::cout << "Statement1" << std::endl;
+        std::cout << "Statement2" << std::endl;
+        break;
+    }
 
+    case 1: {
+        int z;
+        std::cout << "y : " << z << std::endl;
+        std::cout << "Statement3" << std::endl;
+        std::cout << "Statement4" << std::endl;
+        break;
+    }
+    
 
-
+    }
+    std::cout << "Moving on..." << std::endl;
    
     return 0;
 }

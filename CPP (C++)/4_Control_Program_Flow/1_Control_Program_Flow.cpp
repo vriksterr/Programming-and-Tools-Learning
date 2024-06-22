@@ -223,7 +223,9 @@ bool go {false};
 //____________________________________________
 //            Switch Statement
 //____________________________________________
-/* The difference between ifelse vs switch is that if we dont use break; after a case it will continue to execute all cases until there is a break statement
+/* 
+Switch case is one scope meaning cases dont have there scope unless you define it using {}.
+The difference between ifelse vs switch is that if we dont use break; after a case is a hit it will continue to execute all cases until there is a break statement
     int a = 10;
 
     switch(10){
@@ -286,7 +288,7 @@ bool go {false};
             break;
         }
         break;
-        defautl:
+        default:
             cout<<"You need a 90 or above,study hard!"<<endl;
         break;
 
@@ -308,7 +310,7 @@ bool go {false};
         cout<<"Going right"<<endl;
         break;
 
-        defaut:             // if you dont use this the other up & down constants wont be handled
+        default:             // if you dont use this the other up & down constants wont be handled
         cout<<"OK"<<endl;
     }
 
@@ -323,6 +325,118 @@ like Pen, Marker, Eraser, etc. These constants are replaced by their respective 
 
 To answer your question directly: Yes, in the switch case, Eraser is replaced with its value (30) by the compiler. During 
 compilation, the constant Eraser is replaced by its integer value (30), and this value is used in the comparison in the switch statement.
+
+Now you might think why not declare variable inside the cases directly lets understand this problem with below example
+```
+int condition{0};
+
+    int my_var{4};
+
+    switch (int data{7}; condition)
+    {
+        int x{9};   // Never going to run
+    case 0 :
+        int y {5};
+        x = 6;
+        x++;
+        //z =6;
+        std::cout << "x : " << x << std::endl;
+        std::cout << "Statement1" << std::endl;
+        std::cout << "Statement2" << std::endl;
+        break;
+
+    case 1 : 
+        int z;
+        my_var++;
+        y = 5;
+        std::cout << "y : " << y << std::endl;
+        std::cout << "Statement3" << std::endl;
+        std::cout << "Statement4" << std::endl;
+        break;
+    
+    default:
+        int u;
+        z = 10;
+        std::cout << "Statement5" << std::endl;
+        std::cout << "Statement6" << std::endl;
+        break;
+    }
+    std::cout << "Moving on..." << std::endl;
+```
+Compiler will give error and what will happen is if case 0 hits int x will never be initialized and the program will jump straight to case 0: same way
+if case 1 is hit anything before that will be skipped and not initialized to be used in case 1 so initializing it with switch statement is the best way to do it.
+Compiler will be fine with declaring default case as there its variable are decalred at the end of the scope so there is no one to use it after default case.
+
+But what to do if you want a variable declared for a scope use { } for scope coz 
+this will give error coz now compiler dosent know what will be the scope of int y, int z
+```
+#include <iostream>
+
+int main(){
+    switch (0){
+
+    case 0 :
+        int y {5};
+        std::cout << "x : " << y << std::endl;
+        std::cout << "Statement1" << std::endl;
+        std::cout << "Statement2" << std::endl;
+        break;
+
+    case 1 : 
+        int z;
+        std::cout << "y : " << z << std::endl;
+        std::cout << "Statement3" << std::endl;
+        std::cout << "Statement4" << std::endl;
+        break;
+    
+    default:
+        int u;
+        std::cout << "Statement5" << std::endl;
+        std::cout << "Statement6" << std::endl;
+        break;
+    }
+    std::cout << "Moving on..." << std::endl;
+   
+    return 0;
+}
+```
+We can fix this by using { } this way compiler will know what is the scope of the variable
+In C++, you cannot declare variables directly within case labels without introducing a new scope. This is because case 
+labels are not considered to create their own scope, and all declarations must have unique identifiers within the same scope.
+```
+#include <iostream>
+
+int main(){
+    switch (0){
+
+    case 0: {
+        int y {5};
+        std::cout << "x : " << y << std::endl;
+        std::cout << "Statement1" << std::endl;
+        std::cout << "Statement2" << std::endl;
+        break;
+    }
+
+    case 1: {
+        int z;
+        std::cout << "y : " << z << std::endl;
+        std::cout << "Statement3" << std::endl;
+        std::cout << "Statement4" << std::endl;
+        break;
+    }
+    
+    default: {
+        int u;
+        std::cout << "Statement5" << std::endl;
+        std::cout << "Statement6" << std::endl;
+        break;
+    }
+    }
+    std::cout << "Moving on..." << std::endl;
+   
+    return 0;
+}
+```
 */
 
 const int Pen{ 10 };
@@ -1001,7 +1115,7 @@ int tool {Eraser};
 //____________________________________________
 //       continue and break statement
 //____________________________________________
-/*
+/*  A continue statement may only be used within a loop
     dont over use it as it will get confusing 
 
     Continue
@@ -1014,7 +1128,6 @@ int tool {Eraser};
         - controll immediately goes to the statement following the loop construct
 
 */
-
 
     vector<int> values {1,2,-1,3,-1,-99,7,8,10};
 
