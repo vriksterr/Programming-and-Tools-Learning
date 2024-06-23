@@ -10,14 +10,16 @@
     * Variables *
     *************
     variables you can undetstand from above example
+    There are 3 terms in Variable:
+        1.Variable Declaration: When you write int y;, you are only declaring the variable y without initializing it. This declaration 
+                                is lighter in terms of what the compiler needs to do. It simply allocates space for the variable without assigning an initial value.
+        2.Variable Definition: In definition, users defines the previously declared variable. x = 10;
+        3.Variable Initialization: When you write int y = 5;, you are both declaring and initializing the variable y in one statement. Initialization involves assigning a 
+                                   value to the variable at the point of its declaration. This is considered a "full" declaration. When you initialize a variable, it involves 
+                                   more than just reserving space; it includes assigning a value, which might require a clear and confined scope to avoid conflicts and ensure proper execution.
 
     Also all different types of variables data types such as INT,Float,Boolean,CHAR,double,etc
-     ________________________________
-    |   Declaration of a Variable   |
-    |_______________________________|
-    - Variables is the name given to a location in the memory location to the variable that is 
-      in programming
-    
+     
      ____________________________
     |   Variables names in C++  |
     |___________________________|

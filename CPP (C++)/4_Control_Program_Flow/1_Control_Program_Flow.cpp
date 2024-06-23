@@ -224,8 +224,17 @@ bool go {false};
 //            Switch Statement
 //____________________________________________
 /* 
-Switch case is one scope meaning cases dont have there scope unless you define it using {}.
+Switch case is one scope meaning cases dont have there scope by default unless you define it using {}. Variables that you declare (not initialize, int x = 10; is not valid) in the 
+scope is visible to other cases as well.
+
+In the the switch case are the variables replaced by its values during comparision ?
+In the switch case, the value of the variable tool is compared against the case labels, which are the values of the constants 
+like Pen, Marker, Eraser, etc. These constants are replaced by their respective integer values during compilation.
+To answer your question directly: Yes, in the switch case, Eraser is replaced with its value (30) by the compiler. During 
+compilation, the constant Eraser is replaced by its integer value (30), and this value is used in the comparison in the switch statement.
+
 The difference between ifelse vs switch is that if we dont use break; after a case is a hit it will continue to execute all cases until there is a break statement
+    ```
     int a = 10;
 
     switch(10){
@@ -236,10 +245,34 @@ The difference between ifelse vs switch is that if we dont use break; after a ca
         case 50: cout<<"50"<<endl;
         break;
     }
-    
+    ```
     take the above for an example case 10 and case 30,40,50 will get printed coz there was no break after case 10. If you noticed that case 20 didnt get printed coz
     it checks for the condition and reached the condition which is true and after that keeps executing until it finds a break statement. Also in the end right before }
     you dont need to put the break statement coz the switch statements ends at } so there is no need to put a break; there but seems clean if you put it.
+
+Facts about Switch cases:
+    1.You are not allowed to add duplicate cases.
+    2.Only those expressions are allowed in switch which results in an integral constant value. Meaning only integers as final result not float, etc.
+    3.Float values in not allowed as a constant value in case lable. Only integer constants/constant expressions are allowed in case label.
+    4.Case expression must have a constant value
+        ```
+            int x =2;
+            int y=2 , z =23;
+            switch (x){
+                case y: cout<<"hello1"<<endl;
+                    break;
+                case z: cout<<"hello1"<<endl;
+                    break;
+            }
+        ```
+    5.Macros are allowed as case lables.
+    6.Defaults can be places anywhere inside switch but good habbit is to place it at the end of switch case.
+    7.You can't have in a switch statement is another switch statement if you want to have it have it within {} scopes.
+
+Source:
+    https://www.youtube.com/watch?v=-JMSaLRqsgo
+    https://forum.arduino.cc/t/why-cant-i-declare-a-local-variable-in-a-switch-case/64115/2
+    https://stackoverflow.com/questions/92396/why-cant-variables-be-declared-in-a-switch-statement
 */
 
     char letter_grade1{};
@@ -318,91 +351,66 @@ The difference between ifelse vs switch is that if we dont use break; after a ca
 //    Switch Statement with Initialization
 //____________________________________________
 /*
-In the the switch case are the variables replaced by its values during comparision ?
+We can initialize variabled within the scope of switch case with this method.
 
-In the switch case, the value of the variable tool is compared against the case labels, which are the values of the constants 
-like Pen, Marker, Eraser, etc. These constants are replaced by their respective integer values during compilation.
+Q-Now you might think why not initialize variable inside the cases directly ?
+    or
+Q-But what to do if you want a variable declared inside case? 
+    lets understand with below example
+    ```
+    #include <iostream>
 
-To answer your question directly: Yes, in the switch case, Eraser is replaced with its value (30) by the compiler. During 
-compilation, the constant Eraser is replaced by its integer value (30), and this value is used in the comparison in the switch statement.
+    int main(){
 
-Now you might think why not declare variable inside the cases directly lets understand this problem with below example
-```
-int condition{0};
+        switch (0){
+            int x{9};   // Never going to get initialized crosses initialization error
+            case 0 :
+                int y = 5;  //crosses initialization error
+                std::cout << "y : " << y << std::endl;
+                break;
 
-    int my_var{4};
-
-    switch (int data{7}; condition)
-    {
-        int x{9};   // Never going to run
-    case 0 :
-        int y {5};
-        x = 6;
-        x++;
-        //z =6;
-        std::cout << "x : " << x << std::endl;
-        std::cout << "Statement1" << std::endl;
-        std::cout << "Statement2" << std::endl;
-        break;
-
-    case 1 : 
-        int z;
-        my_var++;
-        y = 5;
-        std::cout << "y : " << y << std::endl;
-        std::cout << "Statement3" << std::endl;
-        std::cout << "Statement4" << std::endl;
-        break;
-    
-    default:
-        int u;
-        z = 10;
-        std::cout << "Statement5" << std::endl;
-        std::cout << "Statement6" << std::endl;
-        break;
+            case 1 : 
+                int z;
+                std::cout << "z : " << z << std::endl;
+                break;
+            
+            default:
+                int u;
+                break;
+        }
+        return 0;
     }
-    std::cout << "Moving on..." << std::endl;
-```
-Compiler will give error and what will happen is if case 0 hits int x will never be initialized and the program will jump straight to case 0: same way
-if case 1 is hit anything before that will be skipped and not initialized to be used in case 1 so initializing it with switch statement is the best way to do it.
-Compiler will be fine with declaring default case as there its variable are decalred at the end of the scope so there is no one to use it after default case.
+    ```
+    lets first understand different between int y = 5; vs int y; y=5; 
+    When you write int y = 5;, you are both declaring and initializing the variable y in one statement. Initialization involves assigning a value to the variable at the point 
+    of its declaration. This is considered a "full" declaration.In the context of a switch statement, this initialization must occur within a proper block scope {} to avoid 
+    crossing case boundaries. The initialization can be more complex and thus requires a clear, confined scope to ensure that it doesn't interfere with other cases. So compiler 
+    gets confused to understand the scope of int y = 5; in above example and by chance case 2 gets hit y initialization will be skipped.
 
-But what to do if you want a variable declared for a scope use { } for scope coz 
-this will give error coz now compiler dosent know what will be the scope of int y, int z
-```
-#include <iostream>
+    When you write int y;, you are only declaring the variable y without initializing it. This declaration is lighter in terms of what the compiler needs to do. It simply allocates space 
+    for the variable without assigning an initial value. Because it doesn't involve initializing the variable, it is less likely to cause scope-related issues within the switch statement. 
+    However, to avoid potential use of an uninitialized variable, it is good practice to follow up with an assignment before use.
 
-int main(){
-    switch (0){
+    Q-Why the Difference Matters ?
+        Initialization (int y = 5;): The compiler needs to ensure that the initialization does not span multiple case labels or fall through to other cases without proper scoping. This is 
+        why it raises an error when you try to initialize without a block scope. When you declare and initialize in one statement, the initialization code might involve more complex 
+        operations that require clear scoping.
 
-    case 0 :
-        int y {5};
-        std::cout << "x : " << y << std::endl;
-        std::cout << "Statement1" << std::endl;
-        std::cout << "Statement2" << std::endl;
-        break;
+    Q-However, when you separate the declaration and assignment:
+        -The declaration is a simple operation that only introduces the variable into the scope.
+        -The assignment is a separate operation that can be easily managed by the compiler.
+        -The risk of initialization code inadvertently spanning multiple cases is eliminated.
 
-    case 1 : 
-        int z;
-        std::cout << "y : " << z << std::endl;
-        std::cout << "Statement3" << std::endl;
-        std::cout << "Statement4" << std::endl;
-        break;
-    
-    default:
-        int u;
-        std::cout << "Statement5" << std::endl;
-        std::cout << "Statement6" << std::endl;
-        break;
-    }
-    std::cout << "Moving on..." << std::endl;
-   
-    return 0;
-}
-```
-We can fix this by using { } this way compiler will know what is the scope of the variable
+    Q-But now you might be wondering isnt this issue happening in the case of y = 10; where it will also affect other cases ?
+        No because the initialization (int y = 10;) means the compiler has to ensure that y is properly initialized before any other case labels are encountered, 
+        which complicates scope management.The compiler has to be cautious that the initialization does not interfere with other cases, which is why it often requires explicit scoping 
+        using {} to prevent any potential issues. int y; simply informing the compiler about the variable y. It does not perform any operations beyond reserving memory space for the variable.
+        The actual value assignment (y = 10;) is treated as a separate statement. This operation does not have the same complexities as combined declaration and initialization.
+
+
 In C++, you cannot declare variables directly within case labels without introducing a new scope. This is because case 
 labels are not considered to create their own scope, and all declarations must have unique identifiers within the same scope.
+So below example wont have an error as scope of the variable is defined.
 ```
 #include <iostream>
 
@@ -437,6 +445,30 @@ int main(){
     return 0;
 }
 ```
+
+Lets look at this another example 
+```
+#include<iostream>
+using namespace std;
+int main() 
+{
+   int i = 2;
+   switch(i) 
+   {
+      case 1:
+         cout<<"Basic Example" <<endl;
+         break;
+      case 2:
+         int x = 21;
+         cout << x;
+         break;
+   }
+   return 0;
+}
+```
+Here we wont have an issue coz x in initialized in case 2 which is at the end of the switch case and there are no cases after that so it wont be used as the scope of switch case ends there.
+but if we add default below this compiler will get confused again not knowing weather it will be used in default or no and if we move default on top of switch case that error will also go away
+so basically compiler needs to know the scope of that variable can let it keep guessing.
 */
 
 const int Pen{ 10 };
