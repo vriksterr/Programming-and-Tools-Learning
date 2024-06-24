@@ -23,33 +23,28 @@
 */
 #include <iostream>
 using namespace std;
-int main() {
-    int car =10;
-    int bus = 550;
-    cout<<"ready for switch ?"<<endl;
 
-    switch (2) {
+    int main(){
+        int car {99};
+        int choice;
+        cin>>choice;
 
-        case 1:
-        cout<<"inside case 1!"<<endl;
-            int x;
-            int nigga;
-            cout<<x;
-            break;
+        switch (choice){
             
-        case 2:
-        cout<<"inside case 2!"<<endl;
-            int y;
-            cout<<x<<endl;
-            cout<<y<<endl;
-            break;
-
-        default:
-            cout<<"nothing";
-            break;
-
+            case 0 :
+                int y;  //crosses initialization error
+                std::cout << "y : " << y << std::endl;
+                break;
+                
+            case 1 : 
+                int z;
+                std::cout << "z : " << z << std::endl;
+                break;
+            
+            default:
+                int u{10000};
+                std::cout << "u : " << u << std::endl;
+                break;
+        }
+        return 0;
     }
-
-return 0;
-}
-
