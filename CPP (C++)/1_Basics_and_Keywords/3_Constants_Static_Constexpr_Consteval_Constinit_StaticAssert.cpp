@@ -2,7 +2,7 @@
     *****************************
     * Constants & Static in C++ *
     *****************************
-    To understand this first understand Datatypes, Functions and Control Program Flow then you will understand where all you can use these in other parts in C++ such as pointers and more.
+    To understand this first understand Datatypes, Functions and Control Program Flow, Class then you will understand where all you can use these in other parts in C++ such as pointers and more.
 
     *************
     * Constants *
@@ -144,61 +144,58 @@
     1. Static Variables: When applied to a variable inside a function or method, it makes the variable retain its value 
                          across multiple invocations of the function or method. The variable is initialized only once, and 
                          subsequent calls to the function or method will preserve its value. Here's an example:
+                        ```cpp
+                        void increment() {
+                            static int count = 0;  // Static variable
+                            count++;
+                            std::cout << "Count: " << count << std::endl;
+                        }
 
-    ```cpp
-    void increment() {
-        static int count = 0;  // Static variable
-        count++;
-        std::cout << "Count: " << count << std::endl;
-    }
-
-    int main() {
-        increment();  // Count: 1
-        increment();  // Count: 2
-        increment();  // Count: 3
-        return 0;
-    }
-    ```
+                        int main() {
+                            increment();  // Count: 1
+                            increment();  // Count: 2
+                            increment();  // Count: 3
+                            return 0;
+                        }
+                        ```
+                        As you can see even during multiple function calls the count variable retained its value.
 
     2. Static Functions: When applied to a function outside of a class, it restricts the function's scope to the translation 
                          unit where it is defined. Static functions are only accessible within the same source file and cannot 
                          be called from other files using external linkage. Here's an example:
+                        ```cpp
+                        static void internalFunction() {
+                            // This function has internal linkage
+                            std::cout << "Internal Function" << std::endl;
+                        }
 
-    ```cpp
-    static void internalFunction() {
-        // This function has internal linkage
-        std::cout << "Internal Function" << std::endl;
-    }
-
-    int main() {
-        internalFunction();  // Internal Function
-        return 0;
-    }
-    ```
+                        int main() {
+                            internalFunction();  // Internal Function
+                            return 0;
+                        }
+                        ```
 
     3. Static Class Members: When applied to class members (variables or functions), it means the member belongs to the class 
                              itself, rather than to any specific instance of the class. The static members are shared among all 
                              instances of the class. They can be accessed without creating an object of the class. Here's an example:
+                            ```cpp
+                            class MyClass {
+                            public:
+                                static int staticVariable;  // Static variable
+                                static void staticFunction() {
+                                    std::cout << "Static Function" << std::endl;
+                                }
+                            };
 
-    ```cpp
-    class MyClass {
-    public:
-        static int staticVariable;  // Static variable
-        static void staticFunction() {
-            std::cout << "Static Function" << std::endl;
-        }
-    };
+                            int MyClass::staticVariable = 10;
 
-    int MyClass::staticVariable = 10;
-
-    int main() {
-        std::cout << MyClass::staticVariable << std::endl;  // 10
-        MyClass::staticFunction();                          // Static Function
-        return 0;
-    }
-    ```
-
-    Static members can be accessed using the scope resolution operator `::` with the class name, without the need to create an object of the class.
+                            int main() {
+                                std::cout << MyClass::staticVariable << std::endl;  // 10
+                                MyClass::staticFunction();                          // Static Function
+                                return 0;
+                            }
+                            ```
+                            Static members can be accessed using the scope resolution operator `::` with the class name, without the need to create an object of the class.
 
     These are the main uses of the `static` keyword in C++. It provides various functionalities such as preserving variable values across function calls, 
     restricting the scope of functions, and creating shared members within a class.

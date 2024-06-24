@@ -44,6 +44,16 @@
     1 multiline comment inside another multiline one tho its not the case for single 
     line but either way dont do comment nesting as its meaningless.
 
+     _______________________
+    | Memory Layout in C++ |
+    |______________________|
+    A typical C++ program's memory layout includes several segments:
+      1.Text Segment: Contains the compiled code of the program.
+      2.Data Segment: Contains global and static variables that are initialized by the programmer.
+      3.BSS Segment: Contains global and static variables that are initialized to zero (uninitialized data).
+      4.Heap: Used for dynamically allocated memory (allocated with new or malloc).
+      5.Stack: Used for function call frames, including local variables and function parameters.
+
      _________
     | Errors |
     |________|

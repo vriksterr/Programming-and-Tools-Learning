@@ -18,7 +18,7 @@
                                    value to the variable at the point of its declaration. This is considered a "full" declaration. When you initialize a variable, it involves 
                                    more than just reserving space; it includes assigning a value, which might require a clear and confined scope to avoid conflicts and ensure proper execution.
 
-    Also all different types of variables data types such as INT,Float,Boolean,CHAR,double,etc
+    Also all different types of variables data types such as int, float, bool(boolean), char, double, etc
      
      ____________________________
     |   Variables names in C++  |
@@ -63,100 +63,103 @@
     |_____________________________|
 
     • Variable Scope: Variable scope tells us about the range within which the variable can be accessed/modified. Scope also affects the lifetime of variables (read below).
-    • Variable Lifetime: The period of time during which a variable is alive in memory. It becomes alive when you declare it and is destroyed (wiped out) from memory at some point.
+    • Variable Lifetime: The period of time during which a variable is alive in memory. It becomes alive when you declare it and is destroyed (wiped out) from memory at some point based of various factors.
 
     Ways Scope & Lifetime are defined:
-        1. Local Variables: Declared within a function or block and accessible only within that function or block. Their lifetime is limited to the execution of the block.
-            ```cpp
-            void function() {
-                int localVar = 5;
-                // localVar is accessible here
-            } // localVar is destroyed here
-            ```
+        1. Local Variables: Declared within a function or block{} and accessible only within that function or block{}. Their lifetime is limited to the execution of the block.
+                            ```
+                            void function() {
+                                int localVar = 5;
+                                // localVar is accessible here
+                            } // localVar is destroyed here
+                            ```
 
-        2. Global Variables: Declared outside of any function and accessible from any function within the same program. Their lifetime extends for the duration of the program.
-            ```cpp
-            int globalVar = 10;
-            void function() {
-                // globalVar is accessible here
-            }
-            ```
+        2. Global Variables: Declared outside of any function and scope is accessible from any function within the same program. Their lifetime extends for the duration of the program. There memory 
+                             allocation happens in static/global location according to C++ memory allocation.
+                             ```
+                             int globalVar = 10;
+                             void function() {
+                                // globalVar is accessible here
+                             }
+                             ```
 
         3. By Linkage:
             i. Internal Linkage: Variables are visible only within the translation unit they are defined in, typically achieved using the static keyword.
-                a. Static Variables: Retain their value between function calls and are only visible within the function or file they are declared in.
-                    ```cpp
-                    static int fileStaticVar = 5; // fileStaticVar has internal linkage
-                    void function() {
-                        static int staticVar = 5;
-                        staticVar++;
-                        // staticVar retains its value between calls
-                    }
-                    ```
+                a. Static Variables: Retain their value between function calls and are only visible within the function or file they are declared in. There memory allocation happens
+                                     in static/global location according to C++ memory allocation. But there scope is limited to where they are present inside program.
+                                     ```
+                                     static int fileStaticVar = 5; // fileStaticVar has internal linkage
+                                     void function() {
+                                         static int staticVar = 5;
+                                         staticVar++;
+                                         // staticVar retains its value between calls
+                                     }
+                                     ```
 
             ii. External Linkage: Variables can be accessed from other translation units.
                 a. Extern Variable: The extern keyword in C++ is used to declare a variable or a function that is defined in another file or elsewhere in the same file. It tells the 
                                     compiler that the actual storage and definition of the variable or function exist elsewhere. This is particularly useful for sharing variables 
-                                    and functions across multiple files in a project.
-                    ```cpp
-                    // Declaration in a header file
-                    extern int externalVar;
+                                    and functions across multiple files in a project. The extern keyword is used to reference global or static variables that are declared outside of 
+                                    any function, typically at the global scope.
+                                    ```
+                                    // Declaration in a header file
+                                    extern int externalVar;
 
-                    // Definition in a source file
-                    int externalVar = 10;
-                    ```
+                                    // Definition in a source file
+                                    int externalVar = 10;
+                                    ```
 
         4. Namespace Scope Variables: Declared within a namespace, accessible only through the namespace or via a using directive.
-            ```cpp
-            namespace MyNamespace {
-                int namespaceVar = 20;
-            }
-            void function() {
-                MyNamespace::namespaceVar = 25; // Accessed via namespace
-                using namespace MyNamespace;
-                namespaceVar = 30; // Accessed directly after using directive
-            }
-            ```
+                                      ```
+                                      namespace MyNamespace {
+                                          int namespaceVar = 20;
+                                      }
+                                      void function() {
+                                          MyNamespace::namespaceVar = 25; // Accessed via namespace
+                                          using namespace MyNamespace;
+                                          namespaceVar = 30; // Accessed directly after using directive
+                                      }
+                                      ```
 
         5. Class Scope Variables: Variables declared inside a class have class scope (also known as member variables). These variables are accessible to all member functions of the class.
-            ```cpp
-            class MyClass {
-            private:
-                int classVar; // classVar is accessible within the class
-            public:
-                void myMethod() {
-                    classVar = 30; // classVar can be used here
-                }
-            };
-            ```
+                                  ```
+                                  class MyClass {
+                                  private:
+                                      int classVar; // classVar is accessible within the class
+                                  public:
+                                      void myMethod() {
+                                          classVar = 30; // classVar can be used here
+                                      }
+                                  };
+                                  ```
 
         6. Function Scope: This term typically applies to labels used in goto statements. Labels have function scope and are only accessible within the function where they are defined.
-            ```cpp
-            void myFunction() {
-                goto label;
-                // other code
-                label:
-                // more code
-            }
-            ```
+                           ```
+                           void myFunction() {
+                               goto label;
+                               // other code
+                               label:
+                               // more code
+                           }
+                           ```
 
         7. Dynamic Variables: Allocated and deallocated explicitly using new and delete. Their lifetime is managed manually by the programmer.
-            ```cpp
-            void function() {
-                int* dynamicVar = new int(10);
-                // dynamicVar is accessible here
-                delete dynamicVar; // dynamicVar is destroyed here
-            }
-            ```
+                              ```
+                              void function() {
+                                int* dynamicVar = new int(10);
+                                // dynamicVar is accessible here
+                                delete dynamicVar; // dynamicVar is destroyed here
+                              }
+                              ```
 
         8. Thread-local Storage: Variables are unique to each thread. Declared with thread_local, they have thread storage duration.
-            ```cpp
-            thread_local int threadVar = 0; // threadVar is unique to each thread
-            void function() {
-                threadVar++;
-                // threadVar retains its value within the same thread
-            }
-            ```
+                                 ```
+                                 thread_local int threadVar = 0; // threadVar is unique to each thread
+                                 void function() {
+                                     threadVar++;
+                                     // threadVar retains its value within the same thread
+                                 }
+                                 ```
     
 */
 
