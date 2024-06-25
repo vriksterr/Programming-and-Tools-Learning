@@ -16,9 +16,12 @@
         - do-while loop
         - continue and break
 
-    Some other types of Control Flow for knowledge
-        - Infinite loops
-        - Nested loops- loops withing loops
+        Some other types of Control Flow for knowledge
+            - Infinite loops
+            - Nested loops- loops withing loops
+
+    Unconditional Jumps: This involves transferring control to another part of the program unconditionally.
+        - goto
 
     Source:
     (Exception Handling Resources)
@@ -1361,4 +1364,36 @@ int tool {Eraser};
         cin>>data_item;
         data.push_back(data_item);
     }
+
+//____________________________________________
+//                  Goto        
+//____________________________________________
+/* Yes, goto is a control flow statement in C++. It allows for an unconditional jump to another point in the program. The use of goto can make the program 
+   flow difficult to follow, which is why it is generally discouraged in favor of other control structures like loops and functions. Here's an example of how goto might be used:*/
+    int x = 0;
+    
+    loop:
+    cout << x << " ";
+    x++;
+    
+    if (x < 5) {
+        goto loop;
+    }
+
+    return 0;
+    //or
+    /*
+        In C++, labels used with goto can be defined anywhere within the same function, and the compiler handles this correctly by associating the goto statement with the label 
+        even if the label appears later in the code.
+    */
+
+    int i;
+    goto car;
+    i = 10;
+
+    car:
+    cout<<i;
+    
+    return 0;
+    
 }
