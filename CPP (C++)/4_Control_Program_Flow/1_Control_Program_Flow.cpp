@@ -2,7 +2,8 @@
     **************************
     *  Control Program Flow  *
     **************************
-    We can change the flow of program based on condition.
+    We can change the flow of program based on condition. Also you will see many control flow can either use or not use scopes {} remember if a control flow needs to have 
+    more than one statement you will have to put them inside a scope.
 
     Selection: It allows you to make decisions and execute parts of your program only when certain conditions are true or false.
         - if statement, if Statement with Initialization (since C++17), if-else statement, Nested if statement if { if {if {}}}
@@ -227,8 +228,25 @@ bool go {false};
 //            Switch Statement
 //____________________________________________
 /* 
-Switch case is one scope meaning cases dont have there scope by default unless you define it using {}. Variables that you declare (not initialize) in the 
-scope are visible to other cases as well.
+Switch-Case is one complete scope meaning case dont have there scope by default unless you define it using {}. Variables that you declare (not initialize) in the 
+scope are visible to other cases as well if scope are not used by above case. Based on the switch value case act as a JUMP point during run time.
+    Example.
+        ```
+        switch(2){
+            case 1: 
+                int i;
+                i = 10;
+                cout<<"result 1";
+                break;
+
+            case 2:
+                cout<<"value of i: "<<i;    //tho this is not a good practice as it will be garbage value which can result to a undefined behaviour later as if value of switch is 2 it will just skip defination of variable i=10;.
+                
+                i = 20;
+                cout<<"value of i: "<<i;    //tho we can initialize the value of i again in case 2 but still dont do this rater use scope for each case instead for safety.
+                break;
+        }
+        ```
 
 Q-In the the switch case are the variables replaced by its values during comparision ?
     In the switch case, the value of the variable tool is compared against the case labels, which are the values of the constants 
@@ -354,7 +372,7 @@ Source:
 //    Switch Statement with Initialization
 //____________________________________________
 /*
-We can initialize variabled within the scope of switch case with this method for eg.
+We can initialize variabled within the parameter of switch-case by defining it in the initialization statement part of switch statement for eg.
     ```
     switch (double strength{3.56};tool)
     { case1:...........;
@@ -398,36 +416,39 @@ Q-But what to do if you want a variable declared inside case?
 
         1.Multiple Declarations: If you declare variables with the same name in different cases, the compiler will treat these as multiple declarations within the same scope, leading to an error.
 
-        2.Cross Initialization: Variables declared in one case might interfere with variables in another case if they are not properly scoped. This can lead to undefined behavior or compilation errors.
+        2.Cross/Jump/Bypass Initialization: Variables declared in one case might interfere with variables in another case if they are not properly scoped. This can lead to undefined behavior or compilation errors.
                               And crossing initialization of variable can coz undefined behavior or runtime errors later in the code like for eg. goto or case (switch case) the compiler dont let you skip
                               initialization (int x = 10; not int x; thats declaration) because compiler dosent know where this skipping can mess with the program logic in 1M+ lines of code later on.
                               The compiler aims to ensure that variables are properly scoped and initialized to prevent any undefined behavior or errors that could arise from such situations.Coz
                               compiler dosent analyze the entire program to see if an uninitialized variable might be used thousands of lines later and then getting an error over there either during
                               compile time or runtime rather it would just tell that "you are crossing initialization" so you can avoid pitfalls later.
-
-        3.Jump Bypass Initialization: If you have a variable declaration that initializes a variable and there is a goto, break, or case label that jumps past the initialization, the compiler will 
-                                    generate an error because it can't guarantee that the variable is properly initialized before it is used.
-
-        4.Initialization Issues: The compiler can’t ensure that all the variables are properly initialized because the flow of control can jump from one case to another without initialization.
+                              
+                              Also if you have a variable declaration that initializes a variable and there is a goto, break, or case label that jumps past the initialization, the compiler will 
+                              generate an error because it can't guarantee that the variable is properly initialized before its ever used later in the program.
 
     Q- How the GCC Compiler handles this check?
         In GCC, the handling of variable initialization within a switch statement that spans multiple cases is managed by the parser and semantic analysis phases of the compiler. This is done to 
         ensure that variables are not improperly initialized in cases where they might not be reached due to the control flow of the switch statement.
-        Here's an example of how GCC's can handle of such cases:
-        ```(this example can be wrong as this was told by gpt so look at original gcc source code for that https://github.com/gcc-mirror/gcc )
-        void
-        expand_case (tree exp)
-        {
-        // Process each case within the switch statement.
-        for (case_node = CASE_BODY (exp); case_node; case_node = TREE_CHAIN (case_node))
-        {
-            // Ensure variables are properly scoped and initialized.
-            if (TREE_CODE (case_node) == VAR_DECL)
-            error ("crosses initialization of %qD", case_node);
-        }
-        }
-        ```
-        This function iterates over each case and checks for improper variable initialization. When it detects that a variable crosses initialization, it raises an error.
+        Here's an example of how GCC's source code might look which might handle such cases:
+            ```(this example can be wrong as this was told by gpt so look at original gcc source code for that https://github.com/gcc-mirror/gcc )
+            void
+            expand_case (tree exp)
+            {
+            // Process each case within the switch statement.
+            for (case_node = CASE_BODY (exp); case_node; case_node = TREE_CHAIN (case_node))
+            {
+                // Ensure variables are properly scoped and initialized.
+                if (TREE_CODE (case_node) == VAR_DECL)
+                error ("crosses initialization of %qD", case_node);
+            }
+            }
+            ```
+            This function iterates over each case and checks for improper variable initialization. When it detects that a variable crosses initialization, it raises an error.
+        
+        Do note compiler will spot and tell the error the moment it spots one it wont read 1000+ lines after the point of error to see if it got initialized properly 
+        later on or not, if compiler sees something wrong it will tell the programmer right there and then coz compiler dosent know what undefined behaviour that skipped 
+        initialization of variable will cause 10k+ down the code. Also keeping track of such skip so many likes later to see if variable got defined later or not will make compilation slow
+        and probably even memory intensive for super big projects.
 
     Another Example
     ```
@@ -451,14 +472,64 @@ Q-But what to do if you want a variable declared inside case?
     }
     ```
     Q-How can we access x of case 1 in case 2 even tho case 1 never gets executed in switch case ?
-        To answer this you have to understand few things 1st that in switch case cases dosent have a scope by default, 2nd compiler after checking the scope accessibility of a variable it sees 
-        that x is used in case 2, so int x memory allocation is included in the final compiled code and other variables that are not in use are removed during compilation time by the compiler like variable y.
-        Despite x being declared in case 1, due to the lack of explicit scoping (no braces {} around case 1 and case 2), the compiler does not create separate scopes for each case. 
-        Thus, x remains accessible in case 2 as its being accessed there.
+        To answer this you have to understand few things 1st that in switch case cases dosent have a scope by default, 2nd compiler after checking the scope accessibility of a variables it sees 
+        that x is used in case 2, so int x memory allocation is included in the final compiled code and other variables that were never in program are removed during compiler time optimizations by 
+        the compiler like variable y to save memory. Despite x being declared in case 1, due to the lack of explicit scoping (no braces {} around case 1 and case 2) and the compiler also does not 
+        create separate scopes for each case either. Thus, x remains accessible in case 2 as both case 1 and 2 are in same scope.
 
     Q-But why can case 3 can have a variable initialized but cant do the same in case 1 or 2 ?
-        As it is next to the end of the switch scope the compiler can see the end of the scope is right after it if case 3 is executed. Also its not conflecting with any other variables in 
-        the scope of the switch statement. However, this can still lead to a potential issue if the flow of the switch statement is not controlled correctly using break or other mechanisms like goto.
+        As it is next to the end of the switch scope the compiler can see that the variable lifetime will end and also there are no cases after case 3 so such behaviour is allowed. However, this 
+        can still lead to a potential issue if the flow of the switch statement is not controlled correctly using break or other mechanisms like goto.
+
+    Q-Now in below example why can we jump over int z initialization but not over int x initialization why the int x = 10; give initialization skip error?
+        ```
+        #include <iostream>
+        using namespace std;
+
+        int main() {
+            switch (3) {
+                case 1:
+                    goto point_1;
+                    int x = 10; // initialization is skipped and compiler gives "initialization skip error"
+                    break;
+
+                case 2:
+                    int y;
+                    break;
+
+                case 3:
+                    goto point_2;
+                    int z = 20; // initialization is skipped but no error of "initialization skip" happens here 
+                    cout << z;
+                    break;
+                    
+            }
+
+            point_1:
+                cout << "hello!!" << endl;
+
+            point_2:
+                cout << "bye!!" << endl;
+                
+        return 0;
+        }
+        ```
+        Tho more research needs to be conducted so learn about it via compiler creation or reading the compiler source code. 
+        But from what i understand by reading the error messages is that compiler jumps to all cases 1 by 1 from top to bottom and if it notices variable initialization and there 
+        is another case below it, compiler throws a "error: cannot jump, it bypasses variable initialization" if there is no more case after initialization of variable no more jump error.
+        Also goto out of switch scope will not give an error as variables initialized inside the switch case will die once jumping out of the switch so this behaviour is fine!
+        All this was analyzed after look at the error message using this command-> clang -S -emit-llvm test.cpp -o test.ll
+        ```
+        test.cpp:38:9: error: cannot jump from switch statement to this case label
+        38 |         case 3:
+            |         ^
+        test.cpp:31:17: note: jump bypasses variable initialization
+        31 |             int x = 10; // initialization is skipped and compiler gives "initialization skip error"
+            |                 ^
+        test.cpp:34:9: error: cannot jump from switch statement to this case label
+        34 |         case 2:
+            |         ^
+        ```
 
     Another example were the switch case outcome cannot be predicted by the compiler
     ```
@@ -742,92 +813,68 @@ int tool {Eraser};
 //____________________________________________
 /*
 
-    Lets understand:
+    •Lets understand parts of the for loop:
 
-    Parts of the for loop->
-    for(expression 1 ; expresssion 2 ; expression 3)    // where expression 1 , 2 , 3 are initialization condition and increment respectively,
+        for(expression 1 ; expresssion 2 ; expression 3)    // where expression 1 , 2 , 3 are initialization, condition and increment respectively.
+        for ( Multiple initialization ; Multiple condition ; Multiple update/modify/increment) statement;   //we can have single or multiple initialization, condition and update in for loop.
 
-    How for loop works->
-    Step1:
-        variable is declared for eg. int i{0};
+    •How for loop works:
+        Lets use for(int i{0} ; i<4 ; ++i)
+        Step1:
+            variable is declared for eg. int i{0};
 
-    Step2:
-        then the condition is checked for eg. i<4; if it is true then the control of the program wont move to statement and execute the statement.
+        Step2:
+            then the condition is checked for eg. i<4; if it is true then the control of the program wont move to statement and execute the statement.
 
-    Step3:
-        after the statement is fully executed the program controll will move to increment expression which is ++i or i++ or i+2
+        Step3:
+            after the for-loop scope is fully executed the program controll will move to increment expression which is ++i or i++ or i+2
 
-    Understanding i++ and ++i in for loop: (https://www.quora.com/Do-you-use-i++-or-++i-in-a-for-loop-And-why)
-    
-    In C, I generally use i++ in a for loop, because it feels more natural. It’s a natural shortening of i = i + 1 or i += 1, as far as I’m concerned.
-    If you don’t use the value if the expression, both i++ and ++i are otherwise equivalent in C. The compiler can easily optimize away the unused value of the expression as well, 
-    since you can only apply ++ to simple values such as integers, pointers, and so forth.
+    •Understanding i++ vs ++i in case of for-loop: (https://www.quora.com/Do-you-use-i++-or-++i-in-a-for-loop-And-why)
+        1. i++ means the current value of i will be used in the statement and after the statement is over then the value of i will be increased by 1.
+        2. ++i means the current value of i will first be incremented by 1 and then used in the statement.
+            for eg.
+                ```
+                int i = 3;
+                int a = i++; // a = 3, i = 4
+                int b = ++a; // b = 4, a = 4
+                ```
+                We can also do various kinds of increment like i=i+1
+                                                               i+=1 
+                                                               i*=2 or 
+                                                               i/=2 or 
+                                                               i%=2 or 
+                                                               i+= a+b; // will be equal to i = i + (a+b); meaning a+b will be evaluated first then there sum will be added to i.
+                                                               refer to operator section for more understanding.
 
-    In C++, I prefer the form ++i, because i may be an iterator or other object with overloaded operator++.
-    In those cases, the form i++ generates a temporary object to hold the previous value of i, while the form ++i does not.
-    The compiler may optimize away that temporary object, but it’s not required to, and in some cases may not be allowed to.
-
-    In other languages with C-like syntax, there may be language-specific reasons to prefer one over the other.
-
-
-        Look at this example explaining difference between i++ and ++i
-        ++i example:
-                     for(int i{2};i<40;){    
-                     cout<<i<<endl;
-                     ++i;                   //as you can see at the end of statement i is being incremented by 1 and then is being placed at i
-                    }
-
-        i++ example:
-                     for(int i{2};i<40;){
-                     cout<<i<<endl;
-                     i++;                  //over here when we use i++ the current state of i is stored and then its incremented for further use but the compiler sees that the current state of i is not being used so it optimises it and then removes the current state and just increments and store that to i for further looping
-                    }
-
-        i++ and ++i are very similar but not exactly the same. Both increment the number, 
-        but ++i increments the number before the current expression is evaluted, 
-        whereas i++ increments the number after the expression is evaluated.
-        
-        int i = 3;
-        int a = i++; // a = 3, i = 4
-        int b = ++a; // b = 4, a = 4
-        We can also do various kinds of increment like i=i+1 or i+=1 or i*=2 or i/=2 or i%=2 or i+= a+b;
+        In for loop either using ++i or i++ wont change the outcome of i based on the example we are considering (for(int i{0} ; i<4 ; ++i)) coz the current value of i is not being used
+        by any statement when we just type i++; in the for loop scope but it can be useful if we need to use the value of i inside the for loop.
+            for eg.
+                ```
+                int a{};
+                for (int i{}; i<10; ){
+                    a = i++;    //here we are using the current value of i so here i++ vs ++i matters
+                }
+                ```            
 
 
-    for (initialization ; condition ; update/modify/increment)   
-    statement;
+    •Here is the Usual format error of for-loop:
+        As for-loop have default scope even if you dont use {} using variables outside of for-loop will give a give error coz of scoping issues. But do not if you dont use {} and want
+        to have multiple statements inside the for loop it will be a problem after the first ; is used.
+            Example:
+                ```
+                for(int i {1}, j{2} ; i <=5 ; ++i)
+                    cout<<i<<endl;
 
-    for (initialization ; condition ; update/modify/increment) {
+                cout<<i;    //outside of scope so is an error;
 
-        statement(s);
-    }
-    statement;
+                i=100 //ERROR!! i only visible in the loop and not accessable outside for loop
+                ```
 
-   
-    Example:
-
-    for(int i {1} ; i <=5 ; ++i)
-        cout<<i<<endl;
-
-    i=100 //ERROR!! i only visible in the loop and not accessable outside for loop
-
-    Example2:
-    //Array
-    
-    int score [] {100,90,87};
-
-    for (int i {0} ; i < 3 ; ++i ){
-        cout<<score[i]<<endl;
-    }
-    
-    Example3:
-    for(int i{1},j{5} ; i <= 5 ; ++i, ++j){
-
-        cout<<i<<" * "<<j<<" : "<<(i * j)<<endl;
-    }
-
-
-    for(;;) // never use this as this is a endless loop
-
+            Example:
+                ```
+                for(;;); // never use this as this is a endless loop meaning it will keep on running for ever.
+                ```
+ 
 */
 
 

@@ -75,11 +75,19 @@
                             ```
 
         2. Global Variables: Declared outside of any function and scope is accessible from any function within the same program. Their lifetime extends for the duration of the program. There memory 
-                             allocation happens in static/global location according to C++ memory allocation.
+                             allocation happens in static/global location according to C++ memory allocation. Also only declaration and definition are allowed in the global scope arbitrary expression
+                             or statement like i; are not valid outside of functions.
                              ```
                              int globalVar = 10;
                              void function() {
                                 // globalVar is accessible here
+                             }
+                             ```
+                             ```
+                             int i = 100;
+                             i;     //not valid
+                             int main(){
+                                i;  //valid
                              }
                              ```
 
