@@ -229,7 +229,7 @@ bool go {false};
 //____________________________________________
 /* 
 Switch-Case is one complete scope meaning case dont have there scope by default unless you define it using {}. Variables that you declare (not initialize) in the 
-scope are visible to other cases as well if scope are not used by above case. Based on the switch value case act as a JUMP point during run time.
+scope are visible to other cases as well if scope{} are not used by above case. Based on the switch value case act as a JUMP point during run time.
     Example.
         ```
         switch(2){
@@ -392,15 +392,18 @@ Q-But what to do if you want a variable declared inside case?
 
         switch (0){
             int x{9};   // Never going to get initialized, Error: crosses initialization
-            case 0 :
-                int y = 5;  //Error: crosses initialization
+            case 1 :
+                int y{5};  //Error: crosses initialization
                 std::cout << "y : " << y << std::endl;
                 break;
 
-            case 1 : 
+            case 2 : 
                 int z;
                 std::cout << "z : " << z << std::endl;
                 break;
+            
+            case 3:
+                int a;
             
             default:
                 int u = 20; //OK
@@ -409,24 +412,73 @@ Q-But what to do if you want a variable declared inside case?
         return 0;
     }
     ```
-    Q- Why cant we do int y = 5; ? but we can do it for default case where int u = 20 why is that ?
-        In C++, each case label within a switch statement does not create a new scope. This means that all the variables declared within the different cases are technically in the same scope. 
+    Q-Why cant we do int {x} 5; or int y{5}; ? but we can do it for default case where int u = 20 why is that ?
+        In C++, each case label within a switch statement does not create a new scope by default. This means that all the variables declared within the different cases are technically in the same scope. 
         When you declare a variable in a switch statement without introducing a new block (with {}), the compiler treats all these declarations as if they are at the same level, which can lead 
         to several problems:
 
-        1.Multiple Declarations: If you declare variables with the same name in different cases, the compiler will treat these as multiple declarations within the same scope, leading to an error.
+            1.Multiple Declarations: If you declare variables with the same name in different cases, the compiler will treat these as multiple declarations within the same scope, leading to an error.
 
-        2.Cross/Jump/Bypass Initialization: Variables declared in one case might interfere with variables in another case if they are not properly scoped. This can lead to undefined behavior or compilation errors.
-                              And crossing initialization of variable can coz undefined behavior or runtime errors later in the code like for eg. goto or case (switch case) the compiler dont let you skip
-                              initialization (int x = 10; not int x; thats declaration) because compiler dosent know where this skipping can mess with the program logic in 1M+ lines of code later on.
-                              The compiler aims to ensure that variables are properly scoped and initialized to prevent any undefined behavior or errors that could arise from such situations.Coz
-                              compiler dosent analyze the entire program to see if an uninitialized variable might be used thousands of lines later and then getting an error over there either during
-                              compile time or runtime rather it would just tell that "you are crossing initialization" so you can avoid pitfalls later.
-                              
-                              Also if you have a variable declaration that initializes a variable and there is a goto, break, or case label that jumps past the initialization, the compiler will 
-                              generate an error because it can't guarantee that the variable is properly initialized before its ever used later in the program.
+            2.Cross/Jump/Bypass Initialization: Variables declared in one case might interfere with variables in another case if they are not properly scoped. This can lead to undefined behavior or compilation errors.
+                                                And crossing initialization of variable can coz undefined behavior or runtime errors later in the code like for eg. goto or case (switch case) the compiler wont let you skip
+                                                initialization (int x = 10; not int x; thats declaration) because compiler dosent know where this skipping can mess with the program logic in 1M+ lines of code later on.
+                                                The compiler aims to ensure that variables are properly scoped and initialized to prevent any undefined behavior or errors that could arise from such situations.Coz
+                                                compiler dosent analyze the entire program to see if a skipped initialized variable might be used thousands of lines later and then getting an undefined behaviour over 
+                                                there either during compile time or runtime rather it would rather just tell that "you are crossing initialization" so you can avoid pitfalls later.
+                                                
+                                                Also if you have a variable declaration that initializes a variable and there is a goto, break, or case label that jumps past the initialization within same scope,
+                                                the compiler will generate an error because it can't guarantee that the variable is properly initialized before its ever used later in the program.
 
-    Q- How the GCC Compiler handles this check?
+        Compiler after reading switch case parameter starts looking for next keywords either case or default if there is any statement before first case/default that compiler will give "warning: statement 
+        will never be executed" coz in a switch case after parameter the first statement execution within switch scope starts from cases or default nothing else so any statement (not talking about variable 
+        declaration as it is just for compiler to know how much to reserve memeory for this variables as declaration isnt a part of execution during runtime just compiler time) before first cases/default will 
+        never ever execute. Tho you can have statements (not initialization of variables) between cases but not before the first case/default coz thats a 100% skip gurantee.
+
+        Also, compiler checks case by case meaning 1st. Compiler looks for first case or default in this situtation its Case 1 and sees there is a variable initialization above it that will get skipped if switch flow jumps to case 1 so it points out "crosses initialization error of int x", then after that it sees there is another initialization of int y{5}; which is fine for now
+                                                   2nd. after that it reaches to Case 2 and sees that there are 2 variables initializations above it that can get skipped if switch flow jumps to case 2 so it points out "crosses initialization error of int x and y", then after that it sees there is another declaration of int z; which is fine not only just now but later of as well you will see in later steps.
+                                                   3rd. after that it reaches to Case 3 and sees that there are 2 variable initializations above it that can get skipped if switch flow jumps to case 3 so it points out "crosses initialization error of int x and y" but there is also 1 declaration above int z; which is fine according to compiler coz during compilation its memory location will be reserved as its not initialization just declaration so even if it gets skipped there was no value that had to be initialized to variable z which is not the case with int x{9}; where declaration and defination are taking place in one statement, then after that it sees there is another declaration of int a; which is fine not only just now but later of as well you will see in later steps.
+                                                   4th. after that it reaches to default and sees that there are 2 variable initializations above it that can get skipped if switch flow jumps to default so it points out "crosses initialization error of int x and y" but there is also 2 declaration int a; & int z; which is fine according to compiler, then after that it sees there is there is 1 initialization int u = 20; in default which is fine for now.
+                                                   5th. after that it sees there is no more cases after default so int u = 20; is fine as skipping initialization of u wont cause any problems as there are no cases after it.
+        So basically you need a case after default or any case to trigger check for any previously stated variable initialization statement within the same scope by the compiler.
+        You can understand by looking at error message and you will understand how the above steps are working from compilers perspective.
+            ```
+            test.cpp:30:10: error: jump to case label
+            30 |     case 1 :
+               |          ^
+            test.cpp:29:9: note:   crosses initialization of 'int x'
+            29 |     int x{9};   //Error: crosses initialization
+               |         ^
+            test.cpp:35:10: error: jump to case label
+            35 |     case 2 :
+               |          ^
+            test.cpp:31:11: note:   crosses initialization of 'int y'
+            31 |       int y{5};  //Error: crosses initialization
+               |           ^
+            test.cpp:29:9: note:   crosses initialization of 'int x'
+            29 |     int x{9};   //Error: crosses initialization
+               |         ^
+            test.cpp:40:10: error: jump to case label
+            40 |     case 3:
+               |          ^
+            test.cpp:31:11: note:   crosses initialization of 'int y'
+            31 |       int y{5};  //Error: crosses initialization
+               |           ^
+            test.cpp:29:9: note:   crosses initialization of 'int x'
+            29 |     int x{9};   //Error: crosses initialization
+               |         ^
+            test.cpp:43:5: error: jump to case label
+            43 |     default:
+               |     ^~~~~~~
+            test.cpp:31:11: note:   crosses initialization of 'int y'
+            31 |       int y{5};  //Error: crosses initialization
+               |           ^
+            test.cpp:29:9: note:   crosses initialization of 'int x'
+            29 |     int x{9};   //Error: crosses initialization
+               |         ^
+            test.cpp:29:9: warning: statement will never be executed [-Wswitch-unreachable]
+            ```
+
+    Q- How dose the GCC Compiler handles this check?
         In GCC, the handling of variable initialization within a switch statement that spans multiple cases is managed by the parser and semantic analysis phases of the compiler. This is done to 
         ensure that variables are not improperly initialized in cases where they might not be reached due to the control flow of the switch statement.
         Here's an example of how GCC's source code might look which might handle such cases:
@@ -443,45 +495,15 @@ Q-But what to do if you want a variable declared inside case?
             }
             }
             ```
-            This function iterates over each case and checks for improper variable initialization. When it detects that a variable crosses initialization, it raises an error.
+            This function iterates over each case and checks for improper variable initialization before that case within the switch scope. When it detects that a variable crosses 
+            initialization, it raises an error.
         
-        Do note compiler will spot and tell the error the moment it spots one it wont read 1000+ lines after the point of error to see if it got initialized properly 
+        Do note that compiler will spot and tell the error the moment it spots one it wont read 1000+ lines after the point of error to see if it got initialized properly 
         later on or not, if compiler sees something wrong it will tell the programmer right there and then coz compiler dosent know what undefined behaviour that skipped 
-        initialization of variable will cause 10k+ down the code. Also keeping track of such skip so many likes later to see if variable got defined later or not will make compilation slow
+        initialization of variable will cause 10k+ down the code. Also keeping track of such skip so many lines later to see if variable got defined later or not will make compilation slow
         and probably even memory intensive for super big projects.
 
-    Another Example
-    ```
-    switch (choice) {
-
-        case 1:
-            int x;
-        break;
-            
-        case 2:
-            int y;
-            x = 50;
-            cout<<x;
-        break;
-
-        case 3:
-            int z = 20;
-            cout<<z;
-        break;
-
-    }
-    ```
-    Q-How can we access x of case 1 in case 2 even tho case 1 never gets executed in switch case ?
-        To answer this you have to understand few things 1st that in switch case cases dosent have a scope by default, 2nd compiler after checking the scope accessibility of a variables it sees 
-        that x is used in case 2, so int x memory allocation is included in the final compiled code and other variables that were never in program are removed during compiler time optimizations by 
-        the compiler like variable y to save memory. Despite x being declared in case 1, due to the lack of explicit scoping (no braces {} around case 1 and case 2) and the compiler also does not 
-        create separate scopes for each case either. Thus, x remains accessible in case 2 as both case 1 and 2 are in same scope.
-
-    Q-But why can case 3 can have a variable initialized but cant do the same in case 1 or 2 ?
-        As it is next to the end of the switch scope the compiler can see that the variable lifetime will end and also there are no cases after case 3 so such behaviour is allowed. However, this 
-        can still lead to a potential issue if the flow of the switch statement is not controlled correctly using break or other mechanisms like goto.
-
-    Q-Now in below example why can we jump over int z initialization but not over int x initialization why the int x = 10; give initialization skip error?
+    Q-Now in below example why can we jump over int z initialization as it is also skipping initialization when jumping over to point_1?
         ```
         #include <iostream>
         using namespace std;
@@ -489,8 +511,7 @@ Q-But what to do if you want a variable declared inside case?
         int main() {
             switch (3) {
                 case 1:
-                    goto point_1;
-                    int x = 10; // initialization is skipped and compiler gives "initialization skip error"
+                    int x; // initialization is skipped and compiler gives "initialization skip error"
                     break;
 
                 case 2:
@@ -498,38 +519,28 @@ Q-But what to do if you want a variable declared inside case?
                     break;
 
                 case 3:
-                    goto point_2;
+                    goto point_1;
                     int z = 20; // initialization is skipped but no error of "initialization skip" happens here 
                     cout << z;
                     break;
-                    
             }
 
             point_1:
-                cout << "hello!!" << endl;
-
-            point_2:
-                cout << "bye!!" << endl;
-                
+                cout << "hello!!" << endl; 
         return 0;
         }
         ```
-        Tho more research needs to be conducted so learn about it via compiler creation or reading the compiler source code. 
-        But from what i understand by reading the error messages is that compiler jumps to all cases 1 by 1 from top to bottom and if it notices variable initialization and there 
-        is another case below it, compiler throws a "error: cannot jump, it bypasses variable initialization" if there is no more case after initialization of variable no more jump error.
-        Also goto out of switch scope will not give an error as variables initialized inside the switch case will die once jumping out of the switch so this behaviour is fine!
-        All this was analyzed after look at the error message using this command-> clang -S -emit-llvm test.cpp -o test.ll
-        ```
-        test.cpp:38:9: error: cannot jump from switch statement to this case label
-        38 |         case 3:
-            |         ^
-        test.cpp:31:17: note: jump bypasses variable initialization
-        31 |             int x = 10; // initialization is skipped and compiler gives "initialization skip error"
-            |                 ^
-        test.cpp:34:9: error: cannot jump from switch statement to this case label
-        34 |         case 2:
-            |         ^
-        ```
+        The reason why goto point_1 dosent give "skipping initialization error" is because its skipping out of the switch scope meaning even if z skipped initialization jumping out of scope 
+        de-stacks z from memory and also there is no other case below it so compiler gives it a green light. But if you were doing something like this:
+            ```
+            case 3: 
+                goto point_1;
+                int z = 20;
+                point_1:
+                    cout << z;
+            ```
+        we would get a skipping initialization error!. So basically we can jump out of scope and wont get an skipping initialization error! but will get it if we are jumping within same scope
+        and there is variable initialization statement between the jumps.
 
     Another example were the switch case outcome cannot be predicted by the compiler
     ```
