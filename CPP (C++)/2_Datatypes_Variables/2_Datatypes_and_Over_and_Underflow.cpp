@@ -18,7 +18,7 @@
 
             Now you can use these bits and group them to represents a number 
                 -3 bits: Each group of 3 bits can represent decimal numbers from 0 to 7 eg. 
-                    ______________________
+                     ______________________
                     |__Binary__|__Decimal_|
                     |    000   |     0    |
                     |    001   |     1    |
@@ -33,7 +33,7 @@
                     will represent:  3   3   4   3   0   3   6   1
 
                 -4 bits: Each group of 4 bits can represent decimal numbers from 0 to 15 eg.
-                    ______________________
+                     ______________________
                     |__Binary__|__Decimal_|
                     |   0000   |     0    |
                     |   0001   |     1    |
@@ -54,7 +54,7 @@
                     |__________|__________|
 
                     -Same way we can increase the pairing to 64 bits and represent even more things like letters and more.
-                    _________________________________
+                     _________________________________
                     |___Digits(Bits)__|__Data Range__|
                     |        1        |    0 ~ 1     |
                     |        2        |    0 ~ 3     |
@@ -65,7 +65,7 @@
                     |        n        |    0 ~ 2^n-1 |
                     |_________________|______________|
                         
-                    _____________________________________________________________
+                     _____________________________________________________________
                     |___Digits(Bits)__|__Bytes__|___________Data Range___________|
                     |        8        |    1    |            0 ~ 255             |
                     |        16       |    2    |            0 ~ 65,535          |
@@ -77,7 +77,7 @@
         • Hexadecimal System:
             The hexadecimal system is a base-16 number system used in computing and mathematics. It is often used as a convenient way to represent binary numbers in a more compact and human-readable format. 
             In hexadecimal, numbers are represented using sixteen symbols: 0-9 for values 0 to 9, and A-F for values 10 to 15.
-                __________________________________________
+                 __________________________________________
                 |_Binary (4 bits)_|_Decimal_|_Hexadecimal_|
                 | 0000            | 0       | 0           |
                 | 0001            | 1       | 1           |
@@ -116,7 +116,7 @@
                 3A7F in hexadecimal is equivalent to 0011 1010 0111 1111 in binary.
                 In decimal, 3A7F is equal to 14975.
 
-                __________________________________________
+                 __________________________________________
                 |_Binary_(8 bits)_|_Decimal_|_Hexadecimal_|
                 | 00000000        | 0       | 0           |
                 | 00000001        | 1       | 1           |
@@ -162,6 +162,41 @@
 
             Overall, the octal system is a base-8 number system that represents numbers using digits 0-7 and is based on powers of 8. It has been largely replaced by hexadecimal in modern computing due to 
             its more compact representation of binary values.
+    
+     __________________________
+    |   Overflow & Underflow  |
+    |_________________________|
+
+    •Overflow:
+        As you might have understood by now is that number or char are represented in binary format and you might also know that based on how many bit you can have a limit on 
+        how many different types of numbers you can represent 
+        for eg.
+            ```
+            00000000 = 0
+            00000001 = 1
+                .
+                .
+                .
+            11111101 = 253
+            11111110 = 254    
+            11111111 = 255
+            00000000 = 0
+            ```
+            now if we add 1 more to 255 it will flip back to 00000000 as the number pattern range is exhausted till 255.
+
+    •Underflow:
+        This is the opposite of what happens in overflow let me explain with an example !
+        ```
+        unsigned char char_var {55};
+        unsigned char val1 {130};
+        unsigned char val2 {131};
+
+        char_var = val1 - val2; //Underflow
+        std::cout<< "char_var(exp -1)" << static_cast<int>(char_var) << std::endl;
+        ```
+        Now in this program all variables are unsigned meaning they can only store +ve values but we are doing 130-131 which will result into -1 as the value is being stroed in char_var(which is unsigned)
+        its going to instead store 255 and this is called underflow.
+
 
      ________________________
     |   Types of Datatypes  |
