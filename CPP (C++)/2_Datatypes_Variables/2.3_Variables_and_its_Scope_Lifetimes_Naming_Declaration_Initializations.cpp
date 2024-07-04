@@ -12,7 +12,9 @@
     In C++, variables are used to store data that can be manipulated and referenced throughout a program.
     There are 3 terms in Variable:
         1.Variable Declaration: This term refers to the process of defining a variable's type and its name without necessarily assigning it a value. A declaration 
-                                tells the compiler about the variable's existence and its type.
+                                tells the compiler about the variable's existence and its type. You can declare variables anywhere inside c++ program and i mean anywhere even after
+                                main(). It is not affected by skips/jump statements even as variable declaration only tells compiler to reserve memory and the scope of that
+                                variable thats all.  
                                 ```
                                 int number; // Declaration of an integer variable named 'number'
                                 ```
