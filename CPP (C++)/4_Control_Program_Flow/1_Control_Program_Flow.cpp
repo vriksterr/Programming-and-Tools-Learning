@@ -1437,7 +1437,6 @@ int tool {Eraser};
         goto loop;
     }
 
-    return 0;
     //or
     /*
         In C++, labels used with goto can be defined anywhere within the same function, and the compiler handles this correctly by associating the goto statement with the label 
