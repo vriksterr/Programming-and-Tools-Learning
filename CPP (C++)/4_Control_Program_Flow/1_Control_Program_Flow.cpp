@@ -912,14 +912,18 @@ int tool {Eraser};
         int bus(){
         int x{10};
         int y{20};
-        return x+5,y=x,y;
+        return y=x+5,y;
         }
 
         int main(){
-        cout<<car();    //output will be 20
-        cout<<bus();    //output will be 20
+        cout<<car()<<endl;    //output will be 20
+        cout<<bus()<<endl;    //output will be 15
         }
         ```
+        where everything beforet he , operators is evaluated but only the last one is returned!
+        
+        So same is happening in the for loop as well for(int i{1} ; i<=10, ++i ; ) wehre i<=10 is being evaluated but not being returned only ++i is 
+        so what you can do instead is for(int i{1} ; ++i, i<=10 ; ) where ++i is getting evaluated but only i<=10 is being returned to the condition check.
 
     Q- Can you also do condition in initialization part ?
         No you cant that part is just for either assignment or initialization or declaration

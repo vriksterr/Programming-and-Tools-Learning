@@ -21,22 +21,13 @@
     •
 
 */
-        #include <iostream>
-        using namespace std;
+#include <iostream>
+using namespace std;
 
-        int car(){
-        int x{10};
-        int y{20};
-        return x,y;
-        }
+int main(){
+  int a,b,c,d;
 
-        int bus(){
-        int x{10};
-        int y{20};
-        return x+5,y=x,y;
-        }
+  a=10,b=10,c=10;
 
-        int main(){
-        cout<<car()<<endl;    //output will be 20
-        cout<<bus()<<endl;    //output will be 20
-        }
+  cout<<a<<b<<c;
+}
