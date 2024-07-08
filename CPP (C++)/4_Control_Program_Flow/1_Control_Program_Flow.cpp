@@ -884,7 +884,48 @@ int tool {Eraser};
                 ```
                 for(;;); // never use this as this is a endless loop meaning it will keep on running for ever.
                 ```
- 
+    Q- Why no ; at the end of the increment like ++i; ?
+        The semicolon in a for loop's header is used to separate the three components: initialization, condition, and increment. The increment part is an expression that is evaluated and 
+        executed after each loop iteration. There is no need for an extra semicolon because it is already part of the for loop's structure. Adding a semicolon after ++i would result in a 
+        syntax error because it would break the expected format of the for loop.
+
+    Q- Can you also do assignment in condition part as well ?
+        yes you can but why its really really bad idea!
+        ```
+        for(int i{1} ; i<=10, ++i ; ){
+        cout<<i<<endl;
+        }
+        ```
+        Due to the comma operator, this condition is actually equivalent to just ++i, because the comma operator evaluates i <= 10 first (but doesn't use its result) and then evaluates ++i. 
+        The value of ++i is returned and used as the condition. Since ++i is a non-zero value (true) for all i values starting from 2 onwards, the loop never stops.
+        Now to understand this better look at how , operator works one example i can use here is
+        ```
+        #include <iostream>
+        using namespace std;
+
+        int car(){
+        int x{10};
+        int y{20};
+        return x,y;
+        }
+
+        int bus(){
+        int x{10};
+        int y{20};
+        return x+5,y=x,y;
+        }
+
+        int main(){
+        cout<<car();    //output will be 20
+        cout<<bus();    //output will be 20
+        }
+        ```
+
+    Q- Can you also do condition in initialization part ?
+        No you cant that part is just for either assignment or initialization or declaration
+
+    Q- Can you initialize or declare a variable in increment part of for loop ?
+        No you cant just increment or assignment of variables.
 */
 
 
