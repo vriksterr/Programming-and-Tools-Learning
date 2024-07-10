@@ -590,97 +590,121 @@ int main ()
     //       Conditional (Ternary) Operator
     //____________________________________________
     /*  
-        !Example 1
+        Example 1
+        ```
         int number = 10;
         string result = (number % 2 == 0) ? "Even" : "Odd";
         
         cout << "The number is " << result << endl;
-
-        !Example 2
+        ```
+        Example 2
+        ```
         int score = 75;
         string grade = (score >= 90) ? "A" : (score >= 80) ? "B" : (score >= 70) ? "C" : "F";
             
         cout << "Your grade is: " << grade << endl;
+        ```
     */
 
     //____________________________________________
     //              Comma Operator
     //____________________________________________
     /*  
+    The comma operator (,) is a binary operator that evaluates its first operand and discards the result, then evaluates its second operand and returns this value (and type). It is 
+    primarily used in loops and in expressions where multiple operations need to be performed within a single statement.
         1. Multiple Declarations/Initialization: It can be used to declare or initialize multiple variables in a single statement.
-        !Example
-        int a = 5, b = 10, c = 15;
+            Example:
+            ```
+            int a = 5, b = 10, c = 15;
+            ```
 
         2. For Loop: It's often used in the initialization, condition, and update parts of a for loop.
-        !Example
-        for (int i = 0, j = 10; i < j; ++i, --j) {
-            // Loop body
-        }
+            Example:
+            ```
+            for (int i = 0, j = 10; i < j; ++i, --j) {
+                // Loop body
+            }
+            ```
 
         3. Function Arguments: It can be used to separate arguments in a function call.
-        !Example
-        func(arg1, arg2, arg3);
+            Example:
+            ```
+            func(arg1, arg2, arg3);
+            ```
 
-        4. Expression Evaluation: It's useful when multiple expressions need to be evaluated, and only the result of the last one is needed.
-        !Example
-        int result = (a++, b++, a + b); // Increments a and b, returns the sum of a and b
+        5. Expression Evaluation: It's useful when multiple expressions need to be evaluated, and only the result of the last one is needed.
+            Example:
+            ```
+            int result = (a++, b++, a + b); // Increments a and b, returns the sum of a and b
+            ```
 
-        5. Chaining Member Access: It's used to chain multiple member access operations.
-        !Example
-        struct Foo {
-            int x;
-            int y;
-        };
+        6. Chaining Member Access: It's used to chain multiple member access operations.
+            Example:
+            ```
+            struct Foo {
+                int x;
+                int y;
+            };
 
-        Foo foo = {5, 10};
-        int sum = (foo.x, foo.y); // Accesses foo.x, then foo.y
+            Foo foo = {5, 10};
+            int sum = (foo.x, foo.y); // Accesses foo.x, then foo.y
+            ```
 
-        6. Returning Multiple Values (less common): While not recommended due to potential confusion, it can be used to return multiple values from a function. However, only the value of the rightmost expression is returned.
-        !Example 1 - Where a & b both are evaluated in a sequences(left to right evaluation) and the right most expression is returned.
-        int func() {
-            int a = 5, b = 10;
-            return a, b;
-        }
+        7. Returning Multiple Values (less common): While not recommended due to potential confusion, it can be used to return multiple values from a function. However, only the value of the rightmost expression is returned.
+            Example 1 - Where a & b both are evaluated in a sequences(left to right evaluation) and the right most expression is returned.
+            ```
+            int func() {
+                int a = 5, b = 10;
+                return a, b;
+            }
+            ```
 
-        !Example 2 - Now similar as above but as first expression in result is setting the value of b to be 11 and in the second expression which is just b and is also the right most expression and that is returned so the output of b now is 11.
-        int func() {
-            int a = 5, b = 10;
-            return b=11, b; // Returns b where value of b is 11
-        }
+            Example 2 - Now similar as above but as first expression in result is setting the value of b to be 11 and in the second expression which is just b and is also the right most expression and that is returned so the output of b now is 11.
+            ```
+            int func() {
+                int a = 5, b = 10;
+                return b=11, b; // Returns b where value of b is 11
+            }
+            ```
 
-        !Example 3 - Where we are calculating something os it also gets processed. We can use many expression with the use of comma and all will be evaluated but only the right most one will be returned and all the previsous expression can alter the result as you can see.
-        int func() {
-            int a = 5, b = 10;
-            return b=a+b+5, a=b+10, b; // Returns b where value of b is 20
-        }
+            Example 3 - Where we are calculating something os it also gets processed. We can use many expression with the use of comma and all will be evaluated but only the right most one will be returned and all the previsous expression can alter the result as you can see.
+            ```
+            int func() {
+                int a = 5, b = 10;
+                return b=a+b+5, a=b+10, b; // Returns b where value of b is 20
+            }
+            ```
 
-        !Example 4 - When we assign func() to result object the Pair fucntion returns object that object dosent have specific name within the scope of function its just a temporary object created on the fly which holds value of a and b.
-        class Pair {
-            public:
-                int first;
-                int second;
-        };
+            Example 4 - When we assign func() to result object the Pair fucntion returns object that object dosent have specific name within the scope of function its just a temporary object created on the fly which holds value of a and b.
+            ```
+            class Pair {
+                public:
+                    int first;
+                    int second;
+            };
+            
 
-        //here function returns an temporary no name object of type Pair which is a class.
-        Pair func() {
-            int a = 5, b = 10;
-            return {a, b};
-        }
+            //here function returns an temporary no name object of type Pair which is a class.
+            Pair func() {
+                int a = 5, b = 10;
+                return {a, b};
+            }
 
-        //above function can also be written as this to understand better that a nameless object is created on the fly by compiler within the function scope. this is to understand it bettr whats happening.
-        //But here we are returning a named object.
-        Pair func()2 {
-            int a = 5, b = 10;
-            Pair myPair = {a, b};
-            return myPair;
-        }
+            //above function can also be written as this to understand better that a nameless object is created on the fly by compiler within the function scope. this is to understand it bettr whats happening.
+            //But here we are returning a named object.
+            Pair func()2 {
+                int a = 5, b = 10;
+                Pair myPair = {a, b};
+                return myPair;
+            }
 
-        int main() {
-            Pair result = func();
-            std::cout << "First value: " << result.first << std::endl;
-            std::cout << "Second value: " << result.second << std::endl;
-            return 0;
-        }
+            int main() {
+                Pair result = func();
+                std::cout << "First value: " << result.first << std::endl;
+                std::cout << "Second value: " << result.second << std::endl;
+                return 0;
+            }
+            ```
     */
 
     //____________________________________________

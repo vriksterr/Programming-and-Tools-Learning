@@ -24,10 +24,7 @@
 #include <iostream>
 using namespace std;
 
+
 int main(){
-  int a,b,c,d;
 
-  a=10,b=10,c=10;
-
-  cout<<a<<b<<c;
 }

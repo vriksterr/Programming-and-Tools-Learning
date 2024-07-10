@@ -774,49 +774,6 @@ int tool {Eraser};
     cout << "Your Age is: " << myNum << "Which is blow 18"<<endl;
     }
 
-//_____________________
-//      Looping
-//_____________________
-/*
-
-    -The third basic building block of programming
-        -sequence,selection,iteration
-
-    -Iteration or repetition
-
-    -Allows the execution of a statement or block of statements repeatedly
-
-    -Loops are made up a loop condition and the body which contains the statements to repeat
-
-    Usecases of loop:
-    
-    -a specific number of times
-    -for each element in a collection
-    -while a specific condition remains true
-    -until a specific condition becomes false
-    -until we reach the end of some input stream
-    -forever
-    -etc
-
-
-    Types of Loops
-    1) for LOOP
-        -iterate a specific number of times
-
-    2) RANGE BASED for loop
-        -one iteration for each element in a range or collection
-
-    3) while LOOP
-        -iterate while a condition remains true
-        -stop when the condition becomes false
-        -check the condition at the beginning of every iteration
-
-    4) do-while LOOP
-        -iterate while a condition remains true
-        -stop when the condition becomes false
-        -check the condition at the end of every iteration
-
-*/
 
 //____________________________________________
 //               for Loop
@@ -1470,7 +1427,7 @@ int tool {Eraser};
 //____________________________________________
 //                  Goto        
 //____________________________________________
-/* Yes, goto is a control flow statement in C++. It allows for an unconditional jump to another point in the program. The use of goto can make the program 
+/* Goto is a control flow statement in C++. It allows for an unconditional jump to another point in the program. The use of goto can make the program 
    flow difficult to follow, which is why it is generally discouraged in favor of other control structures like loops and functions. Here's an example of how goto might be used:*/
     int x = 0;
     
