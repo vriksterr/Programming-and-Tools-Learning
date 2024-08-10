@@ -130,7 +130,7 @@ int main()
     int num1{};
     const int target{10};
 
-    cout<<endl<<"Enter a number and I'll comopare it to "<<target<<" : ";
+    cout<<endl<<"Enter a number and I'll compare it to "<<target<<" : ";
     cin>>num;
 
     if(num>=target){
