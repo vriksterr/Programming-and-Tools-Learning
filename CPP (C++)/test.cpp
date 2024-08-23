@@ -22,10 +22,23 @@
 
 */
 #include <iostream>
-using namespace std;
+#include <vector>
 
-int main(){
 
-        
-return 0;
+
+int car(){
+    std::cout<<"Hello";
 }
+
+int main() {
+    car();
+    std::vector<int> vec(5);
+    
+    // Print the elements
+    for (int i : vec) {
+        std::cout << i << " ";
+    }
+
+    return 0;
+}
+
