@@ -1442,7 +1442,7 @@ int tool {Eraser};
     //or
     /*
         In C++, labels used with goto can be defined anywhere within the same function, and the compiler handles this correctly by associating the goto statement with the label 
-        even if the label appears later in the code.
+        even if the label appears later in the code. And as mentioned it can only be used in same function like just in int main() it cannot be used to jump from one funtion to another
     */
 
     int i;
@@ -1452,6 +1452,26 @@ int tool {Eraser};
     car:
     cout<<i;
     
+    /*We will get skipping initialization error if we are jumping within same scope*/
+    while(1){
+        goto bus;
+        int value1=10;      
+        bus: cout<<value1;
+    }
+
+    /*But if the jump point is outside or in different scope then where goto is then it wont be an error*/
+    int value2,value3{10};
+
+    while (value2){
+        goto car;
+        int a=10;        //getting skipped but no issue 
+        std::cout<<a;    //getting skipped but no issue 
+    }
+
+    while (value3){
+        car: std::cout<<"Hello";
+    }
+
     return 0;
-    
+
 }
